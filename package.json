@@ -1,0 +1,17 @@
+{
+  "name": "periodiq",
+  "version": "0.1.0",
+  "description": "The most beautiful and useful periodic table on the web",
+  "type": "module",
+  "scripts": {
+    "scrape:pubchem": "node scripts/scrape-pubchem.mjs",
+    "scrape:wikipedia": "node scripts/scrape-wikipedia.mjs",
+    "scrape:merge": "node scripts/merge-data.mjs",
+    "scrape:compounds": "node scripts/scrape-compounds.mjs",
+    "scrape:all": "npm run scrape:pubchem && npm run scrape:wikipedia && npm run scrape:merge && npm run scrape:compounds",
+    "validate": "node scripts/validate-data.mjs"
+  },
+  "keywords": ["periodic-table", "chemistry", "elements"],
+  "author": "",
+  "license": "ISC"
+}

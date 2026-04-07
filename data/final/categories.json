@@ -1,0 +1,46 @@
+{
+  "alkali-metal": {
+    "label": "Alkali Metal",
+    "color": "#ff6b6b"
+  },
+  "alkaline-earth-metal": {
+    "label": "Alkaline Earth Metal",
+    "color": "#ffd93d"
+  },
+  "transition-metal": {
+    "label": "Transition Metal",
+    "color": "#6bcb77"
+  },
+  "post-transition-metal": {
+    "label": "Post-transition Metal",
+    "color": "#4d96ff"
+  },
+  "metalloid": {
+    "label": "Metalloid",
+    "color": "#ff922b"
+  },
+  "nonmetal": {
+    "label": "Nonmetal",
+    "color": "#20c997"
+  },
+  "halogen": {
+    "label": "Halogen",
+    "color": "#a855f7"
+  },
+  "noble-gas": {
+    "label": "Noble Gas",
+    "color": "#f472b6"
+  },
+  "lanthanide": {
+    "label": "Lanthanide",
+    "color": "#38bdf8"
+  },
+  "actinide": {
+    "label": "Actinide",
+    "color": "#fb923c"
+  },
+  "unknown": {
+    "label": "Unknown",
+    "color": "#6b7280"
+  }
+}
