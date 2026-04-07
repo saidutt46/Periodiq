@@ -1,0 +1,471 @@
+/* ============================================
+   SIDEBAR — Element quick-info panel
+   ============================================ */
+
+/* Backdrop overlay */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.backdropVisible {
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+}
+
+/* Panel */
+.panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(380px, 90vw);
+  z-index: 100;
+  overflow-y: auto;
+  background: var(--bg-glass);
+  backdrop-filter: blur(30px) saturate(1.5);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  border-left: 1px solid var(--bg-glass-border);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-hover) transparent;
+}
+
+.panelVisible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ============================================
+   Header controls (nav + close)
+   ============================================ */
+.headerControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(180deg, var(--bg-secondary) 60%, transparent);
+}
+
+.navButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.navBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.closeBtn {
+  composes: navBtn;
+}
+
+/* ============================================
+   Content area with crossfade
+   ============================================ */
+.content {
+  padding: 0 20px 24px;
+  transition: opacity 0.15s ease;
+}
+
+.contentFading {
+  opacity: 0;
+}
+
+/* ============================================
+   Hero: symbol + name
+   ============================================ */
+.hero {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Symbol box with living background */
+.symbolBox {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+/* Living background effects */
+.symbolBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.symbolBg_solid {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--cat-color) 8%, transparent),
+    color-mix(in srgb, var(--cat-color) 15%, transparent)
+  );
+  animation: solidShimmer 4s ease-in-out infinite;
+}
+
+.symbolBg_liquid {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    color-mix(in srgb, var(--cat-color) 20%, transparent),
+    transparent 70%
+  );
+  animation: liquidBreathe 3s ease-in-out infinite;
+}
+
+.symbolBg_gas {
+  background: radial-gradient(
+    circle at 30% 40%,
+    color-mix(in srgb, var(--cat-color) 12%, transparent),
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 70% 60%,
+    color-mix(in srgb, var(--cat-color) 10%, transparent),
+    transparent 50%
+  );
+  animation: gasBreathe 4s ease-in-out infinite;
+}
+
+@keyframes solidShimmer {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes liquidBreathe {
+  0%, 100% { opacity: 0.7; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+@keyframes gasBreathe {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.08); }
+}
+
+/* Gas particles inside symbol box */
+.symbolParticles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.symbolParticles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--cat-color);
+  opacity: 0.4;
+  animation: symbolFloat 3s ease-in-out infinite;
+}
+
+.symbolParticles span:nth-child(1) { left: 15%; top: 75%; animation-delay: 0s; animation-duration: 2.8s; }
+.symbolParticles span:nth-child(2) { left: 45%; top: 80%; animation-delay: 0.6s; animation-duration: 3.2s; }
+.symbolParticles span:nth-child(3) { left: 70%; top: 70%; animation-delay: 1.2s; animation-duration: 2.5s; }
+.symbolParticles span:nth-child(4) { left: 30%; top: 85%; animation-delay: 0.3s; animation-duration: 3s; }
+.symbolParticles span:nth-child(5) { left: 60%; top: 90%; animation-delay: 0.9s; animation-duration: 2.6s; }
+.symbolParticles span:nth-child(6) { left: 80%; top: 80%; animation-delay: 1.5s; animation-duration: 3.4s; }
+
+@keyframes symbolFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  15% { opacity: 0.5; }
+  85% { opacity: 0.2; }
+  100% { transform: translateY(-50px) scale(0.4); opacity: 0; }
+}
+
+.symbolText {
+  font-size: 36px;
+  font-weight: 900;
+  position: relative;
+  z-index: 2;
+  line-height: 1;
+}
+
+/* Hero info */
+.heroInfo {
+  padding-bottom: 4px;
+}
+
+.atomicNum {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.elementName {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 6px;
+  margin-top: 8px;
+  border: 1px solid;
+}
+
+.badgeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+/* ============================================
+   Appearance
+   ============================================ */
+.appearance {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 14px;
+  padding-left: 10px;
+  border-left: 2px solid var(--border-subtle);
+}
+
+/* ============================================
+   Stats grid
+   ============================================ */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.statCard {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-surface) 50%, transparent);
+  transition: border-color 0.15s ease;
+}
+
+.statCard:hover {
+  border-color: var(--border-hover);
+}
+
+.statCardMissing {
+  opacity: 0.45;
+}
+
+.statLabel {
+  font-size: 8px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 3px;
+}
+
+.statValue {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.statCardMissing .statValue {
+  color: var(--text-dim);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.statUnit {
+  font-size: 9px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+/* ============================================
+   Info chips row (discovery, oxidation, crystal)
+   ============================================ */
+.infoRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.infoChip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+}
+
+.infoChipLabel {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.infoChipValue {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Electron configuration
+   ============================================ */
+.electronConfig {
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 14px;
+}
+
+.electronLabel {
+  font-size: 8px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+
+.electronValue {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.configCore {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.configSup {
+  font-size: 0.65em;
+  vertical-align: super;
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.shellDisplay {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.shellBadge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border: 1.5px solid color-mix(in srgb, var(--cat-color) 35%, transparent);
+  background: color-mix(in srgb, var(--cat-color) 8%, transparent);
+}
+
+/* ============================================
+   Summary
+   ============================================ */
+.summary {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ============================================
+   Deep Dive button
+   ============================================ */
+.deepDiveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: #000;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-warm));
+  box-shadow: 0 4px 16px rgba(212, 168, 67, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deepDiveBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(212, 168, 67, 0.35);
+}
+
+.deepDiveArrow {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deepDiveBtn:hover .deepDiveArrow {
+  transform: translateX(4px);
+}
