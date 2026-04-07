@@ -3,106 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Periodiq — Design Mockup</title>
+  <title>Periodiq — Design Mockup v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ============================================
-       DESIGN TOKENS — CSS Custom Properties
+       DESIGN TOKENS
        ============================================ */
     :root {
-      /* Typography */
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-
-      /* Spacing */
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
       --tile-gap: 2px;
       --tile-size: 68px;
       --tile-radius: 6px;
-
-      /* Transition */
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --duration-fast: 150ms;
-      --duration-normal: 250ms;
+      --duration-normal: 300ms;
+      --duration-slow: 500ms;
     }
 
     /* ============================================
-       DARK THEME (default) — Chemistry Sci-Fi
+       DARK THEME — Chemistry Sci-Fi
        ============================================ */
     [data-theme="dark"] {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #12121a;
-      --bg-surface: #1a1a26;
-      --bg-tile: #16161f;
-      --bg-tile-hover: #1e1e2a;
+      --bg-primary: #06060b;
+      --bg-secondary: #0c0c14;
+      --bg-surface: #13131e;
+      --bg-tile: #0f0f18;
+      --bg-tile-hover: #1a1a28;
+      --bg-glass: rgba(12, 12, 20, 0.85);
+      --bg-glass-border: rgba(255, 255, 255, 0.06);
 
-      --text-primary: #e8e8ef;
-      --text-secondary: #8888a0;
-      --text-muted: #55556a;
+      --text-primary: #e4e4ef;
+      --text-secondary: #7a7a95;
+      --text-muted: #44445a;
+      --text-dim: #2a2a3a;
 
-      --accent-primary: #d4a843;    /* Gold/Amber — signature accent */
-      --accent-warm: #e8943a;       /* Warm orange */
-      --accent-glow: #f5c842;       /* Bright gold glow */
+      --accent-primary: #d4a843;
+      --accent-warm: #e8943a;
+      --accent-glow: #f5c842;
+      --accent-cool: #5eead4;
 
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --border-accent: rgba(212, 168, 67, 0.3);
+      --border-subtle: rgba(255, 255, 255, 0.04);
+      --border-hover: rgba(255, 255, 255, 0.1);
 
-      --glow-intensity: 0.4;
-      --shadow-tile: 0 1px 3px rgba(0,0,0,0.4);
-      --shadow-tile-hover: 0 4px 20px rgba(0,0,0,0.6), 0 0 30px var(--cat-glow);
+      --glow-intensity: 0.35;
+      --shadow-tile: 0 1px 2px rgba(0,0,0,0.5);
+      --shadow-tile-hover: 0 8px 32px rgba(0,0,0,0.6);
+      --shadow-float: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
 
-      /* Category colors — sci-fi palette on dark bg */
       --cat-alkali-metal: #ff4d6a;
       --cat-alkaline-earth: #ff9f43;
-      --cat-transition-metal: #54a0ff;
-      --cat-post-transition: #5f9ea0;
+      --cat-transition-metal: #4facfe;
+      --cat-post-transition: #5ab4ac;
       --cat-metalloid: #ffc048;
       --cat-nonmetal: #2ed573;
-      --cat-halogen: #a29bfe;
-      --cat-noble-gas: #fd79a8;
-      --cat-lanthanide: #00cec9;
-      --cat-actinide: #e17055;
-      --cat-unknown: #636e72;
+      --cat-halogen: #a78bfa;
+      --cat-noble-gas: #f472b6;
+      --cat-lanthanide: #22d3ee;
+      --cat-actinide: #fb923c;
+      --cat-unknown: #555568;
+
+      --scanline-opacity: 0.03;
     }
 
     /* ============================================
        LIGHT THEME
        ============================================ */
     [data-theme="light"] {
-      --bg-primary: #f5f5f8;
+      --bg-primary: #f2f2f6;
       --bg-secondary: #ffffff;
-      --bg-surface: #eeeef2;
+      --bg-surface: #e8e8ee;
       --bg-tile: #ffffff;
-      --bg-tile-hover: #f8f8fc;
+      --bg-tile-hover: #f5f5fa;
+      --bg-glass: rgba(255, 255, 255, 0.88);
+      --bg-glass-border: rgba(0, 0, 0, 0.08);
 
-      --text-primary: #1a1a2e;
+      --text-primary: #14142b;
       --text-secondary: #5a5a72;
       --text-muted: #9999aa;
+      --text-dim: #ccccdd;
 
       --accent-primary: #b8860b;
       --accent-warm: #d4760a;
       --accent-glow: #daa520;
+      --accent-cool: #0d9488;
 
-      --border-subtle: rgba(0, 0, 0, 0.08);
-      --border-accent: rgba(184, 134, 11, 0.3);
+      --border-subtle: rgba(0, 0, 0, 0.06);
+      --border-hover: rgba(0, 0, 0, 0.12);
 
-      --glow-intensity: 0.15;
-      --shadow-tile: 0 1px 3px rgba(0,0,0,0.08);
-      --shadow-tile-hover: 0 4px 16px rgba(0,0,0,0.12);
+      --glow-intensity: 0.12;
+      --shadow-tile: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-tile-hover: 0 8px 24px rgba(0,0,0,0.1);
+      --shadow-float: 0 8px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
 
-      --cat-alkali-metal: #dc3545;
-      --cat-alkaline-earth: #e67e22;
-      --cat-transition-metal: #2980b9;
-      --cat-post-transition: #3d8b8b;
-      --cat-metalloid: #d4a017;
-      --cat-nonmetal: #27ae60;
-      --cat-halogen: #7c4dff;
-      --cat-noble-gas: #e84393;
-      --cat-lanthanide: #00b5ad;
-      --cat-actinide: #d35400;
-      --cat-unknown: #95a5a6;
+      --cat-alkali-metal: #dc2626;
+      --cat-alkaline-earth: #ea580c;
+      --cat-transition-metal: #2563eb;
+      --cat-post-transition: #0d9488;
+      --cat-metalloid: #ca8a04;
+      --cat-nonmetal: #16a34a;
+      --cat-halogen: #7c3aed;
+      --cat-noble-gas: #db2777;
+      --cat-lanthanide: #0891b2;
+      --cat-actinide: #c2410c;
+      --cat-unknown: #9ca3af;
+
+      --scanline-opacity: 0;
     }
 
     /* ============================================
-       BASE STYLES
+       BASE
        ============================================ */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -112,71 +124,285 @@
       color: var(--text-primary);
       min-height: 100vh;
       overflow-x: auto;
+      transition: background var(--duration-slow) var(--ease-out),
+                  color var(--duration-slow) var(--ease-out);
     }
 
-    /* Header */
-    .header {
-      padding: 24px 32px;
+    /* Subtle noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       FLOATING CHROME — HUD-style controls
+       ============================================ */
+
+    /* Top-left: Logo mark */
+    .brand {
+      position: fixed;
+      top: 20px;
+      left: 24px;
+      z-index: 50;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
+      gap: 10px;
     }
 
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      color: var(--accent-primary);
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-warm));
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 14px;
+      color: #000;
+      box-shadow: 0 2px 12px rgba(212, 168, 67, 0.25);
     }
 
-    .logo span {
+    .brand-text {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text .dot {
+      color: var(--accent-primary);
+    }
+
+    .brand-text .tld {
       color: var(--text-muted);
       font-weight: 400;
     }
 
-    .controls {
+    /* Top-center: Floating command bar */
+    .command-bar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
       display: flex;
-      gap: 12px;
       align-items: center;
+      gap: 2px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border: 1px solid var(--bg-glass-border);
+      border-radius: 14px;
+      padding: 4px;
+      box-shadow: var(--shadow-float);
     }
 
-    .theme-toggle {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+    .cmd-tab {
+      padding: 7px 16px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 500;
       color: var(--text-secondary);
-      padding: 6px 14px;
-      border-radius: 8px;
       cursor: pointer;
-      font-size: 13px;
+      border: none;
+      background: none;
       font-family: var(--font-sans);
+      transition: all var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .cmd-tab:hover {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .cmd-tab.active {
+      color: var(--text-primary);
+      background: var(--bg-surface);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      font-weight: 600;
+    }
+
+    .cmd-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border-subtle);
+      margin: 0 4px;
+    }
+
+    .cmd-search {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 10px;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: var(--font-sans);
+      font-size: 12px;
       transition: all var(--duration-fast) var(--ease-out);
     }
 
-    .theme-toggle:hover {
-      border-color: var(--accent-primary);
+    .cmd-search:hover {
+      color: var(--text-secondary);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .cmd-search kbd {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    /* Top-right: Utility controls */
+    .utility-bar {
+      position: fixed;
+      top: 16px;
+      right: 24px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border: 1px solid var(--bg-glass-border);
+      border-radius: 12px;
+      padding: 4px;
+      box-shadow: var(--shadow-float);
+    }
+
+    .util-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .util-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .util-btn.active {
       color: var(--accent-primary);
     }
 
-    .property-select {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-family: var(--font-sans);
+    /* Bottom-center: Property mode selector */
+    .property-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border: 1px solid var(--bg-glass-border);
+      border-radius: 14px;
+      padding: 4px;
+      box-shadow: var(--shadow-float);
+    }
+
+    .prop-chip {
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
       cursor: pointer;
+      border: none;
+      background: none;
+      font-family: var(--font-sans);
+      transition: all var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .prop-chip:hover {
+      color: var(--text-secondary);
+    }
+
+    .prop-chip.active {
+      color: var(--accent-primary);
+      background: rgba(212, 168, 67, 0.1);
+      font-weight: 600;
+    }
+
+    .prop-chip-divider {
+      width: 1px;
+      height: 16px;
+      background: var(--border-subtle);
+      margin: 0 2px;
+    }
+
+    /* Bottom-left: Legend (minimal, semi-transparent) */
+    .legend {
+      position: fixed;
+      bottom: 20px;
+      left: 24px;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      opacity: 0.5;
+      transition: opacity var(--duration-normal) var(--ease-out);
+    }
+
+    .legend:hover {
+      opacity: 1;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .legend-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     /* ============================================
-       PERIODIC TABLE GRID
+       PERIODIC TABLE
        ============================================ */
     .table-container {
-      padding: 32px;
+      min-height: 100vh;
       display: flex;
+      align-items: center;
       justify-content: center;
+      padding: 72px 32px 80px;
     }
 
     .periodic-table {
@@ -184,19 +410,10 @@
       grid-template-columns: repeat(18, var(--tile-size));
       grid-template-rows: repeat(10, var(--tile-size));
       gap: var(--tile-gap);
-      position: relative;
-    }
-
-    /* Lanthanide/Actinide separator */
-    .periodic-table::before {
-      content: '';
-      grid-column: 3 / 18;
-      grid-row: 8;
-      height: 8px;
     }
 
     /* ============================================
-       ELEMENT TILE — The core visual component
+       ELEMENT TILE
        ============================================ */
     .element {
       position: relative;
@@ -211,65 +428,58 @@
       overflow: hidden;
       transition: all var(--duration-normal) var(--ease-out);
       box-shadow: var(--shadow-tile);
-
-      /* Category glow color — set per element */
-      --cat-glow: var(--cat-transition-metal);
+      --cat-color: var(--cat-transition-metal);
     }
 
-    /* Layer 1: Category color stripe (left border) */
+    /* Layer 1: Category accent (left edge) */
     .element::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
+      left: 0; top: 0; bottom: 0;
+      width: 2.5px;
       background: var(--cat-color);
-      opacity: 0.8;
-      transition: opacity var(--duration-fast) var(--ease-out);
+      opacity: 0.7;
+      transition: all var(--duration-normal) var(--ease-out);
     }
 
-    /* Layer 2: Ambient glow (subtle background tint) */
+    /* Layer 2: Ambient glow */
     .element::after {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(
-        ellipse at center,
-        color-mix(in srgb, var(--cat-color) calc(var(--glow-intensity) * 100%), transparent) 0%,
-        transparent 70%
+        ellipse at 50% 60%,
+        color-mix(in srgb, var(--cat-color) 20%, transparent) 0%,
+        transparent 65%
       );
       opacity: 0;
       transition: opacity var(--duration-normal) var(--ease-out);
       pointer-events: none;
     }
 
-    /* Hover: Layer 3 — element "comes alive" */
+    /* Hover */
     .element:hover {
-      transform: scale(1.15) translateY(-2px);
+      transform: scale(1.18) translateY(-3px);
       z-index: 10;
-      border-color: var(--cat-color);
-      box-shadow: var(--shadow-tile-hover);
+      border-color: color-mix(in srgb, var(--cat-color) 50%, transparent);
+      box-shadow: var(--shadow-tile-hover),
+                  0 0 40px color-mix(in srgb, var(--cat-color) 15%, transparent);
       background: var(--bg-tile-hover);
     }
 
     .element:hover::before {
       width: 100%;
-      opacity: 0.12;
+      opacity: 0.08;
       border-radius: var(--tile-radius);
     }
 
-    .element:hover::after {
-      opacity: 1;
-    }
+    .element:hover::after { opacity: 1; }
 
-    /* Element content */
     .element .atomic-number {
-      font-size: 9px;
-      color: var(--text-muted);
+      font-size: 8px;
+      color: var(--text-dim);
       position: absolute;
-      top: 4px;
-      left: 6px;
+      top: 4px; left: 6px;
       font-family: var(--font-mono);
       font-weight: 500;
     }
@@ -282,16 +492,17 @@
       color: var(--text-primary);
       position: relative;
       z-index: 1;
-      transition: color var(--duration-fast) var(--ease-out);
+      transition: all var(--duration-fast) var(--ease-out);
     }
 
     .element:hover .symbol {
       color: var(--cat-color);
+      text-shadow: 0 0 20px color-mix(in srgb, var(--cat-color) 30%, transparent);
     }
 
     .element .name {
       font-size: 7px;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-top: 2px;
@@ -301,234 +512,422 @@
 
     .element .mass {
       font-size: 7px;
-      color: var(--text-muted);
+      color: var(--text-dim);
       font-family: var(--font-mono);
       margin-top: 1px;
       position: relative;
       z-index: 1;
     }
 
-    /* Selected state */
+    /* Selected */
     .element.selected {
       border-color: var(--accent-primary);
-      box-shadow: 0 0 0 1px var(--accent-primary), 0 4px 20px rgba(212, 168, 67, 0.2);
+      box-shadow: 0 0 0 1px var(--accent-primary),
+                  0 0 30px rgba(212, 168, 67, 0.15);
     }
 
-    /* Radioactive elements pulse */
-    .element.radioactive .symbol {
-      animation: pulse 3s ease-in-out infinite;
+    .element.selected .symbol {
+      color: var(--accent-primary);
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-
-    /* State indicators (tiny dot) */
+    /* State indicators */
     .element .state-dot {
-      width: 4px;
-      height: 4px;
+      width: 3px; height: 3px;
       border-radius: 50%;
       position: absolute;
-      top: 4px;
-      right: 5px;
+      top: 5px; right: 5px;
     }
-
-    .element .state-dot.solid { background: var(--text-muted); }
+    .element .state-dot.solid { background: var(--text-dim); }
     .element .state-dot.liquid { background: #4dabf7; }
     .element .state-dot.gas { background: #69db7c; }
 
-    /* Category-specific tile colors */
-    .element[data-category="alkali-metal"] { --cat-color: var(--cat-alkali-metal); --cat-glow: var(--cat-alkali-metal); }
-    .element[data-category="alkaline-earth-metal"] { --cat-color: var(--cat-alkaline-earth); --cat-glow: var(--cat-alkaline-earth); }
-    .element[data-category="transition-metal"] { --cat-color: var(--cat-transition-metal); --cat-glow: var(--cat-transition-metal); }
-    .element[data-category="post-transition-metal"] { --cat-color: var(--cat-post-transition); --cat-glow: var(--cat-post-transition); }
-    .element[data-category="metalloid"] { --cat-color: var(--cat-metalloid); --cat-glow: var(--cat-metalloid); }
-    .element[data-category="nonmetal"] { --cat-color: var(--cat-nonmetal); --cat-glow: var(--cat-nonmetal); }
-    .element[data-category="halogen"] { --cat-color: var(--cat-halogen); --cat-glow: var(--cat-halogen); }
-    .element[data-category="noble-gas"] { --cat-color: var(--cat-noble-gas); --cat-glow: var(--cat-noble-gas); }
-    .element[data-category="lanthanide"] { --cat-color: var(--cat-lanthanide); --cat-glow: var(--cat-lanthanide); }
-    .element[data-category="actinide"] { --cat-color: var(--cat-actinide); --cat-glow: var(--cat-actinide); }
-    .element[data-category="unknown"] { --cat-color: var(--cat-unknown); --cat-glow: var(--cat-unknown); }
+    /* === Living element effects === */
+
+    /* Gas elements: floating particles */
+    .element[data-state="gas"] {
+      --particle-color: var(--cat-color);
+    }
+    .element[data-state="gas"] .gas-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity var(--duration-normal) var(--ease-out);
+    }
+    .element[data-state="gas"]:hover .gas-particles { opacity: 1; }
+    .element[data-state="gas"] .gas-particles span {
+      position: absolute;
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: var(--cat-color);
+      opacity: 0.5;
+      animation: float-particle 3s ease-in-out infinite;
+    }
+    .element[data-state="gas"] .gas-particles span:nth-child(1) { left: 20%; top: 70%; animation-delay: 0s; animation-duration: 2.5s; }
+    .element[data-state="gas"] .gas-particles span:nth-child(2) { left: 50%; top: 80%; animation-delay: 0.5s; animation-duration: 3s; }
+    .element[data-state="gas"] .gas-particles span:nth-child(3) { left: 70%; top: 60%; animation-delay: 1s; animation-duration: 2.8s; }
+    .element[data-state="gas"] .gas-particles span:nth-child(4) { left: 35%; top: 75%; animation-delay: 1.5s; animation-duration: 3.2s; }
+    .element[data-state="gas"] .gas-particles span:nth-child(5) { left: 60%; top: 85%; animation-delay: 0.8s; animation-duration: 2.6s; }
+
+    @keyframes float-particle {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-40px) scale(0.5); opacity: 0; }
+    }
+
+    /* Liquid elements: ripple shimmer */
+    .element[data-state="liquid"] .liquid-effect {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity var(--duration-normal) var(--ease-out);
+    }
+    .element[data-state="liquid"]:hover .liquid-effect { opacity: 1; }
+    .element[data-state="liquid"] .liquid-effect::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: -20%; right: -20%;
+      height: 30px;
+      background: linear-gradient(transparent, color-mix(in srgb, var(--cat-color) 12%, transparent));
+      animation: liquid-wave 2s ease-in-out infinite;
+    }
+
+    @keyframes liquid-wave {
+      0%, 100% { transform: translateY(0) scaleY(1); }
+      50% { transform: translateY(-3px) scaleY(1.1); }
+    }
+
+    /* Radioactive: pulsing glow ring */
+    .element.radioactive::after {
+      animation: radioactive-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes radioactive-pulse {
+      0%, 100% { opacity: 0.05; }
+      50% { opacity: 0.2; }
+    }
+
+    /* Metal shimmer on hover */
+    .element[data-metal="metal"] .metal-sheen {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255,255,255,0.04) 45%,
+        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0.04) 55%,
+        transparent 60%
+      );
+      transform: translateX(-100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .element[data-metal="metal"]:hover .metal-sheen {
+      animation: metal-sweep 1.2s var(--ease-out) forwards;
+    }
+
+    @keyframes metal-sweep {
+      to { transform: translateX(100%); }
+    }
+
+    /* Category colors */
+    .element[data-category="alkali-metal"] { --cat-color: var(--cat-alkali-metal); }
+    .element[data-category="alkaline-earth-metal"] { --cat-color: var(--cat-alkaline-earth); }
+    .element[data-category="transition-metal"] { --cat-color: var(--cat-transition-metal); }
+    .element[data-category="post-transition-metal"] { --cat-color: var(--cat-post-transition); }
+    .element[data-category="metalloid"] { --cat-color: var(--cat-metalloid); }
+    .element[data-category="nonmetal"] { --cat-color: var(--cat-nonmetal); }
+    .element[data-category="halogen"] { --cat-color: var(--cat-halogen); }
+    .element[data-category="noble-gas"] { --cat-color: var(--cat-noble-gas); }
+    .element[data-category="lanthanide"] { --cat-color: var(--cat-lanthanide); }
+    .element[data-category="actinide"] { --cat-color: var(--cat-actinide); }
+    .element[data-category="unknown"] { --cat-color: var(--cat-unknown); }
 
     /* ============================================
-       LEGEND
-       ============================================ */
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 16px 32px;
-      justify-content: center;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--text-secondary);
-    }
-
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 3px;
-    }
-
-    /* ============================================
-       SIDEBAR PANEL (quick info on click)
+       SIDEBAR
        ============================================ */
     .sidebar {
       position: fixed;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 360px;
-      background: var(--bg-secondary);
-      border-left: 1px solid var(--border-subtle);
-      padding: 32px 24px;
+      right: 0; top: 0; bottom: 0;
+      width: 380px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(30px) saturate(1.5);
+      -webkit-backdrop-filter: blur(30px) saturate(1.5);
+      border-left: 1px solid var(--bg-glass-border);
+      padding: 28px 24px;
       transform: translateX(100%);
       transition: transform var(--duration-normal) var(--ease-out);
       z-index: 100;
       overflow-y: auto;
     }
 
-    .sidebar.open {
-      transform: translateX(0);
+    .sidebar.open { transform: translateX(0); }
+
+    .sidebar-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+    .sidebar-close:hover {
+      color: var(--text-primary);
+      border-color: var(--border-hover);
     }
 
-    .sidebar-header {
+    .sidebar-hero {
       display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 24px;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sidebar-symbol-wrap {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    /* Living bg effect in sidebar symbol */
+    .sidebar-symbol-wrap .bg-effect {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+    }
+
+    .sidebar-symbol-wrap .bg-effect.gas-bg {
+      background: radial-gradient(circle at 30% 40%, var(--cat-color), transparent 60%),
+                  radial-gradient(circle at 70% 60%, var(--cat-color), transparent 60%);
+      animation: gas-breathe 4s ease-in-out infinite;
+    }
+
+    .sidebar-symbol-wrap .bg-effect.liquid-bg {
+      background: linear-gradient(180deg, transparent 40%, var(--cat-color) 100%);
+      animation: liquid-breathe 3s ease-in-out infinite;
+    }
+
+    .sidebar-symbol-wrap .bg-effect.solid-bg {
+      background: var(--cat-color);
+      opacity: 0.08;
+    }
+
+    @keyframes gas-breathe {
+      0%, 100% { opacity: 0.12; transform: scale(1); }
+      50% { opacity: 0.22; transform: scale(1.05); }
+    }
+
+    @keyframes liquid-breathe {
+      0%, 100% { opacity: 0.12; transform: translateY(0); }
+      50% { opacity: 0.2; transform: translateY(-4px); }
     }
 
     .sidebar-symbol {
-      font-size: 48px;
-      font-weight: 800;
+      font-size: 36px;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
       line-height: 1;
     }
 
-    .sidebar-info h2 {
+    .sidebar-meta h2 {
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: -0.3px;
     }
 
-    .sidebar-info .category-badge {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-top: 4px;
+    .sidebar-meta .atomic-num {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 2px;
+    }
+
+    .sidebar-meta .category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-top: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .sidebar-meta .category-badge .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
     }
 
     .sidebar-props {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 20px;
+      gap: 8px;
+      margin-top: 16px;
     }
 
     .prop-card {
-      background: var(--bg-surface);
+      background: color-mix(in srgb, var(--bg-surface) 60%, transparent);
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 12px;
+      border-radius: 10px;
+      padding: 10px 12px;
     }
 
     .prop-label {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.06em;
       margin-bottom: 4px;
     }
 
     .prop-value {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       font-family: var(--font-mono);
     }
 
     .prop-unit {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-muted);
       font-weight: 400;
     }
 
+    .sidebar-summary {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 16px;
+    }
+
     .deep-dive-btn {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       width: 100%;
-      margin-top: 24px;
-      padding: 12px;
+      margin-top: 20px;
+      padding: 11px;
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-warm));
       color: #000;
       border: none;
-      border-radius: 8px;
-      font-size: 14px;
+      border-radius: 10px;
+      font-size: 13px;
       font-weight: 600;
       font-family: var(--font-sans);
       cursor: pointer;
       transition: all var(--duration-fast) var(--ease-out);
+      letter-spacing: -0.01em;
     }
 
     .deep-dive-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(212, 168, 67, 0.3);
+      box-shadow: 0 6px 20px rgba(212, 168, 67, 0.3);
     }
 
-    .sidebar-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 20px;
-      cursor: pointer;
+    .deep-dive-btn .arrow {
+      transition: transform var(--duration-fast) var(--ease-out);
+    }
+
+    .deep-dive-btn:hover .arrow {
+      transform: translateX(3px);
     }
 
     /* ============================================
        UTILITY
        ============================================ */
-    .empty-cell {
-      visibility: hidden;
-    }
-
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+    .empty-cell { visibility: hidden; }
   </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="logo">Periodiq<span>.dev</span></div>
-    <div class="controls">
-      <select class="property-select" id="colorMode">
-        <option value="category">Chemical Group / Family</option>
-        <option value="metal">Metal / Metalloid / Nonmetal</option>
-        <option value="state">Standard State</option>
-      </select>
-      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-    </div>
-  </header>
+  <!-- Floating Chrome: Brand -->
+  <div class="brand">
+    <div class="brand-mark">Pq</div>
+    <div class="brand-text">Periodiq<span class="dot">.</span><span class="tld">dev</span></div>
+  </div>
 
+  <!-- Floating Chrome: Command Bar (center) -->
+  <nav class="command-bar">
+    <button class="cmd-tab active">Table</button>
+    <button class="cmd-tab">List</button>
+    <button class="cmd-tab">Compare</button>
+    <div class="cmd-divider"></div>
+    <button class="cmd-search" title="Search elements">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Search
+      <kbd>&#8984;K</kbd>
+    </button>
+  </nav>
+
+  <!-- Floating Chrome: Utility (right) -->
+  <div class="utility-bar">
+    <button class="util-btn" onclick="toggleTheme()" title="Toggle theme">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <button class="util-btn" title="Settings">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+  </div>
+
+  <!-- Floating Chrome: Property mode (bottom center) -->
+  <div class="property-bar">
+    <button class="prop-chip active">Group</button>
+    <button class="prop-chip">State</button>
+    <div class="prop-chip-divider"></div>
+    <button class="prop-chip">Mass</button>
+    <button class="prop-chip">Radius</button>
+    <button class="prop-chip">EN</button>
+    <button class="prop-chip">Density</button>
+    <button class="prop-chip">M.P.</button>
+    <button class="prop-chip">B.P.</button>
+    <div class="prop-chip-divider"></div>
+    <button class="prop-chip">Year</button>
+  </div>
+
+  <!-- Legend (bottom-left, minimal) -->
   <div class="legend" id="legend"></div>
 
+  <!-- Table -->
   <div class="table-container">
     <div class="periodic-table" id="table"></div>
   </div>
 
+  <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
-    <button class="sidebar-close" onclick="closeSidebar()">&times;</button>
+    <button class="sidebar-close" onclick="closeSidebar()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
     <div id="sidebar-content"></div>
   </aside>
 
   <script>
     const INLINE_ELEMENTS = [{"atomic_number":1,"symbol":"H","name":"Hydrogen","atomic_mass":1.008,"category":"nonmetal","standard_state":"Gas","is_radioactive":false,"table_row":1,"table_column":1,"density":0.00008988,"melting_point":13.81,"boiling_point":20.28,"electronegativity_pauling":2.2,"electron_configuration":"1s1","summary":"Hydrogen is a chemical element; it has the symbol H and atomic number 1. It is the lightest and most abundant chemical element in the universe, constituting about 75% of all normal matter. Under standard conditions, hydrogen is a gas of diatomic molecules with the formula H2, called dihydrogen, or s"},{"atomic_number":2,"symbol":"He","name":"Helium","atomic_mass":4.0026,"category":"noble-gas","standard_state":"Gas","is_radioactive":false,"table_row":1,"table_column":18,"density":0.0001785,"melting_point":0.95,"boiling_point":4.22,"electronegativity_pauling":null,"electron_configuration":"1s2","summary":"Helium (from Ancient Greek: ἥλιος, romanized: helios, lit. 'sun') is a chemical element; it has symbol He and atomic number 2. It is a colorless, odorless, non-toxic, inert, monatomic gas and the first in the noble gas group in the periodic table. Its boiling point is the lowest among all the elemen"},{"atomic_number":3,"symbol":"Li","name":"Lithium","atomic_mass":7,"category":"alkali-metal","standard_state":"Solid","is_radioactive":false,"table_row":2,"table_column":1,"density":0.534,"melting_point":453.65,"boiling_point":1615,"electronegativity_pauling":0.98,"electron_configuration":"[He]2s1","summary":"Lithium (from Ancient Greek: λίθος, líthos, 'stone') is a chemical element; it has symbol Li and atomic number 3. It is a soft, silvery-white alkali metal. Under standard conditions, it is the least dense metal and the least dense solid element. Like all alkali metals, lithium is highly reactive and"},{"atomic_number":4,"symbol":"Be","name":"Beryllium","atomic_mass":9.012183,"category":"alkaline-earth-metal","standard_state":"Solid","is_radioactive":false,"table_row":2,"table_column":2,"density":1.85,"melting_point":1560,"boiling_point":2744,"electronegativity_pauling":1.57,"electron_configuration":"[He]2s2","summary":"Beryllium is a chemical element; it has symbol Be and atomic number 4. It is a steel-gray, hard, strong, lightweight and brittle alkaline earth metal. It is a divalent element that occurs naturally only in combination with other elements to form minerals. Gemstones high in beryllium include beryl (a"},{"atomic_number":5,"symbol":"B","name":"Boron","atomic_mass":10.81,"category":"metalloid","standard_state":"Solid","is_radioactive":false,"table_row":2,"table_column":13,"density":2.37,"melting_point":2348,"boiling_point":4273,"electronegativity_pauling":2.04,"electron_configuration":"[He]2s2 2p1","summary":"Boron is a chemical element; it has symbol B and atomic number 5. In its crystalline form it is a brittle, dark, lustrous metalloid; in its amorphous form it is a brown powder. As the lightest element of the boron group it has three valence electrons for forming covalent bonds, resulting in many com"},{"atomic_number":6,"symbol":"C","name":"Carbon","atomic_mass":12.011,"category":"nonmetal","standard_state":"Solid","is_radioactive":false,"table_row":2,"table_column":14,"density":2.267,"melting_point":3823,"boiling_point":4098,"electronegativity_pauling":2.55,"electron_configuration":"[He]2s2 2p2","summary":"Carbon (from Latin  carbo 'coal') is a chemical element;  it has symbol C and atomic number 6. It is nonmetallic and tetravalent—meaning that its atoms are able to form up to four covalent bonds due to its valence shell exhibiting 4 electrons. It belongs to group 14 of the periodic table. Carbon mak"},{"atomic_number":7,"symbol":"N","name":"Nitrogen","atomic_mass":14.007,"category":"nonmetal","standard_state":"Gas","is_radioactive":false,"table_row":2,"table_column":15,"density":0.0012506,"melting_point":63.15,"boiling_point":77.36,"electronegativity_pauling":3.04,"electron_configuration":"[He] 2s2 2p3","summary":"Nitrogen is a chemical element; it has symbol N and atomic number 7. Nitrogen is a nonmetal and the lightest member of group 15 of the periodic table, often called the pnictogens. It is a common element in the universe, estimated at seventh in total abundance in the Milky Way and the Solar System. A"},{"atomic_number":8,"symbol":"O","name":"Oxygen","atomic_mass":15.999,"category":"nonmetal","standard_state":"Gas","is_radioactive":false,"table_row":2,"table_column":16,"density":0.001429,"melting_point":54.36,"boiling_point":90.2,"electronegativity_pauling":3.44,"electron_configuration":"[He]2s2 2p4","summary":"Oxygen is a chemical element; it has the symbol O and its atomic number is 8. It is a member of the chalcogen group in the periodic table. It is highly reactive, a nonmetal, and a potent oxidizing agent that readily forms oxides with most elements as well as with other compounds. Oxygen is the most "},{"atomic_number":9,"symbol":"F","name":"Fluorine","atomic_mass":18.99840316,"category":"halogen","standard_state":"Gas","is_radioactive":false,"table_row":2,"table_column":17,"density":0.001696,"melting_point":53.53,"boiling_point":85.03,"electronegativity_pauling":3.98,"electron_configuration":"[He]2s2 2p5","summary":"Fluorine is a chemical element; it has symbol F and atomic number 9. It is the lightest halogen and exists at standard conditions as pale yellow diatomic gas. Fluorine is extremely reactive as it reacts with all other elements except for the light noble gases. In its elemental form it is highly toxi"},{"atomic_number":10,"symbol":"Ne","name":"Neon","atomic_mass":20.18,"category":"noble-gas","standard_state":"Gas","is_radioactive":false,"table_row":2,"table_column":18,"density":0.0008999,"melting_point":24.56,"boiling_point":27.07,"electronegativity_pauling":null,"electron_configuration":"[He]2s2 2p6","summary":"Neon is a chemical element; it has the symbol Ne and the atomic number 10. It is the second noble gas in the periodic table. Neon is a colorless, odorless, inert monatomic gas under standard conditions, with approximately two-thirds the density of air.\nNeon was discovered in 1898 alongside krypton a"},{"atomic_number":11,"symbol":"Na","name":"Sodium","atomic_mass":22.9897693,"category":"alkali-metal","standard_state":"Solid","is_radioactive":false,"table_row":3,"table_column":1,"density":0.97,"melting_point":370.95,"boiling_point":1156,"electronegativity_pauling":0.93,"electron_configuration":"[Ne]3s1","summary":"Sodium is a chemical element; it has symbol Na (from Neo-Latin natrium) and atomic number 11. It is a soft, silvery-white, highly reactive metal. Sodium is an alkali metal, being in group 1 of the periodic table. Its only stable isotope is 23Na. The free metal does not occur in nature and must be pr"},{"atomic_number":12,"symbol":"Mg","name":"Magnesium","atomic_mass":24.305,"category":"alkaline-earth-metal","standard_state":"Solid","is_radioactive":false,"table_row":3,"table_column":2,"density":1.74,"melting_point":923,"boiling_point":1363,"electronegativity_pauling":1.31,"electron_configuration":"[Ne]3s2","summary":"Magnesium is a chemical element; it has symbol Mg and atomic number 12. It is a shiny gray metal having a low density, low melting point, and high chemical reactivity. Like the other alkaline earth metals (group 2 of the periodic table), it occurs naturally only in combination with other elements an"},{"atomic_number":13,"symbol":"Al","name":"Aluminum","atomic_mass":26.981538,"category":"post-transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":3,"table_column":13,"density":2.7,"melting_point":933.437,"boiling_point":2792,"electronegativity_pauling":1.61,"electron_configuration":"[Ne]3s2 3p1","summary":"Aluminium (the Commonwealth and preferred IUPAC name) or aluminum (North American English) is a chemical element; it has symbol Al and atomic number 13. It has a density lower than other common metals, about one-third that of steel. Aluminium has a great affinity toward oxygen, forming a protective "},{"atomic_number":14,"symbol":"Si","name":"Silicon","atomic_mass":28.085,"category":"metalloid","standard_state":"Solid","is_radioactive":false,"table_row":3,"table_column":14,"density":2.3296,"melting_point":1687,"boiling_point":3538,"electronegativity_pauling":1.9,"electron_configuration":"[Ne]3s2 3p2","summary":"Silicon (, SILL-ih-kən) is a chemical element; it has symbol Si and atomic number 14. It is a hard, brittle crystalline solid with a blue-grey metallic lustre, and is a tetravalent non-metal (sometimes considered as a metalloid) and semiconductor. It is a member of group 14 in the periodic table: ca"},{"atomic_number":15,"symbol":"P","name":"Phosphorus","atomic_mass":30.973762,"category":"nonmetal","standard_state":"Solid","is_radioactive":false,"table_row":3,"table_column":15,"density":1.82,"melting_point":317.3,"boiling_point":553.65,"electronegativity_pauling":2.19,"electron_configuration":"[Ne]3s2 3p3","summary":"Phosphorus is a chemical element; it has symbol P and atomic number 15. All elemental forms of phosphorus are highly reactive and are therefore never found in nature. Elemental phosphorus can be prepared artificially, the two most common allotropes being white phosphorus and red phosphorus. With 31P"},{"atomic_number":16,"symbol":"S","name":"Sulfur","atomic_mass":32.07,"category":"nonmetal","standard_state":"Solid","is_radioactive":false,"table_row":3,"table_column":16,"density":2.067,"melting_point":388.36,"boiling_point":717.75,"electronegativity_pauling":2.58,"electron_configuration":"[Ne]3s2 3p4","summary":"Sulfur (American spelling and the preferred IUPAC name) or sulphur (Commonwealth spelling) is a chemical element; it has symbol S and atomic number 16. It is abundant, multivalent and nonmetallic. Under normal conditions, sulfur atoms form cyclic octatomic molecules with the chemical formula S8. Ele"},{"atomic_number":17,"symbol":"Cl","name":"Chlorine","atomic_mass":35.45,"category":"halogen","standard_state":"Gas","is_radioactive":false,"table_row":3,"table_column":17,"density":0.003214,"melting_point":171.65,"boiling_point":239.11,"electronegativity_pauling":3.16,"electron_configuration":"[Ne]3s2 3p5","summary":"Chlorine is a chemical element; it has symbol Cl and atomic number 17. The second-lightest of the halogens, it appears between fluorine and bromine in the periodic table and its properties are mostly intermediate between them. Chlorine is a yellow-green gas at room temperature. It is an extremely re"},{"atomic_number":18,"symbol":"Ar","name":"Argon","atomic_mass":39.9,"category":"noble-gas","standard_state":"Gas","is_radioactive":false,"table_row":3,"table_column":18,"density":0.0017837,"melting_point":83.8,"boiling_point":87.3,"electronegativity_pauling":null,"electron_configuration":"[Ne]3s2 3p6","summary":"Argon is a chemical element; it has symbol Ar and atomic number 18. It is in group 18 of the periodic table and is a noble gas. Argon is the third most abundant gas in Earth's atmosphere, at 0.934% (9340 ppmv). It is more than twice as abundant as water vapor (which averages about 4000 ppmv, but var"},{"atomic_number":19,"symbol":"K","name":"Potassium","atomic_mass":39.0983,"category":"alkali-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":1,"density":0.89,"melting_point":336.53,"boiling_point":1032,"electronegativity_pauling":0.82,"electron_configuration":"[Ar]4s1","summary":"Potassium is a chemical element; it has symbol K (from Neo-Latin kalium) and atomic number 19. It is a silvery white metal that is soft enough to easily cut with a knife. Potassium metal reacts rapidly with atmospheric oxygen to form flaky white potassium peroxide in only seconds of exposure. It was"},{"atomic_number":20,"symbol":"Ca","name":"Calcium","atomic_mass":40.08,"category":"alkaline-earth-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":2,"density":1.54,"melting_point":1115,"boiling_point":1757,"electronegativity_pauling":1,"electron_configuration":"[Ar]4s2","summary":"Calcium is a chemical element; it has symbol Ca and atomic number 20. As an alkaline earth metal, calcium is a reactive metal that forms a dark oxide-nitride layer when exposed to air. Its physical and chemical properties are most similar to its heavier homologues strontium and barium. It is the fif"},{"atomic_number":21,"symbol":"Sc","name":"Scandium","atomic_mass":44.95591,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":3,"density":2.99,"melting_point":1814,"boiling_point":3109,"electronegativity_pauling":1.36,"electron_configuration":"[Ar]4s2 3d1","summary":"Scandium is a chemical element; it has symbol Sc and atomic number 21. It is a silvery-white metallic element found in the d-block of the periodic table. Usually, it is classified as a rare-earth element, together with yttrium and the lanthanides. It was discovered in 1879 by spectral analysis of th"},{"atomic_number":22,"symbol":"Ti","name":"Titanium","atomic_mass":47.867,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":4,"density":4.5,"melting_point":1941,"boiling_point":3560,"electronegativity_pauling":1.54,"electron_configuration":"[Ar]4s2 3d2","summary":"Titanium is a chemical element; it has symbol Ti and atomic number 22. Found in nature only as an oxide, it can be reduced to produce a lustrous transition metal with a silver color, low density, and high strength that is resistant to corrosion in sea water, aqua regia, and chlorine.\nTitanium was di"},{"atomic_number":23,"symbol":"V","name":"Vanadium","atomic_mass":50.9415,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":5,"density":6,"melting_point":2183,"boiling_point":3680,"electronegativity_pauling":1.63,"electron_configuration":"[Ar]4s2 3d3","summary":"Vanadium is a chemical element; it has symbol V and atomic number 23. It is a hard, silvery-grey, malleable transition metal. The elemental metal is rarely found in nature, but once isolated artificially, the formation of an oxide layer (passivation) somewhat stabilizes the free metal against furthe"},{"atomic_number":24,"symbol":"Cr","name":"Chromium","atomic_mass":51.996,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":6,"density":7.15,"melting_point":2180,"boiling_point":2944,"electronegativity_pauling":1.66,"electron_configuration":"[Ar]3d5 4s1","summary":"Chromium is a chemical element; it has symbol Cr and atomic number 24. It is the first element in group 6. It is a steely-grey, lustrous, hard, and brittle transition metal.\nChromium is valued for its high corrosion resistance and hardness. A major development in steel production was the discovery t"},{"atomic_number":25,"symbol":"Mn","name":"Manganese","atomic_mass":54.93804,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":7,"density":7.3,"melting_point":1519,"boiling_point":2334,"electronegativity_pauling":1.55,"electron_configuration":"[Ar]4s2 3d5","summary":"Manganese is a chemical element; it has the symbol Mn and atomic number 25. It is a hard, brittle, silvery metal, often found in minerals in combination with iron. First isolated in the 1770s, manganese is a transition metal with many industrial alloy uses, particularly in stainless steels in which "},{"atomic_number":26,"symbol":"Fe","name":"Iron","atomic_mass":55.84,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":8,"density":7.874,"melting_point":1811,"boiling_point":3134,"electronegativity_pauling":1.83,"electron_configuration":"[Ar]4s2 3d6","summary":"Iron is a chemical element; it has symbol Fe (from Latin  ferrum 'iron') and atomic number 26. It is a metal that belongs to the first transition series and group 8 of the periodic table. It is, by mass, the most common element on Earth, forming much of Earth's outer and inner core. It is the fourth"},{"atomic_number":27,"symbol":"Co","name":"Cobalt","atomic_mass":58.93319,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":9,"density":8.86,"melting_point":1768,"boiling_point":3200,"electronegativity_pauling":1.88,"electron_configuration":"[Ar]4s2 3d7","summary":"Cobalt is a chemical element; it has symbol Co and atomic number 27. As with nickel, cobalt is found in the Earth's crust only in a chemically combined form, save for small deposits found in alloys of natural meteoric iron. The free element, produced by reductive smelting, is a hard, lustrous, somew"},{"atomic_number":28,"symbol":"Ni","name":"Nickel","atomic_mass":58.693,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":10,"density":8.912,"melting_point":1728,"boiling_point":3186,"electronegativity_pauling":1.91,"electron_configuration":"[Ar]4s2 3d8","summary":"Nickel is a chemical element; it has symbol Ni and atomic number 28. It is a silvery-white lustrous metal with a slight golden tinge. Nickel is a hard and ductile transition metal. Pure nickel is chemically reactive, but large pieces are slow to react with air under standard conditions because a pas"},{"atomic_number":29,"symbol":"Cu","name":"Copper","atomic_mass":63.55,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":11,"density":8.933,"melting_point":1357.77,"boiling_point":2835,"electronegativity_pauling":1.9,"electron_configuration":"[Ar]4s1 3d10","summary":"Copper is a chemical element; it has symbol Cu (from Latin cuprum) and atomic number 29. It is a soft, malleable, and ductile metal with very high thermal and electrical conductivity. A freshly exposed surface of pure copper has a pinkish-orange color. Copper is used as a conductor of heat and elect"},{"atomic_number":30,"symbol":"Zn","name":"Zinc","atomic_mass":65.4,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":12,"density":7.134,"melting_point":692.68,"boiling_point":1180,"electronegativity_pauling":1.65,"electron_configuration":"[Ar]4s2 3d10","summary":"Zinc is a chemical element; it has symbol Zn and atomic number 30. It is a slightly brittle metal at room temperature and has a shiny blue whitish appearance when surface oxidation is removed. It is the first element in group 12 (IIB) of the periodic table. Zinc is the 24th most abundant element in "},{"atomic_number":31,"symbol":"Ga","name":"Gallium","atomic_mass":69.723,"category":"post-transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":13,"density":5.91,"melting_point":302.91,"boiling_point":2477,"electronegativity_pauling":1.81,"electron_configuration":"[Ar]4s2 3d10 4p1","summary":"Gallium is a chemical element; it has symbol Ga and atomic number 31. Discovered by the French chemist Paul-Émile Lecoq de Boisbaudran in Paris, France, 1875, \nelemental gallium is a soft, silvery metal at standard temperature and pressure. In its liquid state, it becomes silvery white. If enough fo"},{"atomic_number":32,"symbol":"Ge","name":"Germanium","atomic_mass":72.63,"category":"metalloid","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":14,"density":5.323,"melting_point":1211.4,"boiling_point":3106,"electronegativity_pauling":2.01,"electron_configuration":"[Ar]4s2 3d10 4p2","summary":"Germanium is a chemical element; it has symbol Ge and atomic number 32. It is lustrous, hard-brittle, grayish-white and similar in appearance to silicon. It is a metalloid (sometimes considered a nonmetal) in the carbon group that is chemically similar to silicon. Like silicon, germanium naturally r"},{"atomic_number":33,"symbol":"As","name":"Arsenic","atomic_mass":74.92159,"category":"metalloid","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":15,"density":5.776,"melting_point":1090,"boiling_point":887,"electronegativity_pauling":2.18,"electron_configuration":"[Ar]4s2 3d10 4p3","summary":"Arsenic is a chemical element; it has the symbol As and atomic number 33. It is a metalloid and one of the pnictogens, and therefore shares many properties with its group 15 neighbors phosphorus and antimony. Arsenic is notoriously toxic. It occurs naturally in many minerals, usually in combination "},{"atomic_number":34,"symbol":"Se","name":"Selenium","atomic_mass":78.97,"category":"nonmetal","standard_state":"Solid","is_radioactive":false,"table_row":4,"table_column":16,"density":4.809,"melting_point":493.65,"boiling_point":958,"electronegativity_pauling":2.55,"electron_configuration":"[Ar]4s2 3d10 4p4","summary":"Selenium is a chemical element; it has symbol Se and atomic number 34. It has various physical appearances, including a brick-red powder, a vitreous black solid, and a grey metallic-looking form. It seldom occurs in this elemental state or as pure ore compounds in Earth's crust. Selenium (from σελήν"},{"atomic_number":35,"symbol":"Br","name":"Bromine","atomic_mass":79.9,"category":"halogen","standard_state":"Liquid","is_radioactive":false,"table_row":4,"table_column":17,"density":3.11,"melting_point":265.95,"boiling_point":331.95,"electronegativity_pauling":2.96,"electron_configuration":"[Ar]4s2 3d10 4p5","summary":"Bromine is a chemical element; it has symbol Br and atomic number 35. It is a volatile red-brown liquid at room temperature that evaporates readily to form a similarly coloured vapour. Its properties are intermediate between those of chlorine and iodine. Isolated independently by two chemists, Carl "},{"atomic_number":36,"symbol":"Kr","name":"Krypton","atomic_mass":83.8,"category":"noble-gas","standard_state":"Gas","is_radioactive":false,"table_row":4,"table_column":18,"density":0.003733,"melting_point":115.79,"boiling_point":119.93,"electronegativity_pauling":3,"electron_configuration":"[Ar]4s2 3d10 4p6","summary":"Krypton (from Ancient Greek: κρυπτός, romanized: kryptos 'the hidden one') is a chemical element; it has symbol Kr and atomic number 36. It is a colorless, odorless noble gas that occurs in trace amounts in the atmosphere and is often used with other rare gases in fluorescent lamps. Krypton is chemi"},{"atomic_number":37,"symbol":"Rb","name":"Rubidium","atomic_mass":85.468,"category":"alkali-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":1,"density":1.53,"melting_point":312.46,"boiling_point":961,"electronegativity_pauling":0.82,"electron_configuration":"[Kr]5s1","summary":"Rubidium is a chemical element; it has symbol Rb and atomic number 37. It is a very soft, whitish-grey solid in the alkali metal group, similar to potassium and caesium. Rubidium is the first alkali metal in the group to have a density higher than water. On Earth, natural rubidium comprises two isot"},{"atomic_number":38,"symbol":"Sr","name":"Strontium","atomic_mass":87.62,"category":"alkaline-earth-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":2,"density":2.64,"melting_point":1050,"boiling_point":1655,"electronegativity_pauling":0.95,"electron_configuration":"[Kr]5s2","summary":"Strontium is a chemical element; it has symbol Sr and atomic number 38. An alkaline earth metal, it is a soft silver-white yellowish metallic element that is highly chemically reactive. The metal forms a dark oxide layer when it is exposed to air. Strontium has physical and chemical properties simil"},{"atomic_number":39,"symbol":"Y","name":"Yttrium","atomic_mass":88.90584,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":3,"density":4.47,"melting_point":1795,"boiling_point":3618,"electronegativity_pauling":1.22,"electron_configuration":"[Kr]5s2 4d1","summary":"Yttrium is a chemical element; it has symbol Y and atomic number 39. It is a silvery-metallic transition metal chemically similar to the lanthanides and has often been classified as a rare-earth element. Yttrium is almost always found in combination with lanthanide elements in rare-earth minerals an"},{"atomic_number":40,"symbol":"Zr","name":"Zirconium","atomic_mass":91.22,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":4,"density":6.52,"melting_point":2128,"boiling_point":4682,"electronegativity_pauling":1.33,"electron_configuration":"[Kr]5s2 4d2","summary":"Zirconium is a chemical element; it has symbol Zr and atomic number 40. First identified in 1789, isolated in impure form in 1824, and manufactured at scale by 1925, pure zirconium is a lustrous transition metal with a greyish-white color that closely resembles hafnium and, to a lesser extent, titan"},{"atomic_number":41,"symbol":"Nb","name":"Niobium","atomic_mass":92.90637,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":5,"density":8.57,"melting_point":2750,"boiling_point":5017,"electronegativity_pauling":1.6,"electron_configuration":"[Kr]5s1 4d4","summary":"Niobium is a chemical element; it has symbol Nb (formerly columbium, Cb) and atomic number 41. It is a light grey, crystalline transition metal. Pure niobium has a Mohs hardness rating similar to pure titanium, and it has similar ductility to iron. Niobium oxidizes in Earth's atmosphere very slowly,"},{"atomic_number":42,"symbol":"Mo","name":"Molybdenum","atomic_mass":95.95,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":6,"density":10.2,"melting_point":2896,"boiling_point":4912,"electronegativity_pauling":2.16,"electron_configuration":"[Kr]5s1 4d5","summary":"Molybdenum is a chemical element; it has symbol Mo and atomic number 42. The name is derived from Ancient Greek μόλυβδος mólybdos, meaning lead, since its ores were sometimes confused with those of lead. Molybdenum minerals have been known throughout history, but the element was discovered (in the s"},{"atomic_number":43,"symbol":"Tc","name":"Technetium","atomic_mass":96.90636,"category":"transition-metal","standard_state":"Solid","is_radioactive":true,"table_row":5,"table_column":7,"density":11,"melting_point":2430,"boiling_point":4538,"electronegativity_pauling":1.9,"electron_configuration":"[Kr]5s2 4d5","summary":"Technetium is a chemical element; it has symbol Tc and atomic number 43. It is the lightest element whose isotopes are all radioactive. Technetium and promethium are the only radioactive elements whose neighbours in the sense of atomic number are both stable. All available technetium is produced as "},{"atomic_number":44,"symbol":"Ru","name":"Ruthenium","atomic_mass":101.1,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":8,"density":12.1,"melting_point":2607,"boiling_point":4423,"electronegativity_pauling":2.2,"electron_configuration":"[Kr]5s1 4d7","summary":"Ruthenium is a chemical element; it has symbol Ru and atomic number 44. It is a rare transition metal belonging to the platinum group of the periodic table. Like the other metals of the platinum group, ruthenium is unreactive to most chemicals. Karl Ernst Claus, a Russian scientist of Baltic-German "},{"atomic_number":45,"symbol":"Rh","name":"Rhodium","atomic_mass":102.9055,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":9,"density":12.4,"melting_point":2237,"boiling_point":3968,"electronegativity_pauling":2.28,"electron_configuration":"[Kr]5s1 4d8","summary":"Rhodium is a chemical element; it has symbol Rh and atomic number 45. It is a very rare, dark silvery-white, hard, corrosion-resistant transition metal. It is a noble metal and a member of the platinum group. It has only one naturally occurring isotope, which is 103Rh. Naturally occurring rhodium is"},{"atomic_number":46,"symbol":"Pd","name":"Palladium","atomic_mass":106.42,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":10,"density":12,"melting_point":1828.05,"boiling_point":3236,"electronegativity_pauling":2.2,"electron_configuration":"[Kr]4d10","summary":"Palladium is a chemical element; it has the symbol Pd and atomic number 46. It is a rare and lustrous silvery-white metal discovered in 1802 by the English chemist William Hyde Wollaston. He named it after the asteroid Pallas (formally 2 Pallas), which was itself named after the epithet of the Greek"},{"atomic_number":47,"symbol":"Ag","name":"Silver","atomic_mass":107.868,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":11,"density":10.501,"melting_point":1234.93,"boiling_point":2435,"electronegativity_pauling":1.93,"electron_configuration":"[Kr]5s1 4d10","summary":"Silver is a chemical element; it has symbol Ag (from Latin  argentum 'silver') and atomic number 47. A soft, whitish-gray, lustrous transition metal, it exhibits the highest electrical conductivity, thermal conductivity, and reflectivity of any metal. Silver is found in the Earth's crust in the pure"},{"atomic_number":48,"symbol":"Cd","name":"Cadmium","atomic_mass":112.41,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":12,"density":8.69,"melting_point":594.22,"boiling_point":1040,"electronegativity_pauling":1.69,"electron_configuration":"[Kr]5s2 4d10","summary":"Cadmium is a chemical element; it has symbol Cd and atomic number 48. This soft, silvery-white metal is chemically similar to the two other stable metals in group 12, zinc and mercury. Like zinc, it demonstrates oxidation state +2 in most of its compounds, and like mercury, it has a lower melting po"},{"atomic_number":49,"symbol":"In","name":"Indium","atomic_mass":114.818,"category":"post-transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":13,"density":7.31,"melting_point":429.75,"boiling_point":2345,"electronegativity_pauling":1.78,"electron_configuration":"[Kr]5s2 4d10 5p1","summary":"Indium is a chemical element; it has symbol In and atomic number 49. It is a silvery-white post-transition metal and one of the softest elements. Chemically, indium is similar to gallium and thallium, and its properties are largely intermediate between the two. It was discovered in 1863 by Ferdinand"},{"atomic_number":50,"symbol":"Sn","name":"Tin","atomic_mass":118.71,"category":"post-transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":14,"density":7.287,"melting_point":505.08,"boiling_point":2875,"electronegativity_pauling":1.96,"electron_configuration":"[Kr]5s2 4d10 5p2","summary":"Tin is a chemical element; it has the symbol Sn (from Latin  stannum) and atomic number 50. A metallic-gray metal, tin is soft enough to be cut with little force, and a bar of tin can be bent by hand with little effort. When bent, a bar of tin makes a sound, the so-called \"tin cry\", as a result of t"},{"atomic_number":51,"symbol":"Sb","name":"Antimony","atomic_mass":121.76,"category":"metalloid","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":15,"density":6.685,"melting_point":903.78,"boiling_point":1860,"electronegativity_pauling":2.05,"electron_configuration":"[Kr]5s2 4d10 5p3","summary":"Antimony is a chemical element with the symbol Sb (from Latin  stibium) and atomic number 51. A lustrous grey metal or metalloid, it occurs in nature mainly in the form of the sulfide mineral stibnite (Sb2S3). Antimony compounds have been known since ancient times and were powdered for use as medici"},{"atomic_number":52,"symbol":"Te","name":"Tellurium","atomic_mass":127.6,"category":"metalloid","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":16,"density":6.232,"melting_point":722.66,"boiling_point":1261,"electronegativity_pauling":2.1,"electron_configuration":"[Kr]5s2 4d10 5p4","summary":"Tellurium is a chemical element; it has the symbol Te and atomic number 52. It is a brittle, mildly toxic, rare, silver-white metalloid. Tellurium is chemically related to selenium and sulfur, all three of which are chalcogens. It is occasionally found in its native form as elemental crystals. Tellu"},{"atomic_number":53,"symbol":"I","name":"Iodine","atomic_mass":126.9045,"category":"halogen","standard_state":"Solid","is_radioactive":false,"table_row":5,"table_column":17,"density":4.93,"melting_point":386.85,"boiling_point":457.55,"electronegativity_pauling":2.66,"electron_configuration":"[Kr]5s2 4d10 5p5","summary":"Iodine is a chemical element; it has symbol I and atomic number 53. The heaviest of the stable halogens, it exists at standard conditions as a semi-lustrous, non-metallic solid that melts to form a deep violet liquid at 114 °C (237 °F), and boils to a violet gas at 184 °C (363 °F). The element was d"},{"atomic_number":54,"symbol":"Xe","name":"Xenon","atomic_mass":131.29,"category":"noble-gas","standard_state":"Gas","is_radioactive":false,"table_row":5,"table_column":18,"density":0.005887,"melting_point":161.36,"boiling_point":165.03,"electronegativity_pauling":2.6,"electron_configuration":"[Kr]5s2 4d10 5p6","summary":"Xenon is a chemical element; it has symbol Xe and atomic number 54. It is a dense, colorless, odorless noble gas found in Earth's atmosphere in trace amounts. Although generally unreactive, it can undergo a few chemical reactions such as the formation of xenon hexafluoroplatinate, the first noble ga"},{"atomic_number":55,"symbol":"Cs","name":"Cesium","atomic_mass":132.905452,"category":"alkali-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":1,"density":1.93,"melting_point":301.59,"boiling_point":944,"electronegativity_pauling":0.79,"electron_configuration":"[Xe]6s1","summary":"Caesium (IUPAC spelling; also spelled cesium in American English) is a chemical element; it has symbol Cs and atomic number 55. It is a soft, silvery-golden alkali metal with a melting point of 28.5 °C (83.3 °F; 301.6 K), which makes it one of only five elemental metals that are liquid at or near ro"},{"atomic_number":56,"symbol":"Ba","name":"Barium","atomic_mass":137.33,"category":"alkaline-earth-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":2,"density":3.62,"melting_point":1000,"boiling_point":2170,"electronegativity_pauling":0.89,"electron_configuration":"[Xe]6s2","summary":"Barium is a chemical element; it has symbol Ba and atomic number 56. It is the fifth element in group 2 and is a soft, silvery alkaline earth metal. Because of its high chemical reactivity, barium is never found in nature as a free element.\nThe most common minerals of barium are barite (barium sulfa"},{"atomic_number":57,"symbol":"La","name":"Lanthanum","atomic_mass":138.9055,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":3,"density":6.15,"melting_point":1191,"boiling_point":3737,"electronegativity_pauling":1.1,"electron_configuration":"[Xe]6s2 5d1","summary":"Lanthanum is a chemical element; it has symbol La and atomic number 57. It is a soft, ductile, silvery-white metal that tarnishes slowly when exposed to air. It is the first and the prototype of the lanthanide series, a group of 15 similar elements between lanthanum and lutetium in the periodic tabl"},{"atomic_number":58,"symbol":"Ce","name":"Cerium","atomic_mass":140.116,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":4,"density":6.77,"melting_point":1071,"boiling_point":3697,"electronegativity_pauling":1.12,"electron_configuration":"[Xe]6s2 4f1 5d1","summary":"Cerium is a chemical element; it has symbol Ce and atomic number 58, and is a soft, ductile, and silvery-white metal that tarnishes when exposed to air. Cerium is the second element in the lanthanide series, and while it often shows the oxidation state of +3 characteristic of the series, it also has"},{"atomic_number":59,"symbol":"Pr","name":"Praseodymium","atomic_mass":140.90766,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":5,"density":6.77,"melting_point":1204,"boiling_point":3793,"electronegativity_pauling":1.13,"electron_configuration":"[Xe]6s2 4f3","summary":"Praseodymium is a chemical element; it has symbol Pr and atomic number 59. It is the third member of the lanthanide series and is considered one of the rare-earth metals. It is a soft, silvery, malleable and ductile metal, valued for its magnetic, electrical, chemical, and optical properties. It is "},{"atomic_number":60,"symbol":"Nd","name":"Neodymium","atomic_mass":144.24,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":6,"density":7.01,"melting_point":1294,"boiling_point":3347,"electronegativity_pauling":1.14,"electron_configuration":"[Xe]6s2 4f4","summary":"Neodymium is a chemical element; it has symbol Nd and atomic number 60. It is the fourth member of the lanthanide series and is considered to be one of the rare-earth metals. It is a hard, slightly malleable, silvery metal that quickly tarnishes in air and moisture. When oxidized, neodymium reacts q"},{"atomic_number":61,"symbol":"Pm","name":"Promethium","atomic_mass":144.91276,"category":"lanthanide","standard_state":"Solid","is_radioactive":true,"table_row":8,"table_column":7,"density":7.26,"melting_point":1315,"boiling_point":3273,"electronegativity_pauling":null,"electron_configuration":"[Xe]6s2 4f5","summary":"Promethium is a chemical element; it has symbol Pm and atomic number 61. All of its isotopes are radioactive; it is extremely rare, with only about 500–600 grams naturally occurring in the Earth's crust at any given time. Promethium is one of the only two radioactive elements that are both preceded "},{"atomic_number":62,"symbol":"Sm","name":"Samarium","atomic_mass":150.4,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":8,"density":7.52,"melting_point":1347,"boiling_point":2067,"electronegativity_pauling":1.17,"electron_configuration":"[Xe]6s2 4f6","summary":"Samarium is a chemical element; it has symbol Sm and atomic number 62. It is a moderately hard silvery metal that slowly oxidizes in air. Being a typical member of the lanthanide series, samarium usually has the oxidation state +3. Compounds of samarium(II) are also known, most notably the monoxide "},{"atomic_number":63,"symbol":"Eu","name":"Europium","atomic_mass":151.964,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":9,"density":5.24,"melting_point":1095,"boiling_point":1802,"electronegativity_pauling":null,"electron_configuration":"[Xe]6s2 4f7","summary":"Europium is a chemical element; it has symbol Eu and atomic number 63. It is a silvery-white metal of the lanthanide series that reacts readily with air to form a dark oxide coating. Europium is the most chemically reactive, least dense, and softest of the lanthanides. It is soft enough to be cut wi"},{"atomic_number":64,"symbol":"Gd","name":"Gadolinium","atomic_mass":157.25,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":10,"density":7.9,"melting_point":1586,"boiling_point":3546,"electronegativity_pauling":1.2,"electron_configuration":"[Xe]6s2 4f7 5d1","summary":"Gadolinium is a chemical element; it has symbol Gd and atomic number 64. It is a silvery-white metal when oxidation is removed. Gadolinium is a malleable and ductile rare-earth element. It reacts with atmospheric oxygen or moisture slowly to form a black oxide coating. Gadolinium below its Curie poi"},{"atomic_number":65,"symbol":"Tb","name":"Terbium","atomic_mass":158.92535,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":11,"density":8.23,"melting_point":1629,"boiling_point":3503,"electronegativity_pauling":null,"electron_configuration":"[Xe]6s2 4f9","summary":"Terbium is a chemical element; it has symbol Tb and atomic number 65. It is a silvery-white, rare earth metal that is malleable and ductile. The ninth member of the lanthanide series, terbium is a fairly electropositive metal that reacts with water, evolving hydrogen gas. Terbium is never found in n"},{"atomic_number":66,"symbol":"Dy","name":"Dysprosium","atomic_mass":162.5,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":12,"density":8.55,"melting_point":1685,"boiling_point":2840,"electronegativity_pauling":1.22,"electron_configuration":"[Xe]6s2 4f10","summary":"Dysprosium is a chemical element; it has symbol Dy and atomic number 66. It is a rare-earth element in the lanthanide series with a metallic silver luster. Dysprosium is never found in nature as a free element, though, like other lanthanides, it is found in various minerals, such as xenotime. Natura"},{"atomic_number":67,"symbol":"Ho","name":"Holmium","atomic_mass":164.93033,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":13,"density":8.8,"melting_point":1747,"boiling_point":2973,"electronegativity_pauling":1.23,"electron_configuration":"[Xe]6s2 4f11","summary":"Holmium is a chemical element; it has symbol Ho and atomic number 67. It is a rare-earth element and the eleventh member of the lanthanide series of elements. It is a relatively soft, silvery, fairly corrosion-resistant and malleable metal. Like many other lanthanides, holmium is too reactive to be "},{"atomic_number":68,"symbol":"Er","name":"Erbium","atomic_mass":167.26,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":14,"density":9.07,"melting_point":1802,"boiling_point":3141,"electronegativity_pauling":1.24,"electron_configuration":"[Xe]6s2 4f12","summary":"Erbium is a chemical element; it has symbol Er and atomic number 68. A silvery-white solid metal when artificially isolated, natural erbium is always found in chemical combination with other elements. It is a lanthanide, a rare-earth element, originally found in the gadolinite mine in Ytterby, Swede"},{"atomic_number":69,"symbol":"Tm","name":"Thulium","atomic_mass":168.93422,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":15,"density":9.32,"melting_point":1818,"boiling_point":2223,"electronegativity_pauling":1.25,"electron_configuration":"[Xe]6s2 4f13","summary":"Thulium is a chemical element; it has symbol Tm and atomic number 69. It is the thirteenth element in the lanthanide series of metals. It is the second-least abundant lanthanide in the Earth's crust, after radioactively unstable promethium. It is an easily workable metal with a bright silvery-gray l"},{"atomic_number":70,"symbol":"Yb","name":"Ytterbium","atomic_mass":173.05,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":16,"density":6.9,"melting_point":1092,"boiling_point":1469,"electronegativity_pauling":null,"electron_configuration":"[Xe]6s2 4f14","summary":"Ytterbium is a chemical element; it has symbol Yb and atomic number 70. It is a metal, the fourteenth element in the lanthanide series, which is the basis of the relative stability of its +2 oxidation state. Like the other lanthanides, its most common oxidation state is +3, as in its oxide, halides,"},{"atomic_number":71,"symbol":"Lu","name":"Lutetium","atomic_mass":174.9667,"category":"lanthanide","standard_state":"Solid","is_radioactive":false,"table_row":8,"table_column":17,"density":9.84,"melting_point":1936,"boiling_point":3675,"electronegativity_pauling":1.27,"electron_configuration":"[Xe]6s2 4f14 5d1","summary":"Lutetium is a chemical element; it has symbol Lu and atomic number 71. It is a silvery white metal, which resists corrosion in dry air, but not in moist air. Lutetium is the last element in the lanthanide series, and it is traditionally counted among the rare earth elements; it can also be classifie"},{"atomic_number":72,"symbol":"Hf","name":"Hafnium","atomic_mass":178.49,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":4,"density":13.3,"melting_point":2506,"boiling_point":4876,"electronegativity_pauling":1.3,"electron_configuration":"[Xe]6s2 4f14 5d2","summary":"Hafnium is a chemical element; it has symbol Hf and atomic number 72. A lustrous, silvery gray, tetravalent transition metal, hafnium chemically resembles zirconium and is found in many zirconium minerals. Its existence was predicted by Dmitri Mendeleev in 1869, though it was not identified until 19"},{"atomic_number":73,"symbol":"Ta","name":"Tantalum","atomic_mass":180.9479,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":5,"density":16.4,"melting_point":3290,"boiling_point":5731,"electronegativity_pauling":1.5,"electron_configuration":"[Xe]6s2 4f14 5d3","summary":"Tantalum is a chemical element; it has symbol Ta and atomic number 73. It is named after Tantalus, a figure in Greek mythology. Tantalum is a very hard, ductile, lustrous, blue-gray transition metal that is highly corrosion-resistant. It is part of the refractory metals group, which are widely used "},{"atomic_number":74,"symbol":"W","name":"Tungsten","atomic_mass":183.84,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":6,"density":19.3,"melting_point":3695,"boiling_point":5828,"electronegativity_pauling":2.36,"electron_configuration":"[Xe]6s2 4f14 5d4","summary":"Tungsten (also called wolfram) is a chemical element which has the symbol W (from German: Wolfram) and atomic number 74. It is a metal found naturally on Earth almost exclusively in compounds with other elements. It was identified as a distinct element in 1781 and first isolated as a metal in 1783. "},{"atomic_number":75,"symbol":"Re","name":"Rhenium","atomic_mass":186.207,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":7,"density":20.8,"melting_point":3459,"boiling_point":5869,"electronegativity_pauling":1.9,"electron_configuration":"[Xe]6s2 4f14 5d5","summary":"Rhenium is a chemical element; it has symbol Re and atomic number 75. It is a silvery-gray, heavy, third-row transition metal in group 7 of the periodic table. With an estimated average concentration of 1 part per billion (ppb), rhenium is one of the rarest elements in the Earth's crust. It has one "},{"atomic_number":76,"symbol":"Os","name":"Osmium","atomic_mass":190.2,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":8,"density":22.57,"melting_point":3306,"boiling_point":5285,"electronegativity_pauling":2.2,"electron_configuration":"[Xe]6s2 4f14 5d6","summary":"Osmium (from Ancient Greek  ὀσμή (osmḗ) 'smell') is a chemical element; it has symbol Os and atomic number 76. It is a hard, brittle, bluish-white transition metal in the platinum group. Osmium has the highest density of any stable element and one of the lowest abundances in the Earth's crust. Manuf"},{"atomic_number":77,"symbol":"Ir","name":"Iridium","atomic_mass":192.22,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":9,"density":22.42,"melting_point":2719,"boiling_point":4701,"electronegativity_pauling":2.2,"electron_configuration":"[Xe]6s2 4f14 5d7","summary":"Iridium is a chemical element; it has the symbol Ir and atomic number 77. This very hard, brittle, silvery-white transition metal of the platinum group is considered the second-densest naturally occurring metal (after osmium), with a density of 22.56 g/cm3 (0.815 lb/cu in) as defined by experimental"},{"atomic_number":78,"symbol":"Pt","name":"Platinum","atomic_mass":195.08,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":10,"density":21.46,"melting_point":2041.55,"boiling_point":4098,"electronegativity_pauling":2.28,"electron_configuration":"[Xe]6s1 4f14 5d9","summary":"Platinum is a chemical element; it has symbol Pt and atomic number 78. It is a dense, malleable, ductile, highly unreactive, precious, silverish-white transition metal. Its name originates from Spanish platina, a diminutive of plata \"silver\".\nPlatinum is a member of the platinum group of elements an"},{"atomic_number":79,"symbol":"Au","name":"Gold","atomic_mass":196.96657,"category":"transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":11,"density":19.282,"melting_point":1337.33,"boiling_point":3129,"electronegativity_pauling":2.54,"electron_configuration":"[Xe]6s1 4f14 5d10","summary":"Gold is a chemical element; its chemical symbol is Au (from Latin aurum) and atomic number 79. In its pure form, it is a bright-metallic-yellow, dense, soft, malleable, and ductile metal. Chemically, gold is a transition metal, a group 11 element, and one of the noble metals. It is one of the least "},{"atomic_number":80,"symbol":"Hg","name":"Mercury","atomic_mass":200.59,"category":"transition-metal","standard_state":"Liquid","is_radioactive":false,"table_row":6,"table_column":12,"density":13.5336,"melting_point":234.32,"boiling_point":629.88,"electronegativity_pauling":2,"electron_configuration":"[Xe]6s2 4f14 5d10","summary":"Mercury is a chemical element; it has symbol Hg and atomic number 80. It is commonly known as quicksilver. A heavy, silvery d-block element, mercury is the only metallic element that is known to be liquid at standard temperature and pressure; the only other element that is liquid under these conditi"},{"atomic_number":81,"symbol":"Tl","name":"Thallium","atomic_mass":204.383,"category":"post-transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":13,"density":11.8,"melting_point":577,"boiling_point":1746,"electronegativity_pauling":1.62,"electron_configuration":"[Xe]6s2 4f14 5d10 6p1","summary":"Thallium is a chemical element; it has symbol Tl and atomic number 81. It is a silvery-white post-transition metal that is not found free in nature. When isolated, thallium resembles tin, but discolors when exposed to air. Chemists William Crookes and Claude-Auguste Lamy discovered thallium independ"},{"atomic_number":82,"symbol":"Pb","name":"Lead","atomic_mass":207,"category":"post-transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":14,"density":11.342,"melting_point":600.61,"boiling_point":2022,"electronegativity_pauling":2.33,"electron_configuration":"[Xe]6s2 4f14 5d10 6p2","summary":"Lead ( ) is a chemical element with the symbol Pb (from the Latin plumbum) and atomic number 82. It is a heavy metal, denser than most common materials. Lead is soft, malleable, and has a relatively low melting point. When freshly cut or melted, it appears shiny silvery with a bluish tint, but tarni"},{"atomic_number":83,"symbol":"Bi","name":"Bismuth","atomic_mass":208.9804,"category":"post-transition-metal","standard_state":"Solid","is_radioactive":false,"table_row":6,"table_column":15,"density":9.807,"melting_point":544.55,"boiling_point":1837,"electronegativity_pauling":2.02,"electron_configuration":"[Xe]6s2 4f14 5d10 6p3","summary":"Bismuth is a chemical element; it has symbol Bi and atomic number 83. It is a post-transition metal and one of the pnictogens, with chemical properties resembling its lighter group 15 siblings arsenic and antimony. Elemental bismuth occurs naturally, and its sulfide and oxide forms are important com"},{"atomic_number":84,"symbol":"Po","name":"Polonium","atomic_mass":208.98243,"category":"metalloid","standard_state":"Solid","is_radioactive":true,"table_row":6,"table_column":16,"density":9.32,"melting_point":527,"boiling_point":1235,"electronegativity_pauling":2,"electron_configuration":"[Xe]6s2 4f14 5d10 6p4","summary":"Polonium is a chemical element; it has symbol Po and atomic number 84. A rare and highly radioactive metal (although sometimes classified as a metalloid) with no stable isotopes, polonium is a chalcogen and chemically similar to selenium and tellurium, though its metallic character resembles that of"},{"atomic_number":85,"symbol":"At","name":"Astatine","atomic_mass":209.98715,"category":"halogen","standard_state":"Solid","is_radioactive":true,"table_row":6,"table_column":17,"density":7,"melting_point":575,"boiling_point":null,"electronegativity_pauling":2.2,"electron_configuration":"[Xe]6s2 4f14 5d10 6p5","summary":"Astatine is a chemical element; it has symbol At and atomic number 85. It is the rarest naturally occurring element in the Earth's crust, occurring only as the decay product of various heavier elements. All of astatine's isotopes are short-lived; the most stable is astatine-210, with a half-life of "},{"atomic_number":86,"symbol":"Rn","name":"Radon","atomic_mass":222.01758,"category":"noble-gas","standard_state":"Gas","is_radioactive":true,"table_row":6,"table_column":18,"density":0.00973,"melting_point":202,"boiling_point":211.45,"electronegativity_pauling":null,"electron_configuration":"[Xe]6s2 4f14 5d10 6p6","summary":"Radon is a chemical element; it has symbol Rn and atomic number 86. It is a radioactive noble gas and is colorless and odorless. Of the three naturally occurring radon isotopes, only 222Rn has a sufficiently long half-life (3.825 days) for it to be released from the soil and rock where it is generat"},{"atomic_number":87,"symbol":"Fr","name":"Francium","atomic_mass":223.01973,"category":"alkali-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":1,"density":2.458,"melting_point":300,"boiling_point":null,"electronegativity_pauling":0.7,"electron_configuration":"[Rn]7s1","summary":"Francium is a chemical element; it has symbol Fr and atomic number 87. It is extremely radioactive; its most stable isotope, francium-223 (originally called actinium K after the natural decay chain in which it appears), has a half-life of only 22 minutes. It is the second-most electropositive elemen"},{"atomic_number":88,"symbol":"Ra","name":"Radium","atomic_mass":226.02541,"category":"alkaline-earth-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":2,"density":5,"melting_point":973,"boiling_point":1413,"electronegativity_pauling":0.9,"electron_configuration":"[Rn]7s2","summary":"Radium is a chemical element; it has symbol Ra and atomic number 88. It is the sixth element in group 2 of the periodic table, also known as the alkaline earth metals. Pure radium is silvery-white, but it readily reacts with nitrogen (rather than oxygen) upon exposure to air, forming a black surface"},{"atomic_number":89,"symbol":"Ac","name":"Actinium","atomic_mass":227.02775,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":3,"density":10.07,"melting_point":1324,"boiling_point":3471,"electronegativity_pauling":1.1,"electron_configuration":"[Rn]7s2 6d1","summary":"Actinium is a chemical element; it has symbol Ac and atomic number 89. It was discovered by Friedrich Oskar Giesel in 1902, who gave it the name emanium; the element got its name by being wrongly identified with a substance André-Louis Debierne found in 1899 and called actinium. The actinide series,"},{"atomic_number":90,"symbol":"Th","name":"Thorium","atomic_mass":232.038,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":4,"density":11.72,"melting_point":2023,"boiling_point":5061,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 6d2","summary":"Thorium is a chemical element; it has symbol Th and atomic number 90. Thorium is a weakly radioactive light silver metal which tarnishes olive grey when it is exposed to air, forming thorium dioxide; it is moderately soft, malleable, and has a high melting point. Thorium is an electropositive actini"},{"atomic_number":91,"symbol":"Pa","name":"Protactinium","atomic_mass":231.03588,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":5,"density":15.37,"melting_point":1845,"boiling_point":null,"electronegativity_pauling":1.5,"electron_configuration":"[Rn]7s2 5f2 6d1","summary":"Protactinium is a chemical element; it has symbol Pa and atomic number 91. It is a dense, radioactive, silvery-gray actinide metal which readily reacts with oxygen, water vapor, and inorganic acids. It forms various chemical compounds, in which protactinium is usually present in the oxidation state "},{"atomic_number":92,"symbol":"U","name":"Uranium","atomic_mass":238.0289,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":6,"density":18.95,"melting_point":1408,"boiling_point":4404,"electronegativity_pauling":1.38,"electron_configuration":"[Rn]7s2 5f3 6d1","summary":"Uranium is a chemical element; it has symbol U and atomic number 92. It is a silvery-grey metal in the actinide series of the periodic table. A uranium atom has 92 protons and 92 electrons, of which 6 are valence electrons. Uranium radioactively decays, usually by emitting an alpha particle. The hal"},{"atomic_number":93,"symbol":"Np","name":"Neptunium","atomic_mass":237.048172,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":7,"density":20.25,"melting_point":917,"boiling_point":4175,"electronegativity_pauling":1.36,"electron_configuration":"[Rn]7s2 5f4 6d1","summary":"Neptunium is a chemical element; it has symbol Np and atomic number 93. A radioactive actinide metal, neptunium is the first transuranic element. It is named after Neptune, the planet beyond Uranus in the Solar System, which uranium is named after. A neptunium atom has 93 protons and 93 electrons, o"},{"atomic_number":94,"symbol":"Pu","name":"Plutonium","atomic_mass":244.0642,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":8,"density":19.84,"melting_point":913,"boiling_point":3501,"electronegativity_pauling":1.28,"electron_configuration":"[Rn]7s2 5f6","summary":"Plutonium is a chemical element; it has symbol Pu and atomic number 94. It is a silvery-gray actinide metal that tarnishes when exposed to air, and forms a dull coating when oxidized. The element normally exhibits six allotropes and four oxidation states. It reacts with carbon, halogens, nitrogen, s"},{"atomic_number":95,"symbol":"Am","name":"Americium","atomic_mass":243.06138,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":9,"density":13.69,"melting_point":1449,"boiling_point":2284,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f7","summary":"Americium is a synthetic chemical element; it has symbol Am and atomic number 95. It is radioactive and a transuranic member of the actinide series in the periodic table, located under the lanthanide element europium and was thus named after the Americas by analogy.\nAmericium was first produced in 1"},{"atomic_number":96,"symbol":"Cm","name":"Curium","atomic_mass":247.07035,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":10,"density":13.51,"melting_point":1618,"boiling_point":3400,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f7 6d1","summary":"Curium is a synthetic chemical element; it has symbol Cm and atomic number 96. This transuranic actinide element was named after eminent scientists Marie and Pierre Curie, both known for their research on radioactivity. Curium was first intentionally made by the team of Glenn T. Seaborg, Ralph A. Ja"},{"atomic_number":97,"symbol":"Bk","name":"Berkelium","atomic_mass":247.07031,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":11,"density":14,"melting_point":1323,"boiling_point":null,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f9","summary":"Berkelium is a synthetic chemical element; it has symbol Bk and atomic number 97. It is a member of the actinide and transuranium element series. It is named after the city of Berkeley, California, the location of the Lawrence Berkeley National Laboratory (then the University of California Radiation"},{"atomic_number":98,"symbol":"Cf","name":"Californium","atomic_mass":251.07959,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":12,"density":15.1,"melting_point":1173,"boiling_point":null,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f10","summary":"Californium is a synthetic chemical element; it has symbol Cf and atomic number 98. It was first synthesized in 1950 at Lawrence Berkeley National Laboratory (then the University of California Radiation Laboratory) by bombarding curium with alpha particles (helium-4 ions). It is an actinide element,"},{"atomic_number":99,"symbol":"Es","name":"Einsteinium","atomic_mass":252.083,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":13,"density":8.84,"melting_point":1133,"boiling_point":null,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f11","summary":"Einsteinium is a synthetic chemical element; it has symbol Es and atomic number 99 and is a member of the actinide series and the seventh transuranium element. \nEinsteinium was discovered as a component of the debris of the first hydrogen bomb explosion in 1952. Its most common isotope, einsteinium-"},{"atomic_number":100,"symbol":"Fm","name":"Fermium","atomic_mass":257.09511,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":14,"density":9.7,"melting_point":1800,"boiling_point":null,"electronegativity_pauling":1.3,"electron_configuration":"[Rn] 5f12 7s2","summary":"Fermium is a synthetic chemical element; it has symbol Fm and atomic number 100. It is an actinide and the heaviest element that can be formed by neutron bombardment of lighter elements, and hence the last element that can be prepared in macroscopic quantities, although pure fermium metal has not be"},{"atomic_number":101,"symbol":"Md","name":"Mendelevium","atomic_mass":258.09843,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":15,"density":10.3,"melting_point":1100,"boiling_point":null,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f13","summary":"Mendelevium is a synthetic chemical element; it has symbol Md (formerly Mv) and atomic number 101. A metallic radioactive transuranium element in the actinide series, it is the first element by atomic number that currently cannot be produced in macroscopic quantities by neutron bombardment of lighte"},{"atomic_number":102,"symbol":"No","name":"Nobelium","atomic_mass":259.101,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":16,"density":9.9,"melting_point":1100,"boiling_point":null,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f14","summary":"Nobelium is a synthetic chemical element; it has symbol No and atomic number 102. It is named after Alfred Nobel, the inventor of dynamite and benefactor of science. A radioactive metal, it is the tenth transuranium element, the second transfermium, and is the fourteenth member of the actinide serie"},{"atomic_number":103,"symbol":"Lr","name":"Lawrencium","atomic_mass":266.12,"category":"actinide","standard_state":"Solid","is_radioactive":true,"table_row":9,"table_column":17,"density":14.4,"melting_point":1900,"boiling_point":null,"electronegativity_pauling":1.3,"electron_configuration":"[Rn]7s2 5f14 6d1","summary":"Lawrencium is a synthetic chemical element; it has symbol Lr (formerly Lw) and atomic number 103. It is named after Ernest Lawrence, inventor of the cyclotron, a device used to discover many artificial radioactive elements. A radioactive metal, lawrencium is the eleventh transuranium element, the th"},{"atomic_number":104,"symbol":"Rf","name":"Rutherfordium","atomic_mass":267.122,"category":"transition-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":4,"density":17,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d2","summary":"Rutherfordium is a synthetic chemical element; it has symbol Rf and atomic number 104. It is named after physicist Ernest Rutherford. As a synthetic element, it is not found in nature and can only be made in a particle accelerator. It is radioactive; the most stable known isotope, 267Rf, has a half-"},{"atomic_number":105,"symbol":"Db","name":"Dubnium","atomic_mass":268.126,"category":"transition-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":5,"density":21.6,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d3","summary":"Dubnium is a synthetic chemical element; it has symbol Db and atomic number 105. It is highly radioactive: the most stable known isotope, dubnium-268, has a half-life of about 16 hours. This greatly limits extended research on the element.\nDubnium does not occur naturally on Earth and is produced ar"},{"atomic_number":106,"symbol":"Sg","name":"Seaborgium","atomic_mass":269.128,"category":"transition-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":6,"density":23,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d4","summary":"Seaborgium is a synthetic chemical element; it has symbol Sg and atomic number 106. It is named after the American nuclear chemist Glenn T. Seaborg. As a synthetic element, it can be created in a laboratory but is not found in nature. It is also radioactive; the most stable known isotopes have half-"},{"atomic_number":107,"symbol":"Bh","name":"Bohrium","atomic_mass":270.133,"category":"transition-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":7,"density":26,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d5","summary":"Bohrium is a synthetic chemical element; it has symbol Bh and atomic number 107. It is named after Danish physicist Niels Bohr. As a synthetic element, it can be created in particle accelerators but is not found in nature. All known isotopes of bohrium are highly radioactive; the most stable known i"},{"atomic_number":108,"symbol":"Hs","name":"Hassium","atomic_mass":269.1336,"category":"transition-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":8,"density":27,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d6","summary":"Hassium is a synthetic chemical element; it has symbol Hs and atomic number 108. It is highly radioactive: its most stable known isotopes have half-lives of about ten seconds. One of its isotopes, 270Hs, has magic numbers of protons and neutrons for deformed nuclei, giving it greater stability again"},{"atomic_number":109,"symbol":"Mt","name":"Meitnerium","atomic_mass":277.154,"category":"transition-metal","standard_state":"Solid","is_radioactive":true,"table_row":7,"table_column":9,"density":27,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d7 (calculated)","summary":"Meitnerium is a synthetic chemical element; it has symbol Mt and atomic number 109. It is an extremely radioactive synthetic element (not naturally occurring, but can be created in a laboratory). The most stable known isotope, meitnerium-278, has a half-life of 4.5 seconds, although the unconfirmed "},{"atomic_number":110,"symbol":"Ds","name":"Darmstadtium","atomic_mass":282.166,"category":"transition-metal","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":10,"density":26,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d8 (predicted)","summary":"Darmstadtium is a synthetic chemical element; it has symbol Ds and atomic number 110. It is extremely radioactive: the most stable known isotope, darmstadtium-281, has a half-life of approximately 14 seconds. Darmstadtium was first created in November 1994 by the GSI Helmholtz Centre for Heavy Ion R"},{"atomic_number":111,"symbol":"Rg","name":"Roentgenium","atomic_mass":282.169,"category":"transition-metal","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":11,"density":22,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d9 (predicted)","summary":"Roentgenium (German: [ʁœntˈɡeːni̯ʊm] ) is a synthetic chemical element; it has symbol Rg and atomic number 111. It is extremely radioactive and can only be created in a laboratory. The most stable known isotope, roentgenium-282, has a half-life of 130 seconds, although the unconfirmed roentgenium-28"},{"atomic_number":112,"symbol":"Cn","name":"Copernicium","atomic_mass":286.179,"category":"transition-metal","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":12,"density":14,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 5f14 6d10 (predicted)","summary":"Copernicium is a synthetic chemical element; it has symbol Cn and atomic number 112. Its known isotopes are extremely radioactive, and have only been created in a laboratory. The most stable known isotope, copernicium-285, has a half-life of approximately 30 seconds. Copernicium was first created in"},{"atomic_number":113,"symbol":"Nh","name":"Nihonium","atomic_mass":286.182,"category":"post-transition-metal","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":13,"density":16,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]5f14 6d10 7s2 7p1 (predicted)","summary":"Nihonium is a synthetic chemical element; it has symbol Nh and atomic number 113. It is extremely radioactive: its most stable known isotope, nihonium-286, has a half-life of about 10 seconds. In the periodic table, nihonium is a transactinide element in the p-block. It is a member of period 7 and g"},{"atomic_number":114,"symbol":"Fl","name":"Flerovium","atomic_mass":290.192,"category":"post-transition-metal","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":14,"density":11.4,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 7p2 5f14 6d10 (predicted)","summary":"Flerovium is a synthetic chemical element; it has symbol Fl and atomic number 114. It is an extremely radioactive, superheavy element, named after the Flerov Laboratory of Nuclear Reactions of the Joint Institute for Nuclear Research in Dubna, Russia, where the element was discovered in 1999. The la"},{"atomic_number":115,"symbol":"Mc","name":"Moscovium","atomic_mass":290.196,"category":"post-transition-metal","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":15,"density":13.5,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 7p3 5f14 6d10 (predicted)","summary":"Moscovium is a synthetic chemical element; it has symbol Mc and atomic number 115. It was first synthesized in 2003 by a joint team of Russian and American scientists at the Joint Institute for Nuclear Research (JINR) in Dubna, Russia. In December 2015, it was recognized as one of four new elements "},{"atomic_number":116,"symbol":"Lv","name":"Livermorium","atomic_mass":293.205,"category":"post-transition-metal","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":16,"density":12.9,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 7p4 5f14 6d10 (predicted)","summary":"Livermorium is a synthetic chemical element; it has symbol Lv and atomic number 116. It is an extremely radioactive element that has only been created in a laboratory setting and has not been observed in nature. The element is named after the Lawrence Livermore National Laboratory in the United Stat"},{"atomic_number":117,"symbol":"Ts","name":"Tennessine","atomic_mass":294.211,"category":"halogen","standard_state":"Expected to be a Solid","is_radioactive":true,"table_row":7,"table_column":17,"density":7.1,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 7p5 5f14 6d10 (predicted)","summary":"Tennessine is a synthetic element; it has symbol Ts and atomic number 117. It has the second-highest atomic number, the joint-highest atomic mass of all known elements, and is the penultimate element of the 7th period of the periodic table. It is named after the U.S. state of Tennessee, where key re"},{"atomic_number":118,"symbol":"Og","name":"Oganesson","atomic_mass":295.216,"category":"noble-gas","standard_state":"Expected to be a Gas","is_radioactive":true,"table_row":7,"table_column":18,"density":7.2,"melting_point":null,"boiling_point":null,"electronegativity_pauling":null,"electron_configuration":"[Rn]7s2 7p6 5f14 6d10 (predicted)","summary":"Oganesson is a synthetic chemical element; it has symbol Og and atomic number 118. It was first synthesized in 2002 at the Joint Institute for Nuclear Research (JINR) in Dubna, near Moscow, Russia, by a joint team of Russian and American scientists. In December 2015, it was recognized as one of four"}];
 
-    // Load element data and render the table
     const CATEGORIES = {
       'alkali-metal': { label: 'Alkali Metal', color: 'var(--cat-alkali-metal)' },
       'alkaline-earth-metal': { label: 'Alkaline Earth', color: 'var(--cat-alkaline-earth)' },
@@ -543,82 +942,83 @@
       'unknown': { label: 'Unknown', color: 'var(--cat-unknown)' },
     };
 
-    let elements = [];
+    const METALLICITY_MAP = {
+      'alkali-metal': 'metal', 'alkaline-earth-metal': 'metal', 'transition-metal': 'metal',
+      'post-transition-metal': 'metal', 'lanthanide': 'metal', 'actinide': 'metal',
+      'metalloid': 'metalloid', 'nonmetal': 'nonmetal', 'halogen': 'nonmetal', 'noble-gas': 'nonmetal',
+      'unknown': 'unknown',
+    };
 
-    async function init() {
-      elements = INLINE_ELEMENTS;
+    let elements = INLINE_ELEMENTS;
+
+    function init() {
       renderLegend();
       renderTable();
+      setupPropChips();
     }
 
     function renderLegend() {
-      const legend = document.getElementById('legend');
-      legend.innerHTML = Object.entries(CATEGORIES).map(([key, val]) =>
-        `<div class="legend-item">
-          <div class="legend-dot" style="background: ${val.color}"></div>
-          ${val.label}
-        </div>`
+      document.getElementById('legend').innerHTML = Object.entries(CATEGORIES).map(([key, val]) =>
+        `<div class="legend-item"><div class="legend-dot" style="background:${val.color}"></div>${val.label}</div>`
       ).join('');
     }
 
     function renderTable() {
       const table = document.getElementById('table');
       table.innerHTML = '';
-
-      // Build grid: we place elements by their table_row and table_column
-      // Rows 1-7: main table, Row 8: gap, Row 9: lanthanides, Row 10: actinides
       const grid = {};
       for (const el of elements) {
         let row = el.table_row;
-        let col = el.table_column;
-
-        // Lanthanides (row 8) -> display row 9
-        // Actinides (row 9) -> display row 10
         if (row === 8) row = 9;
         else if (row === 9) row = 10;
-
-        grid[`${row}-${col}`] = el;
+        grid[`${row}-${el.table_column}`] = el;
       }
 
-      // Render 10 rows x 18 cols
       for (let r = 1; r <= 10; r++) {
         if (r === 8) {
-          // Gap row
           for (let c = 1; c <= 18; c++) {
-            const spacer = document.createElement('div');
-            spacer.className = 'empty-cell';
-            spacer.style.gridRow = r;
-            spacer.style.gridColumn = c;
-            spacer.style.height = '12px';
-            table.appendChild(spacer);
+            const s = document.createElement('div');
+            s.className = 'empty-cell';
+            s.style.cssText = `grid-row:${r};grid-column:${c};height:12px`;
+            table.appendChild(s);
           }
           continue;
         }
-
         for (let c = 1; c <= 18; c++) {
           const el = grid[`${r}-${c}`];
           if (!el) {
-            // Empty cell
-            const empty = document.createElement('div');
-            empty.className = 'empty-cell';
-            empty.style.gridRow = r;
-            empty.style.gridColumn = c;
-            table.appendChild(empty);
+            const e = document.createElement('div');
+            e.className = 'empty-cell';
+            e.style.cssText = `grid-row:${r};grid-column:${c}`;
+            table.appendChild(e);
             continue;
           }
 
           const tile = document.createElement('div');
+          const state = (el.standard_state || '').toLowerCase();
+          const metal = METALLICITY_MAP[el.category] || 'unknown';
           tile.className = 'element' + (el.is_radioactive ? ' radioactive' : '');
           tile.dataset.category = el.category;
           tile.dataset.atomicNumber = el.atomic_number;
-          tile.style.gridRow = r;
-          tile.style.gridColumn = c;
+          tile.dataset.state = state;
+          tile.dataset.metal = metal;
+          tile.style.cssText = `grid-row:${r};grid-column:${c}`;
 
-          const stateClass = (el.standard_state || '').toLowerCase();
+          // Build inner HTML with living effects
+          let effectHTML = '';
+          if (state === 'gas') {
+            effectHTML = '<div class="gas-particles"><span></span><span></span><span></span><span></span><span></span></div>';
+          } else if (state === 'liquid') {
+            effectHTML = '<div class="liquid-effect"></div>';
+          }
+          if (metal === 'metal') {
+            effectHTML += '<div class="metal-sheen"></div>';
+          }
 
           tile.innerHTML = `
+            ${effectHTML}
             <span class="atomic-number">${el.atomic_number}</span>
-            <span class="state-dot ${stateClass}"></span>
+            <span class="state-dot ${state}"></span>
             <span class="symbol">${el.symbol}</span>
             <span class="name">${el.name}</span>
             <span class="mass">${el.atomic_mass?.toFixed(el.atomic_mass < 10 ? 3 : 2) || '—'}</span>
@@ -633,30 +1033,34 @@
     function openSidebar(el) {
       const sidebar = document.getElementById('sidebar');
       const content = document.getElementById('sidebar-content');
-      const catInfo = CATEGORIES[el.category] || CATEGORIES.unknown;
+      const cat = CATEGORIES[el.category] || CATEGORIES.unknown;
+      const state = (el.standard_state || 'solid').toLowerCase();
+
+      const bgClass = state === 'gas' ? 'gas-bg' : state === 'liquid' ? 'liquid-bg' : 'solid-bg';
 
       content.innerHTML = `
-        <div class="sidebar-header">
-          <div class="sidebar-symbol" style="color: ${catInfo.color}">${el.symbol}</div>
-          <div class="sidebar-info">
+        <div class="sidebar-hero">
+          <div class="sidebar-symbol-wrap" style="background: var(--bg-surface); --cat-color: ${cat.color}; border: 1px solid var(--border-subtle);">
+            <div class="bg-effect ${bgClass}" style="--cat-color: ${cat.color};"></div>
+            <span class="sidebar-symbol" style="color: ${cat.color}">${el.symbol}</span>
+          </div>
+          <div class="sidebar-meta">
+            <div class="atomic-num">#${el.atomic_number}</div>
             <h2>${el.name}</h2>
-            <span class="category-badge" style="background: color-mix(in srgb, ${catInfo.color} 15%, transparent); color: ${catInfo.color}; border: 1px solid color-mix(in srgb, ${catInfo.color} 30%, transparent);">
-              ${catInfo.label}
+            <span class="category-badge" style="background: color-mix(in srgb, ${cat.color} 10%, transparent); color: ${cat.color}; border: 1px solid color-mix(in srgb, ${cat.color} 20%, transparent);">
+              <span class="dot" style="background: ${cat.color}"></span>
+              ${cat.label}
             </span>
           </div>
         </div>
         <div class="sidebar-props">
-          <div class="prop-card">
-            <div class="prop-label">Atomic Number</div>
-            <div class="prop-value">${el.atomic_number}</div>
-          </div>
           <div class="prop-card">
             <div class="prop-label">Atomic Mass</div>
             <div class="prop-value">${el.atomic_mass?.toFixed(4) || '—'} <span class="prop-unit">u</span></div>
           </div>
           <div class="prop-card">
             <div class="prop-label">Density</div>
-            <div class="prop-value">${el.density || '—'} <span class="prop-unit">g/cm3</span></div>
+            <div class="prop-value">${el.density || '—'} <span class="prop-unit">g/cm&sup3;</span></div>
           </div>
           <div class="prop-card">
             <div class="prop-label">Melting Point</div>
@@ -671,23 +1075,22 @@
             <div class="prop-value">${el.electronegativity_pauling || '—'}</div>
           </div>
           <div class="prop-card">
-            <div class="prop-label">Electron Config</div>
-            <div class="prop-value" style="font-size: 11px;">${el.electron_configuration || '—'}</div>
-          </div>
-          <div class="prop-card">
             <div class="prop-label">State</div>
-            <div class="prop-value">${el.standard_state || '—'}</div>
+            <div class="prop-value" style="text-transform: capitalize;">${el.standard_state || '—'}</div>
+          </div>
+          <div class="prop-card" style="grid-column: 1 / -1;">
+            <div class="prop-label">Electron Configuration</div>
+            <div class="prop-value" style="font-size: 12px;">${el.electron_configuration || '—'}</div>
           </div>
         </div>
-        <p style="margin-top: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
-          ${el.summary ? el.summary.substring(0, 300) + '...' : 'No description available.'}
-        </p>
-        <button class="deep-dive-btn">Deep Dive &rarr;</button>
+        ${el.summary ? `<p class="sidebar-summary">${el.summary.substring(0, 280)}...</p>` : ''}
+        <button class="deep-dive-btn">
+          Deep Dive
+          <span class="arrow">&rarr;</span>
+        </button>
       `;
 
       sidebar.classList.add('open');
-
-      // Highlight selected element
       document.querySelectorAll('.element.selected').forEach(e => e.classList.remove('selected'));
       document.querySelector(`.element[data-atomic-number="${el.atomic_number}"]`)?.classList.add('selected');
     }
@@ -702,7 +1105,15 @@
       html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
     }
 
-    // Close sidebar with Escape
+    function setupPropChips() {
+      document.querySelectorAll('.prop-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.prop-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+        });
+      });
+    }
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeSidebar();
     });
