@@ -31,10 +31,10 @@ const PROPERTY_COLORS: Record<string, PropertyColorConfig> = {
     unit: "u",
   },
   "atomic-radius": {
-    range: [25, 300],
+    range: [120, 350],
     hue: 275,          // Purple family
     sat: [45, 75],
-    light: [20, 45],
+    light: [18, 48],
     lowLabel: "Small",
     highLabel: "Large",
     unit: "pm",
@@ -76,12 +76,12 @@ const PROPERTY_COLORS: Record<string, PropertyColorConfig> = {
     unit: "K",
   },
   "year-discovered": {
-    range: [0, 2010],
+    range: [1669, 2010],
     hue: 25,           // Warm orange
-    sat: [40, 75],
-    light: [18, 42],
-    lowLabel: "Ancient",
-    highLabel: "Recent",
+    sat: [40, 80],
+    light: [18, 48],
+    lowLabel: "1669",
+    highLabel: "2010",
     unit: "",
   },
 };
@@ -105,6 +105,7 @@ export function getPropertyValue(
     case "boiling-point":
       return element.boiling_point;
     case "year-discovered": {
+      if (element.year_discovered === "Ancient") return 1600; // Map ancient to below range (darkest)
       const year = parseInt(element.year_discovered ?? "", 10);
       return isNaN(year) ? null : year;
     }
@@ -118,6 +119,10 @@ export function formatPropertyValue(
   element: Element,
   mode: ColoringMode
 ): string | null {
+  // Show raw "Ancient" label for year mode
+  if (mode === "year-discovered" && element.year_discovered === "Ancient") {
+    return "Ancient";
+  }
   const val = getPropertyValue(element, mode);
   if (val === null) return null;
 
