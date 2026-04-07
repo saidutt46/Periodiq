@@ -17,28 +17,32 @@
 - [ ] Source element images (sample photos, emission spectra) — Creative Commons
 
 ## Phase 1: Project Scaffolding
-- [ ] Initialize Next.js 15 project (App Router, TypeScript)
-- [ ] Set up Tailwind v4 + CSS Modules
-- [ ] Set up CSS custom properties theming system (dark + light tokens)
-- [ ] Configure project structure (`app/`, `components/`, `lib/`, `data/`, `styles/`)
-- [ ] Set up Zustand store
-- [ ] Set up Framer Motion
-- [ ] Install and configure React Three Fiber + drei
-- [ ] Install cmdk, smiles-drawer, 3dmol
-- [ ] Add static JSON data files to `data/`
-- [ ] Build data access layer (`lib/data/`) — abstraction over JSON + future API
-- [ ] Build floating chrome components (brand, command bar, utility bar, property chips, legend)
+- [x] Initialize Next.js 15 project (App Router, TypeScript)
+- [x] Set up Tailwind v4 + CSS Modules
+- [x] Set up CSS custom properties theming system (dark + light tokens)
+- [x] Configure project structure (`app/`, `components/`, `lib/`, `data/`, `styles/`)
+- [x] Set up Zustand store
+- [x] Install Framer Motion (wiring pending)
+- [x] Install React Three Fiber + drei (wiring pending)
+- [x] Install cmdk (wiring pending)
+- [x] Add static JSON data files to `data/`
+- [x] Build data access layer (`lib/data/`) — abstraction over JSON + future API
+- [x] Build floating chrome components (brand, command bar, utility bar, property chips, legend)
 
 ## Phase 2: Core Table View
-- [ ] Build periodic table grid layout (18-column standard layout)
-- [ ] Build element tile component (atomic number, symbol, name, weight)
-- [ ] Implement category-based color coding (10 standard categories)
-- [ ] Build property/trend dropdown (15 coloring modes)
-- [ ] Implement color gradient mapping for numeric properties
-- [ ] Build temperature slider (0K–6000K) with real-time state changes
-- [ ] Build element sidebar panel (click to open, key info, "Deep Dive" link)
-- [ ] Implement keyboard navigation through table
-- [ ] Add sci-fi hover effects on element tiles (glow, shimmer, particles)
+- [x] Build periodic table grid layout (18-column standard layout)
+- [x] Build element tile component (atomic number, symbol, name, weight)
+- [x] Implement category-based color coding (10 standard categories)
+- [x] Build property/trend mode selector (9 coloring modes with monochromatic gradients)
+- [x] Implement color gradient mapping for numeric properties
+- [x] Build temperature slider (0K–6000K) with real-time state changes
+- [x] Build element sidebar panel (click to open, key info, "Deep Dive" link)
+- [x] Implement keyboard navigation through table (arrow keys)
+- [x] Add sci-fi hover effects on element tiles (glow, shimmer, particles)
+- [x] Property gradient legend bar (appears per mode with value ranges)
+- [x] Category taxonomy legend (vertical, grouped by metals/metalloids/nonmetals)
+- [x] Sidebar: slide animation, backdrop overlay, crossfade, prev/next nav
+- [x] Sidebar: living symbol effects, electron config with superscripts, info chips
 - [ ] Responsive layout (desktop, tablet, mobile)
 
 ## Phase 3: Element Detail Page
