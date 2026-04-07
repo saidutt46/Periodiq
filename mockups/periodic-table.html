@@ -35,10 +35,10 @@
       --bg-glass: rgba(12, 12, 20, 0.85);
       --bg-glass-border: rgba(255, 255, 255, 0.06);
 
-      --text-primary: #e4e4ef;
-      --text-secondary: #7a7a95;
-      --text-muted: #44445a;
-      --text-dim: #2a2a3a;
+      --text-primary: #e8e8f2;
+      --text-secondary: #9494b0;
+      --text-muted: #6a6a85;
+      --text-dim: #50506a;
 
       --accent-primary: #d4a843;
       --accent-warm: #e8943a;
@@ -369,8 +369,8 @@
       z-index: 50;
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      opacity: 0.5;
+      gap: 4px;
+      opacity: 0.7;
       transition: opacity var(--duration-normal) var(--ease-out);
     }
 
@@ -382,14 +382,14 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 9px;
-      color: var(--text-muted);
+      font-size: 10px;
+      color: var(--text-secondary);
       letter-spacing: 0.03em;
     }
 
     .legend-dot {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       border-radius: 2px;
       flex-shrink: 0;
     }
@@ -875,6 +875,7 @@
   <nav class="command-bar">
     <button class="cmd-tab active">Table</button>
     <button class="cmd-tab">List</button>
+    <button class="cmd-tab">Compounds</button>
     <button class="cmd-tab">Compare</button>
     <div class="cmd-divider"></div>
     <button class="cmd-search" title="Search elements">
