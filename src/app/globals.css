@@ -20,9 +20,9 @@
 
   /* Element categories */
   --color-cat-alkali-metal: var(--cat-alkali-metal);
-  --color-cat-alkaline-earth: var(--cat-alkaline-earth);
+  --color-cat-alkaline-earth-metal: var(--cat-alkaline-earth-metal);
   --color-cat-transition-metal: var(--cat-transition-metal);
-  --color-cat-post-transition: var(--cat-post-transition);
+  --color-cat-post-transition-metal: var(--cat-post-transition-metal);
   --color-cat-metalloid: var(--cat-metalloid);
   --color-cat-nonmetal: var(--cat-nonmetal);
   --color-cat-halogen: var(--cat-halogen);
@@ -67,9 +67,9 @@
     0 0 0 1px rgba(255, 255, 255, 0.05);
 
   --cat-alkali-metal: #ff4d6a;
-  --cat-alkaline-earth: #ff9f43;
+  --cat-alkaline-earth-metal: #ff9f43;
   --cat-transition-metal: #4facfe;
-  --cat-post-transition: #5ab4ac;
+  --cat-post-transition-metal: #5ab4ac;
   --cat-metalloid: #ffc048;
   --cat-nonmetal: #2ed573;
   --cat-halogen: #a78bfa;
@@ -113,9 +113,9 @@
     0 0 0 1px rgba(0, 0, 0, 0.06);
 
   --cat-alkali-metal: #dc2626;
-  --cat-alkaline-earth: #ea580c;
+  --cat-alkaline-earth-metal: #ea580c;
   --cat-transition-metal: #2563eb;
-  --cat-post-transition: #0d9488;
+  --cat-post-transition-metal: #0d9488;
   --cat-metalloid: #ca8a04;
   --cat-nonmetal: #16a34a;
   --cat-halogen: #7c3aed;

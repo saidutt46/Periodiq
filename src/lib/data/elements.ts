@@ -18,9 +18,9 @@ export const categories: Record<string, CategoryInfo> =
 export function getCategoryCssVar(category: ElementCategory): string {
   const map: Record<ElementCategory, string> = {
     "alkali-metal": "--cat-alkali-metal",
-    "alkaline-earth-metal": "--cat-alkaline-earth",
+    "alkaline-earth-metal": "--cat-alkaline-earth-metal",
     "transition-metal": "--cat-transition-metal",
-    "post-transition-metal": "--cat-post-transition",
+    "post-transition-metal": "--cat-post-transition-metal",
     metalloid: "--cat-metalloid",
     nonmetal: "--cat-nonmetal",
     halogen: "--cat-halogen",

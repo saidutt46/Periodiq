@@ -208,9 +208,9 @@ export function getElementTileColors(
 /** Category CSS variable map */
 export const CATEGORY_CSS_VAR: Record<ElementCategory, string> = {
   "alkali-metal": "var(--cat-alkali-metal)",
-  "alkaline-earth-metal": "var(--cat-alkaline-earth)",
+  "alkaline-earth-metal": "var(--cat-alkaline-earth-metal)",
   "transition-metal": "var(--cat-transition-metal)",
-  "post-transition-metal": "var(--cat-post-transition)",
+  "post-transition-metal": "var(--cat-post-transition-metal)",
   metalloid: "var(--cat-metalloid)",
   nonmetal: "var(--cat-nonmetal)",
   halogen: "var(--cat-halogen)",
