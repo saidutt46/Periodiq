@@ -1,59 +1,80 @@
 /* ============================================
-   LEGEND — Compact by default, scales up on hover
+   LEGEND — Vertical taxonomy list, bottom-left
    ============================================ */
 .container {
   position: fixed;
   bottom: 20px;
-  left: 24px;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: transparent;
+  left: 20px;
+  z-index: 48;
   transform-origin: bottom left;
-  transform: scale(0.85);
-  opacity: 0.55;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.4;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .container:hover {
-  transform: scale(1.15);
   opacity: 1;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
   background: var(--bg-glass);
   backdrop-filter: blur(20px) saturate(1.5);
   -webkit-backdrop-filter: blur(20px) saturate(1.5);
   border: 1px solid var(--bg-glass-border);
-  box-shadow: var(--shadow-float);
-  padding: 12px 14px;
-  gap: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Sections */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* Group headers (Metals, Nonmetals, State) */
+.groupHeader {
+  font-size: 8px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 0 1px;
+}
+
+/* Divider line */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 3px 0;
+}
+
+/* Category item */
 .item {
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 9px;
+  font-weight: 500;
   color: var(--text-secondary);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1px 0;
 }
 
-.container:hover .item {
-  font-size: 12px;
-  gap: 8px;
-}
-
+/* Square dot for categories */
 .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
   flex-shrink: 0;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.container:hover .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
+/* Round dot for state (matches the tile dots) */
+.circle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
