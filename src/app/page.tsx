@@ -5,7 +5,7 @@ import { Sidebar } from "@/components/chrome/Sidebar";
 export default function HomePage() {
   return (
     <>
-      <Chrome />
+      <Chrome showTableControls />
       <main className="min-h-screen flex items-center justify-center px-8 py-[72px] pb-[80px]">
         <PeriodicTable />
       </main>

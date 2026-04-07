@@ -2,7 +2,15 @@
 
 import { memo, useCallback } from "react";
 import { useAppStore } from "@/lib/store";
-import { getElementColor, CATEGORY_CSS_VAR } from "@/lib/chemistry/colors";
+import {
+  getElementTileColors,
+  formatPropertyValue,
+  CATEGORY_CSS_VAR,
+} from "@/lib/chemistry/colors";
+import {
+  getStateAtTemperature,
+  getPhaseColor,
+} from "@/lib/chemistry/temperature";
 import type { Element } from "@/lib/types";
 import styles from "./ElementTile.module.css";
 
@@ -26,30 +34,73 @@ const METALLICITY_MAP: Record<string, string> = {
   unknown: "unknown",
 };
 
-export const ElementTile = memo(function ElementTile({ element, row, col }: Props) {
+export const ElementTile = memo(function ElementTile({
+  element,
+  row,
+  col,
+}: Props) {
   const coloringMode = useAppStore((s) => s.coloringMode);
   const selectedElement = useAppStore((s) => s.selectedElement);
   const selectElement = useAppStore((s) => s.selectElement);
+  const temperature = useAppStore((s) => s.temperature);
 
   const handleClick = useCallback(() => {
     selectElement(element);
   }, [element, selectElement]);
 
-  const state = (element.standard_state || "").toLowerCase();
-  const stateClass = state.includes("gas")
-    ? "gas"
-    : state.includes("liquid")
-      ? "liquid"
-      : "solid";
-  const metal = METALLICITY_MAP[element.category] ?? "unknown";
-  const isSelected = selectedElement?.atomic_number === element.atomic_number;
+  // Determine display state
+  const isStateMode = coloringMode === "state";
+  const tempState = isStateMode
+    ? getStateAtTemperature(element, temperature)
+    : null;
 
-  // Determine tile accent color based on coloring mode
-  const catVar = CATEGORY_CSS_VAR[element.category];
-  const accentColor =
-    coloringMode === "category"
-      ? catVar
-      : getElementColor(element, coloringMode) ?? catVar;
+  const roomState = (element.standard_state || "").toLowerCase();
+  const stateClass = isStateMode
+    ? tempState === "unknown"
+      ? "solid"
+      : tempState!
+    : roomState.includes("gas")
+      ? "gas"
+      : roomState.includes("liquid")
+        ? "liquid"
+        : "solid";
+
+  const metal = METALLICITY_MAP[element.category] ?? "unknown";
+  const isSelected =
+    selectedElement?.atomic_number === element.atomic_number;
+  const isPropertyMode =
+    coloringMode !== "category" && coloringMode !== "state";
+
+  // Get tile colors based on mode
+  let tileColors: { bg: string | null; accent: string; hasData: boolean };
+
+  if (isStateMode) {
+    const phaseColor = getPhaseColor(tempState ?? "unknown");
+    tileColors = { bg: phaseColor, accent: phaseColor, hasData: true };
+  } else {
+    tileColors = getElementTileColors(element, coloringMode);
+  }
+
+  // What value to show in the bottom line of the tile
+  const isDefaultMode = coloringMode === "category";
+  const propertyDisplayValue = isDefaultMode
+    ? null
+    : isStateMode
+      ? stateClass.charAt(0).toUpperCase() + stateClass.slice(1)
+      : formatPropertyValue(element, coloringMode);
+
+  // Build inline styles for the tile background
+  const tileStyle: React.CSSProperties = {
+    gridRow: row,
+    gridColumn: col,
+    "--cat-color": tileColors.accent,
+  } as React.CSSProperties;
+
+  // For non-category modes, the bg IS the color (HSL from our monochromatic scales)
+  if (!isDefaultMode && tileColors.bg && tileColors.hasData) {
+    tileStyle.background = tileColors.bg;
+    tileStyle.borderColor = "rgba(255, 255, 255, 0.08)";
+  }
 
   return (
     <div
@@ -57,15 +108,14 @@ export const ElementTile = memo(function ElementTile({ element, row, col }: Prop
         ${styles.tile}
         ${element.is_radioactive ? styles.radioactive : ""}
         ${isSelected ? styles.selected : ""}
+        ${!tileColors.hasData && isPropertyMode ? styles.noData : ""}
+        ${!isDefaultMode && tileColors.hasData ? styles.colored : ""}
       `}
-      style={{
-        gridRow: row,
-        gridColumn: col,
-        "--cat-color": accentColor,
-      } as React.CSSProperties}
+      style={tileStyle}
       data-category={element.category}
       data-state={stateClass}
       data-metal={metal}
+      data-atomic-number={element.atomic_number}
       onClick={handleClick}
       role="button"
       tabIndex={0}
@@ -77,14 +127,22 @@ export const ElementTile = memo(function ElementTile({ element, row, col }: Prop
         }
       }}
     >
-      {/* Living effects */}
-      {stateClass === "gas" && (
+      {/* Living effects — only in category mode for clarity */}
+      {isDefaultMode && stateClass === "gas" && (
         <div className={styles.gasParticles}>
-          <span /><span /><span /><span /><span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
         </div>
       )}
-      {stateClass === "liquid" && <div className={styles.liquidEffect} />}
-      {metal === "metal" && <div className={styles.metalSheen} />}
+      {isDefaultMode && stateClass === "liquid" && (
+        <div className={styles.liquidEffect} />
+      )}
+      {isDefaultMode && metal === "metal" && (
+        <div className={styles.metalSheen} />
+      )}
 
       {/* Content */}
       <span className={styles.atomicNumber}>{element.atomic_number}</span>
@@ -92,9 +150,10 @@ export const ElementTile = memo(function ElementTile({ element, row, col }: Prop
       <span className={styles.symbol}>{element.symbol}</span>
       <span className={styles.name}>{element.name}</span>
       <span className={styles.mass}>
-        {element.atomic_mass < 10
-          ? element.atomic_mass.toFixed(3)
-          : element.atomic_mass.toFixed(2)}
+        {propertyDisplayValue ??
+          (element.atomic_mass < 10
+            ? element.atomic_mass.toFixed(3)
+            : element.atomic_mass.toFixed(2))}
       </span>
     </div>
   );

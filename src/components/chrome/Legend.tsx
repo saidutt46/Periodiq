@@ -1,6 +1,7 @@
 "use client";
 
 import { categories } from "@/lib/data";
+import styles from "./Legend.module.css";
 
 const CATEGORY_ORDER = [
   "alkali-metal",
@@ -18,17 +19,17 @@ const CATEGORY_ORDER = [
 
 export function Legend() {
   return (
-    <div className="fixed bottom-5 left-6 z-50 flex flex-col gap-1 opacity-70 hover:opacity-100 transition-opacity duration-300">
+    <div className={styles.container}>
       {CATEGORY_ORDER.map((key) => {
         const cat = categories[key];
         if (!cat) return null;
         return (
-          <div key={key} className="flex items-center gap-1.5 text-[10px] text-[var(--text-secondary)]">
+          <div key={key} className={styles.item}>
             <div
-              className="w-2 h-2 rounded-sm shrink-0"
+              className={styles.dot}
               style={{ background: `var(--cat-${key})` }}
             />
-            {cat.label}
+            <span>{cat.label}</span>
           </div>
         );
       })}

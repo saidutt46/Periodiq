@@ -1,0 +1,204 @@
+/* ============================================
+   TEMPERATURE SLIDER — Compact glass strip
+   Appears above property bar only in State mode
+   ============================================ */
+.strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 15%, var(--bg-glass-border));
+  border-radius: 12px;
+  box-shadow: var(--shadow-float);
+  animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Label */
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* +/- buttons */
+.stepBtn {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.stepBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.stepBtn:active {
+  transform: scale(0.92);
+}
+
+/* Track */
+.track {
+  position: relative;
+  width: 200px;
+  height: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Gradient background: cold → hot */
+.trackBg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    #1a2744 0%,
+    #1e4a7a 8%,
+    #3b7dd8 16%,
+    #7eb8f0 24%,
+    #d4e8fc 32%,
+    #f5f0e0 40%,
+    #f5d98c 48%,
+    #f0a830 56%,
+    #e87730 64%,
+    #d94030 72%,
+    #c41818 80%,
+    #a01010 90%,
+    #701010 100%
+  );
+}
+
+/* Fill overlay */
+.trackFill {
+  position: absolute;
+  left: 0;
+  height: 8px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Thumb */
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 8px rgba(212, 168, 67, 0.4),
+              0 1px 3px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.thumbDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Readout */
+.readout {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  padding-left: 6px;
+  border-left: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.readoutValue {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 32px;
+  text-align: right;
+}
+
+.readoutUnit {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.readoutAlt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-left: 4px;
+}
+
+/* Phase indicators (S L G) */
+.phases {
+  display: flex;
+  gap: 3px;
+  margin-left: 2px;
+  padding-left: 6px;
+  border-left: 1px solid var(--border-subtle);
+}
+
+.phase {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--pc);
+}
+
+.phaseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--pc);
+  flex-shrink: 0;
+}

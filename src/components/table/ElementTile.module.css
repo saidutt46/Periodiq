@@ -140,16 +140,71 @@
 }
 
 /* ============================================
-   Selected state
+   Colored mode — when tile has a property background,
+   force all text to be bright for contrast
+   ============================================ */
+.colored .atomicNumber {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.colored .symbol {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.colored .name {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.colored .mass {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.colored:hover .symbol {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Hide the left accent stripe in colored modes — tile is already colored */
+.colored::before {
+  opacity: 0;
+}
+
+/* ============================================
+   No data state — dimmed when property has no value
+   ============================================ */
+.noData {
+  opacity: 0.3;
+}
+
+.noData .symbol {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Selected state — mirrors hover but with accent color
    ============================================ */
 .selected {
+  transform: scale(1.18) translateY(-3px);
+  z-index: 10;
   border-color: var(--accent-primary) !important;
   box-shadow: 0 0 0 1px var(--accent-primary),
-    0 0 30px rgba(212, 168, 67, 0.15) !important;
+    0 0 30px rgba(212, 168, 67, 0.2) !important;
+  background: var(--bg-tile-hover);
+}
+
+.selected::before {
+  width: 100%;
+  opacity: 0.08;
+  border-radius: var(--tile-radius);
+}
+
+.selected::after {
+  opacity: 1;
 }
 
 .selected .symbol {
   color: var(--accent-primary);
+  text-shadow: 0 0 20px rgba(212, 168, 67, 0.3);
 }
 
 /* ============================================

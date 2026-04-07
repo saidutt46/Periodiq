@@ -6,14 +6,19 @@ import { UtilityBar } from "./UtilityBar";
 import { PropertyBar } from "./PropertyBar";
 import { Legend } from "./Legend";
 
-export function Chrome() {
+interface ChromeProps {
+  /** Show table-specific controls (property bar, legend) */
+  showTableControls?: boolean;
+}
+
+export function Chrome({ showTableControls = false }: ChromeProps) {
   return (
     <>
       <Brand />
       <CommandBar />
       <UtilityBar />
-      <PropertyBar />
-      <Legend />
+      {showTableControls && <PropertyBar />}
+      {showTableControls && <Legend />}
     </>
   );
 }
