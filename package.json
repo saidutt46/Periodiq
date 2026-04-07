@@ -1,9 +1,13 @@
 {
   "name": "periodiq",
   "version": "0.1.0",
+  "private": true,
   "description": "The most beautiful and useful periodic table on the web",
-  "type": "module",
   "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "scrape:pubchem": "node scripts/scrape-pubchem.mjs",
     "scrape:wikipedia": "node scripts/scrape-wikipedia.mjs",
     "scrape:merge": "node scripts/merge-data.mjs",
@@ -11,7 +15,32 @@
     "scrape:all": "npm run scrape:pubchem && npm run scrape:wikipedia && npm run scrape:merge && npm run scrape:compounds",
     "validate": "node scripts/validate-data.mjs"
   },
-  "keywords": ["periodic-table", "chemistry", "elements"],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "periodic-table",
+    "chemistry",
+    "elements"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "cmdk": "^1.1.1",
+    "framer-motion": "^12.38.0",
+    "next": "^16.2.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "three": "^0.183.2",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^25.5.2",
+    "@types/react": "^19.2.14",
+    "@types/three": "^0.183.1",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.2",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2"
+  }
 }
