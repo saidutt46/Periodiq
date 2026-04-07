@@ -14,6 +14,7 @@ build/
 .DS_Store
 *.pem
 *.log
+npm-debug.log*
 
 # env files
 .env
@@ -22,9 +23,9 @@ build/
 .env.test.local
 .env.production.local
 
-# debug
-npm-debug.log*
-
-# local docs (planning, mockups, references)
+# local planning docs, mockups, references (not public)
 !docs/
 mockups/
+
+# raw scraped data (intermediate, not needed in repo)
+data/raw/
