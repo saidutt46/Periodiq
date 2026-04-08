@@ -261,7 +261,7 @@ export default function ElementDetailClient({
           {activeTab === "overview" && <OverviewTab element={el} />}
           {activeTab === "properties" && <PropertiesTab element={el} />}
           {activeTab === "electrons" && <ElectronsTab element={el} catColor={categoryHex} />}
-          {activeTab === "compounds" && <CompoundsTab compounds={compounds} catColor={catColor} />}
+          {activeTab === "compounds" && <CompoundsTab compounds={compounds} catColor={catColor} elementName={el.name} />}
           {activeTab === "history" && <HistoryTab element={el} catColor={categoryHex} />}
         </div>
       </div>
@@ -548,10 +548,12 @@ function ordinal(n: number): string {
 }
 
 /* ─── Compounds Tab ─── */
-function CompoundsTab({ compounds, catColor }: { compounds: Compound[]; catColor: string }) {
+function CompoundsTab({ compounds, catColor, elementName }: { compounds: Compound[]; catColor: string; elementName: string }) {
   if (!compounds || compounds.length === 0) {
     return <div className={styles.emptyState}>No compound data available for this element.</div>;
   }
+
+  const pubchemUrl = `https://pubchem.ncbi.nlm.nih.gov/#query=${encodeURIComponent(elementName)}&input_type=TextSearch`;
 
   return (
     <>
@@ -568,13 +570,18 @@ function CompoundsTab({ compounds, catColor }: { compounds: Compound[]; catColor
         </div>
       ))}
 
-      <button className={styles.exploreMoreBtn}>
+      <a
+        href={pubchemUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.exploreMoreBtn}
+      >
         Explore more compounds via PubChem
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           <line x1="7" y1="17" x2="17" y2="7" />
           <polyline points="7 7 17 7 17 17" />
         </svg>
-      </button>
+      </a>
     </>
   );
 }
