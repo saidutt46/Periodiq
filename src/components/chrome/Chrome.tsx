@@ -5,6 +5,7 @@ import { CommandBar } from "./CommandBar";
 import { UtilityBar } from "./UtilityBar";
 import { PropertyBar } from "./PropertyBar";
 import { Legend } from "./Legend";
+import { SearchPalette } from "@/components/search/SearchPalette";
 
 interface ChromeProps {
   /** Show table-specific controls (property bar, legend) */
@@ -19,6 +20,7 @@ export function Chrome({ showTableControls = false }: ChromeProps) {
       <UtilityBar />
       {showTableControls && <PropertyBar />}
       {showTableControls && <Legend />}
+      <SearchPalette />
     </>
   );
 }

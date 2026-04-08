@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import type { Element, Compound } from "@/lib/types";
 import { CATEGORY_CSS_VAR, getCategoryHex } from "@/lib/chemistry/colors";
 import { useAppStore } from "@/lib/store";
+import { SearchPalette } from "@/components/search/SearchPalette";
 import styles from "./DetailPage.module.css";
 
 const SHELL_NAMES = ["K", "L", "M", "N", "O", "P", "Q"];
@@ -112,6 +113,7 @@ export default function ElementDetailClient({
       className={styles.detailPage}
       style={{ "--cat-color": catColor, "--viz-glow": categoryHex } as React.CSSProperties}
     >
+      <SearchPalette />
       {/* ─── Top bar ─── */}
       <div className={styles.topBar}>
         <Link href="/" className={styles.backBtn}>

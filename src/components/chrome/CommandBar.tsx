@@ -42,6 +42,7 @@ export function CommandBar() {
         className="flex items-center gap-1.5 px-3 py-[7px] rounded-[10px] text-[var(--text-muted)] text-xs
                    transition-all duration-150 hover:text-[var(--text-secondary)] hover:bg-white/[0.04]"
         title="Search elements (⌘K)"
+        onClick={() => { const fn = (window as unknown as Record<string, () => void>).__openSearch; if (fn) fn(); }}
       >
         <svg
           width="13"
