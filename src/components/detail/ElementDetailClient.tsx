@@ -405,37 +405,97 @@ function PropertiesTab({ element: el }: { element: Element }) {
 }
 
 /* ─── Electrons Tab ─── */
+
+/** Max electrons per shell: 2n² */
+const SHELL_MAX = [2, 8, 18, 32, 50, 72, 98];
+
+/** Noble gas core labels */
+const NOBLE_GAS_CORES: Record<string, string> = {
+  "[He]": "Helium core",
+  "[Ne]": "Neon core",
+  "[Ar]": "Argon core",
+  "[Kr]": "Krypton core",
+  "[Xe]": "Xenon core",
+  "[Rn]": "Radon core",
+};
+
 function ElectronsTab({ element: el, catColor }: { element: Element; catColor: string }) {
   const maxIE = el.ionization_energies?.length
     ? Math.max(...el.ionization_energies)
     : el.ionization_energy || 1;
 
+  const totalElectrons = el.atomic_number;
+  const oxStates = el.oxidation_states?.length
+    ? el.oxidation_states.map((s) => (s > 0 ? `+${s}` : `${s}`)).join(", ")
+    : null;
+
+  // Detect noble gas core from config
+  const coreMatch = el.electron_configuration?.match(/^\[([A-Za-z]+)\]/);
+  const coreLabel = coreMatch ? NOBLE_GAS_CORES[`[${coreMatch[1]}]`] || null : null;
+
   return (
     <>
-      {/* Electron configuration display */}
+      {/* Sci-fi capsules */}
+      <div className={styles.electronCapsules}>
+        <div className={styles.capsule}>
+          <span className={styles.capsuleValue}>{totalElectrons}</span>
+          <span className={styles.capsuleLabel}>e⁻</span>
+        </div>
+        <div className={styles.capsule}>
+          <span className={styles.capsuleValue}>{el.block.toUpperCase()}</span>
+          <span className={styles.capsuleLabel}>block</span>
+        </div>
+        <div className={styles.capsule}>
+          <span className={styles.capsuleValue}>{el.electrons_per_shell?.length || "—"}</span>
+          <span className={styles.capsuleLabel}>shells</span>
+        </div>
+        {oxStates && (
+          <div className={`${styles.capsule} ${styles.capsuleWide}`}>
+            <span className={styles.capsuleValue}>{oxStates}</span>
+            <span className={styles.capsuleLabel}>oxidation</span>
+          </div>
+        )}
+      </div>
+
+      {/* Electron configuration — clean, no card */}
       {el.electron_configuration && (
-        <div className={styles.electronConfigDisplay}>
-          {formatElectronConfig(el.electron_configuration)}
+        <div className={styles.electronConfigClean}>
+          <span className={styles.electronConfigText}>
+            {formatElectronConfig(el.electron_configuration)}
+          </span>
+          {coreLabel && (
+            <span className={styles.electronConfigHint}>{coreLabel} + valence</span>
+          )}
         </div>
       )}
 
-      {/* Shell visualization */}
+      {/* Shell visualization with fill indicators */}
       {el.electrons_per_shell && el.electrons_per_shell.length > 0 && (
         <div className={styles.shellViz}>
           {el.electrons_per_shell.map((count, i) => (
-            <ShellCircleItem key={i} index={i} count={count} catColor={catColor} isLast={i === el.electrons_per_shell.length - 1} />
+            <ShellCircleItem key={i} index={i} count={count} maxCount={SHELL_MAX[i] || 2} catColor={catColor} isLast={i === el.electrons_per_shell.length - 1} />
           ))}
         </div>
       )}
 
-      {/* Ionization energies chart */}
+      {/* Electron affinity — inline, not a card */}
+      {el.electron_affinity != null && (
+        <div className={styles.electronAffinityInline}>
+          <span className={styles.electronAffinityLabel}>Electron Affinity</span>
+          <span className={styles.electronAffinityValue}>
+            {el.electron_affinity} <span className={styles.electronAffinityUnit}>{el.electron_affinity_unit || "kJ/mol"}</span>
+          </span>
+        </div>
+      )}
+
+      {/* Ionization energies chart — this one keeps the card, it's a chart */}
       {el.ionization_energies && el.ionization_energies.length > 0 ? (
         <div className={styles.ionizationChart}>
-          <div className={styles.ionizationChartTitle}>Ionization Energies (eV)</div>
+          <div className={styles.ionizationChartTitle}>Ionization Energies (kJ/mol)</div>
           <div className={styles.ionizationBars}>
             {el.ionization_energies.slice(0, 8).map((energy, i) => (
               <div key={i} className={styles.ionizationBar}>
-                <div className={styles.ionizationBarValue}>{energy.toFixed(1)}</div>
+                <div className={styles.ionizationBarValue}>{energy.toFixed(0)}</div>
                 <div
                   className={styles.ionizationBarFill}
                   style={{
@@ -451,8 +511,8 @@ function ElectronsTab({ element: el, catColor }: { element: Element; catColor: s
       ) : el.ionization_energy ? (
         <div className={styles.ionizationChart}>
           <div className={styles.ionizationChartTitle}>First Ionization Energy</div>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 20, fontWeight: 700, textAlign: "center", padding: 16, color: "var(--text-primary)" }}>
-            {el.ionization_energy} <span style={{ fontSize: 12, color: "var(--text-muted)" }}>{el.ionization_energy_unit || "eV"}</span>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 18, fontWeight: 700, textAlign: "center", padding: 12, color: "var(--text-primary)" }}>
+            {el.ionization_energy} <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{el.ionization_energy_unit || "eV"}</span>
           </div>
         </div>
       ) : null}
@@ -460,21 +520,28 @@ function ElectronsTab({ element: el, catColor }: { element: Element; catColor: s
   );
 }
 
-function ShellCircleItem({ index, count, catColor, isLast }: { index: number; count: number; catColor: string; isLast: boolean }) {
+function ShellCircleItem({ index, count, maxCount, catColor, isLast }: { index: number; count: number; maxCount: number; catColor: string; isLast: boolean }) {
+  const fillPct = Math.round((count / maxCount) * 100);
+  const isFull = count === maxCount;
+
   return (
     <>
       <div className={styles.shellCircle}>
         <div
           className={styles.shellRing}
           style={{
-            borderColor: `color-mix(in srgb, ${catColor} 30%, transparent)`,
+            borderColor: `color-mix(in srgb, ${catColor} ${isFull ? "50" : "25"}%, transparent)`,
             color: catColor,
+            background: `color-mix(in srgb, ${catColor} ${Math.round(fillPct * 0.08)}%, transparent)`,
           }}
         >
           {count}
         </div>
         <div className={styles.shellRingLabel}>
-          {SHELL_NAMES[index]} ({SHELL_LABELS[index] || `${index + 1}`})
+          {SHELL_NAMES[index]}
+        </div>
+        <div className={styles.shellFillLabel}>
+          {count}/{maxCount}
         </div>
       </div>
       {!isLast && <span className={styles.shellArrow}>&rarr;</span>}

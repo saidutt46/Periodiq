@@ -568,18 +568,91 @@
 }
 
 /* ─── Electrons tab ─── */
-.electronConfigDisplay {
+.electronCapsules {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.capsule {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--bg-glass-border);
+}
+
+.capsuleWide {
+  padding: 5px 14px;
+}
+
+.capsuleValue {
+  font-size: 14px;
+  font-weight: 700;
   font-family: var(--font-mono);
-  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.capsuleLabel {
+  font-size: 9px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.electronConfigClean {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.electronConfigText {
+  font-family: var(--font-mono);
+  font-size: 18px;
   font-weight: 600;
   color: var(--text-primary);
-  padding: 16px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  margin-bottom: 20px;
-  text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+}
+
+.electronConfigHint {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  margin-top: 4px;
+}
+
+.electronAffinityInline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.electronAffinityLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.electronAffinityValue {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.electronAffinityUnit {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .shellViz {
@@ -615,6 +688,12 @@
 .shellRingLabel {
   font-size: 10px;
   color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.shellFillLabel {
+  font-size: 8px;
+  color: var(--text-dim);
   font-family: var(--font-mono);
 }
 
