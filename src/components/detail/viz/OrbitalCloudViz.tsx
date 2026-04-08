@@ -116,13 +116,13 @@ function OrbitalShape({
 
 /* ─── XYZ Axis Lines ─── */
 function AxisLines({ size, theme }: { size: number; theme: "dark" | "light" }) {
-  const color = theme === "light" ? "#aaa" : "#444";
-  const labelColor = theme === "light" ? "#666" : "#888";
+  const color = theme === "light" ? "#555" : "#777";
+  const labelColor = theme === "light" ? "#444" : "#999";
   return (
     <group>
-      <Line points={[[-size, 0, 0], [size, 0, 0]]} color={color} lineWidth={0.5} dashed dashSize={0.1} gapSize={0.08} />
-      <Line points={[[0, -size, 0], [0, size, 0]]} color={color} lineWidth={0.5} dashed dashSize={0.1} gapSize={0.08} />
-      <Line points={[[0, 0, -size], [0, 0, size]]} color={color} lineWidth={0.5} dashed dashSize={0.1} gapSize={0.08} />
+      <Line points={[[-size, 0, 0], [size, 0, 0]]} color={color} lineWidth={1} dashed dashSize={0.1} gapSize={0.08} />
+      <Line points={[[0, -size, 0], [0, size, 0]]} color={color} lineWidth={1} dashed dashSize={0.1} gapSize={0.08} />
+      <Line points={[[0, 0, -size], [0, 0, size]]} color={color} lineWidth={1} dashed dashSize={0.1} gapSize={0.08} />
       <Html position={[size + 0.15, 0, 0]} center>
         <span style={{ color: labelColor, fontSize: 10, fontFamily: "var(--font-mono)" }}>+X</span>
       </Html>
@@ -224,8 +224,8 @@ function OrbitalScene({
       <OrbitControls
         enablePan={false}
         enableZoom={true}
-        minDistance={2}
-        maxDistance={20}
+        minZoom={40}
+        maxZoom={300}
         dampingFactor={0.08}
         enableDamping
         zoomSpeed={0.5}
@@ -349,7 +349,8 @@ export default function OrbitalCloudViz({
       {/* 3D Canvas */}
       <div style={{ flex: 1, position: "relative", minHeight: 0 }}>
         <Canvas
-          camera={{ position: [0, 0, 5], fov: 45, near: 0.1, far: 100 }}
+          orthographic
+          camera={{ position: [4, 3, 4], zoom: 120, near: 0.1, far: 100 }}
           dpr={[1, 1.5]}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
           style={{ background: "transparent" }}
