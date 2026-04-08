@@ -27,5 +27,8 @@ npm-debug.log*
 !docs/
 mockups/
 
+# scraping/data scripts (local only)
+scripts/
+
 # raw scraped data (intermediate, not needed in repo)
 data/raw/
