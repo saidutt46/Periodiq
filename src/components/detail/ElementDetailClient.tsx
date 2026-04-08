@@ -322,14 +322,6 @@ function OverviewTab({ element: el }: { element: Element }) {
         </div>
       </div>
 
-      {/* Identifiers — moved from History since it's reference info */}
-      <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Identifiers</div>
-        <div className={styles.propGrid}>
-          <PropRow label="CAS Number" value={el.cas_number} />
-          <PropRow label="Named By" value={el.named_by} />
-        </div>
-      </div>
     </>
   );
 }
@@ -589,36 +581,58 @@ function CompoundsTab({ compounds, catColor }: { compounds: Compound[]; catColor
 
 /* ─── History Tab ─── */
 function HistoryTab({ element: el, catColor }: { element: Element; catColor: string }) {
-  const hasDiscovery = el.year_discovered || el.discovered_by;
-
   return (
     <>
+      {/* Etymology */}
+      {el.name_origin && (
+        <div className={styles.etymologyBlock}>
+          <div className={styles.propSectionTitle}>Etymology</div>
+          <div className={styles.etymologyText}>{el.name_origin}</div>
+        </div>
+      )}
+
+      {/* Discovery timeline */}
       <div className={styles.timeline}>
         {el.year_discovered && (
-          <div className={styles.timelineItem} style={{ "--cat-color": catColor } as React.CSSProperties}>
-            <div className={styles.timelineYear}>{el.year_discovered}</div>
-            <div className={styles.timelineTitle}>Discovery</div>
-            <div className={styles.timelineText}>
-              {el.discovered_by
-                ? `Discovered by ${el.discovered_by}.`
-                : `First known use dates to ${el.year_discovered}.`}
+          <div className={styles.timelineItem}>
+            <div className={styles.timelineDot} style={{ background: catColor }} />
+            <div className={styles.timelineBody}>
+              <div className={styles.timelineYear}>{el.year_discovered}</div>
+              <div className={styles.timelineTitle}>
+                {el.year_discovered === "Ancient" ? "Known Since Antiquity" : "Discovery"}
+              </div>
+              <div className={styles.timelineText}>
+                {el.discovered_by
+                  ? `Discovered by ${el.discovered_by}.`
+                  : el.year_discovered === "Ancient"
+                    ? `${el.name} has been known and used since ancient times, predating formal scientific discovery.`
+                    : `First identified in ${el.year_discovered}.`}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {el.named_by && (
+          <div className={styles.timelineItem}>
+            <div className={styles.timelineDot} style={{ background: catColor, opacity: 0.6 }} />
+            <div className={styles.timelineBody}>
+              <div className={styles.timelineYear}>Naming</div>
+              <div className={styles.timelineText}>Named by {el.named_by}.</div>
             </div>
           </div>
         )}
       </div>
 
-      {el.name_origin && (
-        <div className={`${styles.propSection} ${styles.etymologySection}`}>
-          <div className={styles.propSectionTitle}>Etymology</div>
-          <div style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.7 }}>
-            {el.name_origin}
-          </div>
+      {/* Quick facts */}
+      <div className={styles.propSection} style={{ marginTop: 16 }}>
+        <div className={styles.propSectionTitle}>Quick Facts</div>
+        <div className={styles.propGrid}>
+          <PropRow label="Year Discovered" value={el.year_discovered} />
+          <PropRow label="Discovered By" value={el.discovered_by} />
+          <PropRow label="Named By" value={el.named_by} />
+          <PropRow label="CAS Number" value={el.cas_number} />
         </div>
-      )}
-
-      {!hasDiscovery && !el.name_origin && (
-        <div className={styles.emptyState}>No historical data available for this element.</div>
-      )}
+      </div>
     </>
   );
 }
