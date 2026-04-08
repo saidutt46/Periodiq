@@ -13,7 +13,9 @@
     "scrape:merge": "node scripts/merge-data.mjs",
     "scrape:compounds": "node scripts/scrape-compounds.mjs",
     "scrape:all": "npm run scrape:pubchem && npm run scrape:wikipedia && npm run scrape:merge && npm run scrape:compounds",
-    "validate": "node scripts/validate-data.mjs"
+    "validate": "node scripts/validate-data.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [
     "periodic-table",
@@ -35,13 +37,17 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^25.5.2",
     "@types/react": "^19.2.14",
     "@types/three": "^0.183.1",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.2",
+    "jsdom": "^29.0.2",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.3"
   }
 }
