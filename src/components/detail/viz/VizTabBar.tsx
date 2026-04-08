@@ -1,6 +1,6 @@
 "use client";
 
-export type VizTab = "bohr" | "orbitals" | "crystal" | "radii" | "spectrum";
+export type VizTab = "bohr" | "orbitals" | "crystal" | "radii";
 
 interface VizTabBarProps {
   activeTab: VizTab;
@@ -13,7 +13,6 @@ const TAB_CONFIG: { id: VizTab; label: string }[] = [
   { id: "orbitals", label: "Orbitals" },
   { id: "crystal", label: "Crystal" },
   { id: "radii", label: "Radii" },
-  { id: "spectrum", label: "Spectrum" },
 ];
 
 export default function VizTabBar({

@@ -12,7 +12,6 @@ const BohrModelViz = dynamic(() => import("./BohrModelViz"), { ssr: false });
 const OrbitalCloudViz = dynamic(() => import("./OrbitalCloudViz"), { ssr: false });
 const CrystalStructureViz = dynamic(() => import("./CrystalStructureViz"), { ssr: false });
 const RadiiViz = dynamic(() => import("./RadiiViz"), { ssr: false });
-const SpectrumViz = dynamic(() => import("./SpectrumViz"), { ssr: false });
 
 interface VizPanelProps {
   element: Element;
@@ -80,16 +79,6 @@ export default function VizPanel({ element, categoryHex, theme }: VizPanelProps)
           />
         )}
 
-        {activeVizTab === "spectrum" && (
-          <SpectrumViz
-            ionizationEnergy={element.ionization_energy}
-            ionizationEnergies={element.ionization_energies || []}
-            categoryColor={categoryHex}
-            symbol={element.symbol}
-            name={element.name}
-            atomicNumber={element.atomic_number}
-          />
-        )}
       </div>
 
       {/* Data cards row at bottom */}

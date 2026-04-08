@@ -879,36 +879,6 @@
   color: var(--text-primary);
 }
 
-/* ─── Spectrum viz ─── */
-.spectrumContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  gap: 16px;
-}
-
-.spectrumStrip {
-  width: 100%;
-  max-width: 500px;
-  height: 80px;
-  border-radius: 8px;
-  border: 1px solid var(--border-subtle);
-  overflow: hidden;
-  position: relative;
-}
-
-.spectrumLabel {
-  font-size: 10px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  text-align: center;
-}
-
 /* ─── Radii viz labels ─── */
 .radiiLegend {
   position: absolute;
