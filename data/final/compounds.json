@@ -13,12 +13,12 @@
     {
       "formula": "HCl",
       "name": "Hydrochloric Acid",
-      "description": "Strong acid, stomach acid, industrial chemical"
+      "description": "Stomach acid, industrial cleaning, metal processing"
     },
     {
       "formula": "H₂SO₄",
       "name": "Sulfuric Acid",
-      "description": "Most produced industrial chemical worldwide"
+      "description": "Most produced industrial chemical, battery acid"
     },
     {
       "formula": "NH₃",
@@ -28,12 +28,12 @@
     {
       "formula": "CH₄",
       "name": "Methane",
-      "description": "Natural gas, simplest hydrocarbon"
+      "description": "Natural gas, greenhouse gas, energy source"
     },
     {
       "formula": "NaOH",
       "name": "Sodium Hydroxide",
-      "description": "Strong base, soap making, drain cleaner"
+      "description": "Lye, soap making, drain cleaner"
     },
     {
       "formula": "HNO₃",
@@ -43,7 +43,7 @@
     {
       "formula": "H₂S",
       "name": "Hydrogen Sulfide",
-      "description": "Toxic gas, rotten egg smell, volcanic emissions"
+      "description": "Rotten egg smell, volcanic gas, toxic"
     },
     {
       "formula": "HF",
@@ -55,73 +55,115 @@
     {
       "formula": "He",
       "name": "Helium (gas)",
-      "description": "Lighter than air, used in balloons and airships"
+      "description": "Balloon gas, cryogenics, MRI coolant, welding shield"
     }
   ],
   "Li": [
     {
       "formula": "LiOH",
       "name": "Lithium Hydroxide",
-      "description": "CO₂ scrubbing in spacecraft, grease production"
+      "description": "CO₂ scrubber in spacecraft, grease production"
     },
     {
       "formula": "Li₂CO₃",
       "name": "Lithium Carbonate",
-      "description": "Bipolar disorder treatment, ceramics"
+      "description": "Bipolar disorder medication, ceramics"
     },
     {
       "formula": "LiCoO₂",
       "name": "Lithium Cobalt Oxide",
-      "description": "Cathode material in lithium-ion batteries"
+      "description": "Lithium-ion battery cathode material"
+    },
+    {
+      "formula": "LiFePO₄",
+      "name": "Lithium Iron Phosphate",
+      "description": "Safe battery cathode, EV batteries"
     },
     {
       "formula": "LiCl",
       "name": "Lithium Chloride",
       "description": "Desiccant, brazing flux, air conditioning"
-    },
-    {
-      "formula": "LiF",
-      "name": "Lithium Fluoride",
-      "description": "Optics, nuclear reactors, ceramics"
     }
   ],
-  "Be": [],
-  "B": [],
+  "Be": [
+    {
+      "formula": "BeO",
+      "name": "Beryllium Oxide",
+      "description": "High thermal conductivity ceramic, electronics"
+    },
+    {
+      "formula": "BeCl₂",
+      "name": "Beryllium Chloride",
+      "description": "Catalyst, beryllium metal production"
+    },
+    {
+      "formula": "Be₃Al₂Si₆O₁₈",
+      "name": "Beryl",
+      "description": "Gemstone mineral (emerald, aquamarine)"
+    },
+    {
+      "formula": "BeF₂",
+      "name": "Beryllium Fluoride",
+      "description": "Nuclear reactor component, glass additive"
+    }
+  ],
+  "B": [
+    {
+      "formula": "H₃BO₃",
+      "name": "Boric Acid",
+      "description": "Antiseptic, insecticide, flame retardant"
+    },
+    {
+      "formula": "Na₂B₄O₇",
+      "name": "Borax",
+      "description": "Cleaning agent, flux, preservative"
+    },
+    {
+      "formula": "BN",
+      "name": "Boron Nitride",
+      "description": "Lubricant, heat-resistant material, abrasive"
+    },
+    {
+      "formula": "B₂O₃",
+      "name": "Boron Trioxide",
+      "description": "Glass making, ceramics, metallurgy flux"
+    },
+    {
+      "formula": "NaBH₄",
+      "name": "Sodium Borohydride",
+      "description": "Reducing agent in organic chemistry"
+    }
+  ],
   "C": [
     {
       "formula": "CO₂",
       "name": "Carbon Dioxide",
-      "description": "Greenhouse gas, photosynthesis, carbonated drinks"
+      "description": "Greenhouse gas, carbonation, dry ice, photosynthesis"
     },
     {
       "formula": "CO",
       "name": "Carbon Monoxide",
-      "description": "Toxic gas, fuel gas, metal smelting"
+      "description": "Toxic gas, reducing agent, fuel gas"
     },
     {
       "formula": "CH₄",
       "name": "Methane",
-      "description": "Natural gas, simplest organic compound"
+      "description": "Natural gas, simplest hydrocarbon"
     },
     {
       "formula": "C₂H₅OH",
       "name": "Ethanol",
-      "description": "Alcoholic beverages, fuel, solvent, antiseptic"
+      "description": "Alcoholic beverages, fuel, solvent, disinfectant"
     },
     {
       "formula": "C₆H₁₂O₆",
       "name": "Glucose",
-      "description": "Primary energy source for cells"
+      "description": "Primary energy source for cells, blood sugar"
     },
     {
       "formula": "CaCO₃",
       "name": "Calcium Carbonate",
       "description": "Limestone, chalk, marble, antacid"
-    },
-    {
-      "formula": "NaHCO₃",
-      "name": "Sodium Bicarbonate",
-      "description": "Baking soda, antacid, fire extinguisher"
     },
     {
       "formula": "CH₃COOH",
@@ -131,24 +173,29 @@
     {
       "formula": "CCl₄",
       "name": "Carbon Tetrachloride",
-      "description": "Historical solvent, refrigerant precursor"
+      "description": "Former solvent, fire extinguisher (now restricted)"
     },
     {
       "formula": "CS₂",
       "name": "Carbon Disulfide",
-      "description": "Solvent, viscose rayon production"
+      "description": "Solvent, rayon production, fumigant"
+    },
+    {
+      "formula": "C₆H₆",
+      "name": "Benzene",
+      "description": "Fundamental aromatic compound, industrial solvent"
     }
   ],
   "N": [
     {
       "formula": "NH₃",
       "name": "Ammonia",
-      "description": "Fertilizer base, refrigerant, cleaning agent"
+      "description": "Fertilizer feedstock, refrigerant, cleaning"
     },
     {
       "formula": "HNO₃",
       "name": "Nitric Acid",
-      "description": "Fertilizers, explosives, rocket propellant"
+      "description": "Fertilizer, explosives, rocket propellant oxidizer"
     },
     {
       "formula": "N₂O",
@@ -158,22 +205,7 @@
     {
       "formula": "NO₂",
       "name": "Nitrogen Dioxide",
-      "description": "Air pollutant, acid rain contributor"
-    },
-    {
-      "formula": "NO",
-      "name": "Nitric Oxide",
-      "description": "Signaling molecule in body, air pollutant"
-    },
-    {
-      "formula": "NaNO₃",
-      "name": "Sodium Nitrate",
-      "description": "Fertilizer, food preservative, gunpowder"
-    },
-    {
-      "formula": "KNO₃",
-      "name": "Potassium Nitrate",
-      "description": "Gunpowder, fertilizer, food preservative"
+      "description": "Air pollutant, nitric acid production"
     },
     {
       "formula": "NH₄NO₃",
@@ -181,70 +213,122 @@
       "description": "Fertilizer, explosive (ANFO)"
     },
     {
-      "formula": "N₂H₄",
-      "name": "Hydrazine",
-      "description": "Rocket propellant, chemical reducing agent"
+      "formula": "NaN₃",
+      "name": "Sodium Azide",
+      "description": "Airbag propellant, preservative"
     },
     {
-      "formula": "(NH₂)₂CO",
-      "name": "Urea",
-      "description": "Fertilizer, animal feed, skincare"
+      "formula": "NH₄Cl",
+      "name": "Ammonium Chloride",
+      "description": "Soldering flux, cough medicine, fertilizer"
+    },
+    {
+      "formula": "NO",
+      "name": "Nitric Oxide",
+      "description": "Signaling molecule, vasodilator, air pollutant"
+    },
+    {
+      "formula": "N₂H₄",
+      "name": "Hydrazine",
+      "description": "Rocket fuel, reducing agent, water treatment"
+    },
+    {
+      "formula": "KNO₃",
+      "name": "Potassium Nitrate",
+      "description": "Gunpowder ingredient, fertilizer, food preservative"
     }
   ],
   "O": [
     {
       "formula": "H₂O",
       "name": "Water",
-      "description": "Essential for life, covers 71% of Earth's surface"
+      "description": "Universal solvent, basis of life"
     },
     {
       "formula": "O₃",
       "name": "Ozone",
-      "description": "Stratospheric UV shield, surface-level pollutant"
+      "description": "UV shield in stratosphere, disinfectant, oxidizer"
     },
     {
       "formula": "CO₂",
       "name": "Carbon Dioxide",
-      "description": "Greenhouse gas, photosynthesis input"
+      "description": "Greenhouse gas, photosynthesis, carbonation"
     },
     {
       "formula": "SiO₂",
       "name": "Silicon Dioxide",
-      "description": "Sand, quartz, glass production"
+      "description": "Quartz, sand, glass, semiconductor manufacturing"
     },
     {
       "formula": "Fe₂O₃",
       "name": "Iron(III) Oxide",
-      "description": "Rust, pigment, iron ore (hematite)"
+      "description": "Rust, hematite ore, red pigment"
     },
     {
       "formula": "Al₂O₃",
       "name": "Aluminum Oxide",
-      "description": "Alumina, corundum, sapphire/ruby base"
+      "description": "Alumina, corundum, sapphire, abrasive"
     },
     {
       "formula": "CaO",
       "name": "Calcium Oxide",
-      "description": "Quicklime, cement production"
+      "description": "Quicklime, cement production, steelmaking"
+    },
+    {
+      "formula": "MgO",
+      "name": "Magnesium Oxide",
+      "description": "Refractory material, antacid, fire retardant"
+    },
+    {
+      "formula": "TiO₂",
+      "name": "Titanium Dioxide",
+      "description": "White pigment, sunscreen, food coloring"
     },
     {
       "formula": "SO₂",
       "name": "Sulfur Dioxide",
-      "description": "Preservative, acid rain precursor"
-    },
-    {
-      "formula": "H₂O₂",
-      "name": "Hydrogen Peroxide",
-      "description": "Disinfectant, bleaching agent"
-    },
-    {
-      "formula": "NO₂",
-      "name": "Nitrogen Dioxide",
-      "description": "Reddish-brown toxic gas, smog component"
+      "description": "Preservative, bleaching, acid rain precursor"
     }
   ],
-  "F": [],
-  "Ne": [],
+  "F": [
+    {
+      "formula": "HF",
+      "name": "Hydrofluoric Acid",
+      "description": "Glass etching, semiconductor processing"
+    },
+    {
+      "formula": "NaF",
+      "name": "Sodium Fluoride",
+      "description": "Toothpaste additive, water fluoridation"
+    },
+    {
+      "formula": "CaF₂",
+      "name": "Calcium Fluoride",
+      "description": "Fluorite mineral, optical lenses, flux"
+    },
+    {
+      "formula": "SF₆",
+      "name": "Sulfur Hexafluoride",
+      "description": "Electrical insulator, tracer gas, dense gas demos"
+    },
+    {
+      "formula": "UF₆",
+      "name": "Uranium Hexafluoride",
+      "description": "Uranium enrichment feedstock"
+    },
+    {
+      "formula": "CF₄",
+      "name": "Carbon Tetrafluoride",
+      "description": "Semiconductor etching, refrigerant"
+    }
+  ],
+  "Ne": [
+    {
+      "formula": "Ne",
+      "name": "Neon (gas)",
+      "description": "Neon signs, lasers, cryogenics, high-voltage indicators"
+    }
+  ],
   "Na": [
     {
       "formula": "NaCl",
@@ -254,45 +338,71 @@
     {
       "formula": "NaOH",
       "name": "Sodium Hydroxide",
-      "description": "Lye, soap making, drain cleaner"
+      "description": "Lye, soap making, chemical manufacturing"
     },
     {
       "formula": "NaHCO₃",
       "name": "Sodium Bicarbonate",
-      "description": "Baking soda, antacid"
+      "description": "Baking soda, antacid, fire extinguisher"
     },
     {
       "formula": "Na₂CO₃",
       "name": "Sodium Carbonate",
-      "description": "Washing soda, glass making"
-    },
-    {
-      "formula": "NaF",
-      "name": "Sodium Fluoride",
-      "description": "Toothpaste, water fluoridation"
-    },
-    {
-      "formula": "Na₂SO₄",
-      "name": "Sodium Sulfate",
-      "description": "Detergents, glass manufacturing"
-    },
-    {
-      "formula": "NaNO₃",
-      "name": "Sodium Nitrate",
-      "description": "Fertilizer, food preservative"
+      "description": "Washing soda, glass making, water softener"
     },
     {
       "formula": "NaClO",
       "name": "Sodium Hypochlorite",
-      "description": "Bleach, water disinfection"
+      "description": "Bleach, water treatment, disinfectant"
+    },
+    {
+      "formula": "Na₂SO₄",
+      "name": "Sodium Sulfate",
+      "description": "Detergent filler, glass making, textile dye"
+    },
+    {
+      "formula": "NaN₃",
+      "name": "Sodium Azide",
+      "description": "Airbag propellant, biocide"
+    },
+    {
+      "formula": "Na₂S₂O₃",
+      "name": "Sodium Thiosulfate",
+      "description": "Photo fixer, dechlorination, medical antidote"
     }
   ],
-  "Mg": [],
+  "Mg": [
+    {
+      "formula": "MgO",
+      "name": "Magnesium Oxide",
+      "description": "Refractory, antacid, electrical insulator"
+    },
+    {
+      "formula": "MgSO₄",
+      "name": "Magnesium Sulfate",
+      "description": "Epsom salt, fertilizer, medical use"
+    },
+    {
+      "formula": "Mg(OH)₂",
+      "name": "Magnesium Hydroxide",
+      "description": "Milk of magnesia, antacid, flame retardant"
+    },
+    {
+      "formula": "MgCl₂",
+      "name": "Magnesium Chloride",
+      "description": "De-icing, dust control, tofu coagulant"
+    },
+    {
+      "formula": "MgCO₃",
+      "name": "Magnesium Carbonate",
+      "description": "Chalk for climbing, antacid, filler"
+    }
+  ],
   "Al": [
     {
       "formula": "Al₂O₃",
       "name": "Aluminum Oxide",
-      "description": "Alumina, corundum, sapphire, abrasive"
+      "description": "Alumina, corundum, abrasive, catalyst support"
     },
     {
       "formula": "Al(OH)₃",
@@ -302,7 +412,7 @@
     {
       "formula": "AlCl₃",
       "name": "Aluminum Chloride",
-      "description": "Catalyst, antiperspirant"
+      "description": "Friedel-Crafts catalyst, antiperspirant"
     },
     {
       "formula": "Al₂(SO₄)₃",
@@ -312,24 +422,24 @@
     {
       "formula": "NaAlO₂",
       "name": "Sodium Aluminate",
-      "description": "Water treatment, cement"
+      "description": "Water treatment, cement accelerator"
     },
     {
-      "formula": "KAl(SO₄)₂",
-      "name": "Alum",
-      "description": "Water purification, dyeing, pickling"
+      "formula": "AlF₃",
+      "name": "Aluminum Fluoride",
+      "description": "Aluminum smelting flux, ceramics"
     }
   ],
   "Si": [
     {
       "formula": "SiO₂",
       "name": "Silicon Dioxide",
-      "description": "Sand, quartz, glass, semiconductors"
+      "description": "Quartz, sand, glass, optical fibers"
     },
     {
       "formula": "SiC",
       "name": "Silicon Carbide",
-      "description": "Abrasive, semiconductor, armor plating"
+      "description": "Abrasive, semiconductor, ceramic armor"
     },
     {
       "formula": "SiH₄",
@@ -339,35 +449,71 @@
     {
       "formula": "Na₂SiO₃",
       "name": "Sodium Silicate",
-      "description": "Water glass, adhesive, sealant"
+      "description": "Water glass, sealant, detergent builder"
     },
     {
-      "formula": "H₂SiO₃",
-      "name": "Silicic Acid",
-      "description": "Silica gel precursor, food additive"
+      "formula": "Si₃N₄",
+      "name": "Silicon Nitride",
+      "description": "High-temp ceramic, engine parts, bearings"
     }
   ],
-  "P": [],
+  "P": [
+    {
+      "formula": "H₃PO₄",
+      "name": "Phosphoric Acid",
+      "description": "Fertilizer, food additive, cola flavoring, rust remover"
+    },
+    {
+      "formula": "Ca₃(PO₄)₂",
+      "name": "Calcium Phosphate",
+      "description": "Bone mineral, fertilizer, toothpaste"
+    },
+    {
+      "formula": "ATP",
+      "name": "Adenosine Triphosphate",
+      "description": "Energy currency of cells, biochemistry"
+    },
+    {
+      "formula": "PCl₃",
+      "name": "Phosphorus Trichloride",
+      "description": "Pesticide and flame retardant synthesis"
+    },
+    {
+      "formula": "P₄O₁₀",
+      "name": "Phosphorus Pentoxide",
+      "description": "Powerful desiccant, dehydrating agent"
+    },
+    {
+      "formula": "Na₃PO₄",
+      "name": "Trisodium Phosphate",
+      "description": "Cleaning agent, food additive, water treatment"
+    }
+  ],
   "S": [
     {
       "formula": "H₂SO₄",
       "name": "Sulfuric Acid",
-      "description": "Most widely used chemical, batteries"
+      "description": "Most produced chemical worldwide, batteries"
     },
     {
       "formula": "SO₂",
       "name": "Sulfur Dioxide",
-      "description": "Wine preservative, acid rain precursor"
+      "description": "Preservative, bleaching agent, acid rain precursor"
     },
     {
       "formula": "H₂S",
       "name": "Hydrogen Sulfide",
-      "description": "Rotten egg smell, toxic gas"
+      "description": "Toxic volcanic gas, rotten egg odor"
     },
     {
       "formula": "Na₂SO₄",
       "name": "Sodium Sulfate",
-      "description": "Detergent filler, glass production"
+      "description": "Detergent, glass making, textile processing"
+    },
+    {
+      "formula": "CS₂",
+      "name": "Carbon Disulfide",
+      "description": "Solvent, rayon/cellophane production"
     },
     {
       "formula": "CaSO₄",
@@ -375,46 +521,36 @@
       "description": "Gypsum, plaster of Paris, drywall"
     },
     {
-      "formula": "SO₃",
-      "name": "Sulfur Trioxide",
-      "description": "Sulfuric acid production intermediate"
-    },
-    {
-      "formula": "CS₂",
-      "name": "Carbon Disulfide",
-      "description": "Solvent, rayon production"
-    },
-    {
       "formula": "FeS₂",
       "name": "Iron Pyrite",
-      "description": "Fool's gold, sulfur source"
+      "description": "Fool's gold, sulfuric acid production"
+    },
+    {
+      "formula": "SO₃",
+      "name": "Sulfur Trioxide",
+      "description": "Sulfuric acid precursor, sulfonation agent"
     }
   ],
   "Cl": [
     {
       "formula": "NaCl",
       "name": "Sodium Chloride",
-      "description": "Table salt, essential for life"
+      "description": "Table salt, de-icing, chemical feedstock"
     },
     {
       "formula": "HCl",
       "name": "Hydrochloric Acid",
-      "description": "Stomach acid, industrial acid"
-    },
-    {
-      "formula": "Cl₂",
-      "name": "Chlorine Gas",
-      "description": "Water disinfection, PVC production"
+      "description": "Stomach acid, metal cleaning, food processing"
     },
     {
       "formula": "NaClO",
       "name": "Sodium Hypochlorite",
-      "description": "Bleach, water treatment"
+      "description": "Bleach, water disinfection"
     },
     {
       "formula": "KCl",
       "name": "Potassium Chloride",
-      "description": "Fertilizer, salt substitute"
+      "description": "Fertilizer, salt substitute, medical IV"
     },
     {
       "formula": "CaCl₂",
@@ -422,27 +558,38 @@
       "description": "De-icing, desiccant, food additive"
     },
     {
-      "formula": "CHCl₃",
-      "name": "Chloroform",
-      "description": "Historical anesthetic, solvent"
+      "formula": "PVC",
+      "name": "Polyvinyl Chloride",
+      "description": "Plastic pipes, vinyl siding, flooring"
     },
     {
-      "formula": "CCl₄",
-      "name": "Carbon Tetrachloride",
-      "description": "Historical solvent, fire extinguisher"
+      "formula": "CHCl₃",
+      "name": "Chloroform",
+      "description": "Solvent, historical anesthetic, reagent"
+    },
+    {
+      "formula": "AlCl₃",
+      "name": "Aluminum Chloride",
+      "description": "Catalyst, antiperspirant active ingredient"
     }
   ],
-  "Ar": [],
+  "Ar": [
+    {
+      "formula": "Ar",
+      "name": "Argon (gas)",
+      "description": "Welding shield gas, light bulb fill, cryosurgery"
+    }
+  ],
   "K": [
     {
       "formula": "KCl",
       "name": "Potassium Chloride",
-      "description": "Fertilizer, salt substitute, IV fluid"
+      "description": "Fertilizer, salt substitute, lethal injection"
     },
     {
       "formula": "KOH",
       "name": "Potassium Hydroxide",
-      "description": "Soap making, batteries, food processing"
+      "description": "Liquid soap, battery electrolyte, food processing"
     },
     {
       "formula": "KNO₃",
@@ -452,17 +599,17 @@
     {
       "formula": "K₂CO₃",
       "name": "Potassium Carbonate",
-      "description": "Glass production, soap, cocoa processing"
+      "description": "Soap, glass making, cocoa processing"
     },
     {
       "formula": "KMnO₄",
       "name": "Potassium Permanganate",
-      "description": "Disinfectant, water treatment, oxidizer"
+      "description": "Disinfectant, water treatment, organic synthesis"
     },
     {
-      "formula": "K₂SO₄",
-      "name": "Potassium Sulfate",
-      "description": "Fertilizer, gypsum production"
+      "formula": "K₂Cr₂O₇",
+      "name": "Potassium Dichromate",
+      "description": "Oxidizing agent, leather tanning, photography"
     }
   ],
   "Ca": [
@@ -474,7 +621,7 @@
     {
       "formula": "CaO",
       "name": "Calcium Oxide",
-      "description": "Quicklime, cement, steelmaking"
+      "description": "Quicklime, cement, steelmaking flux"
     },
     {
       "formula": "Ca(OH)₂",
@@ -484,29 +631,144 @@
     {
       "formula": "CaSO₄",
       "name": "Calcium Sulfate",
-      "description": "Gypsum, plaster, drywall"
+      "description": "Gypsum, plaster of Paris, drywall"
     },
     {
       "formula": "CaCl₂",
       "name": "Calcium Chloride",
-      "description": "De-icing, desiccant, food processing"
-    },
-    {
-      "formula": "CaF₂",
-      "name": "Calcium Fluoride",
-      "description": "Fluorite, optical lenses, HF production"
+      "description": "De-icing, dust suppression, cheese making"
     },
     {
       "formula": "Ca₃(PO₄)₂",
       "name": "Calcium Phosphate",
-      "description": "Bones, teeth, fertilizer"
+      "description": "Bone and teeth mineral, fertilizer"
+    },
+    {
+      "formula": "CaF₂",
+      "name": "Calcium Fluoride",
+      "description": "Fluorite mineral, flux, optical windows"
     }
   ],
-  "Sc": [],
-  "Ti": [],
-  "V": [],
-  "Cr": [],
-  "Mn": [],
+  "Sc": [
+    {
+      "formula": "Sc₂O₃",
+      "name": "Scandium Oxide",
+      "description": "High-intensity lamps, ceramics, electronics"
+    },
+    {
+      "formula": "ScF₃",
+      "name": "Scandium Fluoride",
+      "description": "Negative thermal expansion material"
+    },
+    {
+      "formula": "ScCl₃",
+      "name": "Scandium Chloride",
+      "description": "Lewis acid catalyst, organic synthesis"
+    }
+  ],
+  "Ti": [
+    {
+      "formula": "TiO₂",
+      "name": "Titanium Dioxide",
+      "description": "White pigment, sunscreen, food whitener"
+    },
+    {
+      "formula": "TiCl₄",
+      "name": "Titanium Tetrachloride",
+      "description": "Titanium metal production, smoke screens"
+    },
+    {
+      "formula": "TiN",
+      "name": "Titanium Nitride",
+      "description": "Hard gold coating, drill bits, implants"
+    },
+    {
+      "formula": "TiC",
+      "name": "Titanium Carbide",
+      "description": "Cutting tools, wear-resistant coatings"
+    },
+    {
+      "formula": "BaTiO₃",
+      "name": "Barium Titanate",
+      "description": "Piezoelectric ceramics, capacitors"
+    }
+  ],
+  "V": [
+    {
+      "formula": "V₂O₅",
+      "name": "Vanadium Pentoxide",
+      "description": "Catalyst for sulfuric acid production"
+    },
+    {
+      "formula": "VO₂",
+      "name": "Vanadium Dioxide",
+      "description": "Thermochromic material, smart windows"
+    },
+    {
+      "formula": "NH₄VO₃",
+      "name": "Ammonium Metavanadate",
+      "description": "Catalyst, ceramic colorant"
+    },
+    {
+      "formula": "VCl₃",
+      "name": "Vanadium Trichloride",
+      "description": "Catalyst, reducing agent"
+    }
+  ],
+  "Cr": [
+    {
+      "formula": "Cr₂O₃",
+      "name": "Chromium(III) Oxide",
+      "description": "Green pigment, abrasive, catalyst"
+    },
+    {
+      "formula": "K₂Cr₂O₇",
+      "name": "Potassium Dichromate",
+      "description": "Oxidizing agent, tanning, photography"
+    },
+    {
+      "formula": "CrO₃",
+      "name": "Chromium Trioxide",
+      "description": "Chrome plating, oxidizing agent"
+    },
+    {
+      "formula": "FeCr₂O₄",
+      "name": "Chromite",
+      "description": "Primary chromium ore, refractory"
+    },
+    {
+      "formula": "Cr₂(SO₄)₃",
+      "name": "Chromium(III) Sulfate",
+      "description": "Leather tanning, textile mordant"
+    }
+  ],
+  "Mn": [
+    {
+      "formula": "MnO₂",
+      "name": "Manganese Dioxide",
+      "description": "Battery cathode, pigment, oxidizer"
+    },
+    {
+      "formula": "KMnO₄",
+      "name": "Potassium Permanganate",
+      "description": "Disinfectant, water treatment, reagent"
+    },
+    {
+      "formula": "MnSO₄",
+      "name": "Manganese Sulfate",
+      "description": "Fertilizer, animal feed supplement"
+    },
+    {
+      "formula": "MnCl₂",
+      "name": "Manganese Chloride",
+      "description": "Catalyst, dietary supplement"
+    },
+    {
+      "formula": "Mn₃O₄",
+      "name": "Manganese(II,III) Oxide",
+      "description": "Ferrite production, catalyst"
+    }
+  ],
   "Fe": [
     {
       "formula": "Fe₂O₃",
@@ -541,85 +803,225 @@
     {
       "formula": "FeO",
       "name": "Iron(II) Oxide",
-      "description": "Pigment, steel manufacturing"
+      "description": "Pigment, steel production intermediate"
     },
     {
       "formula": "FeCO₃",
-      "name": "Iron Carbonate",
-      "description": "Siderite mineral, iron production"
+      "name": "Iron(II) Carbonate",
+      "description": "Siderite mineral, iron supplement"
     }
   ],
-  "Co": [],
-  "Ni": [],
+  "Co": [
+    {
+      "formula": "CoO",
+      "name": "Cobalt(II) Oxide",
+      "description": "Blue ceramic pigment, catalyst"
+    },
+    {
+      "formula": "CoCl₂",
+      "name": "Cobalt(II) Chloride",
+      "description": "Humidity indicator, catalyst, electroplating"
+    },
+    {
+      "formula": "LiCoO₂",
+      "name": "Lithium Cobalt Oxide",
+      "description": "Li-ion battery cathode material"
+    },
+    {
+      "formula": "Co₃O₄",
+      "name": "Cobalt(II,III) Oxide",
+      "description": "Catalyst, ceramic pigment"
+    },
+    {
+      "formula": "CoSO₄",
+      "name": "Cobalt(II) Sulfate",
+      "description": "Electroplating, animal feed additive"
+    }
+  ],
+  "Ni": [
+    {
+      "formula": "NiO",
+      "name": "Nickel(II) Oxide",
+      "description": "Ceramic colorant, catalyst, fuel cells"
+    },
+    {
+      "formula": "NiSO₄",
+      "name": "Nickel(II) Sulfate",
+      "description": "Electroplating, battery material"
+    },
+    {
+      "formula": "Ni(OH)₂",
+      "name": "Nickel(II) Hydroxide",
+      "description": "NiMH battery cathode, catalyst"
+    },
+    {
+      "formula": "NiCl₂",
+      "name": "Nickel(II) Chloride",
+      "description": "Catalyst, electroplating"
+    },
+    {
+      "formula": "NiFe₂O₄",
+      "name": "Nickel Ferrite",
+      "description": "Magnetic material, electronics"
+    }
+  ],
   "Cu": [
     {
       "formula": "CuSO₄",
       "name": "Copper(II) Sulfate",
-      "description": "Blue vitriol, fungicide, electroplating"
+      "description": "Fungicide, herbicide, blue vitriol"
     },
     {
       "formula": "CuO",
       "name": "Copper(II) Oxide",
-      "description": "Black pigment, ceramics, batteries"
+      "description": "Pigment, catalyst, semiconductor"
     },
     {
       "formula": "Cu₂O",
       "name": "Copper(I) Oxide",
-      "description": "Red pigment, antifouling paint"
+      "description": "Antifouling paint, solar cells, fungicide"
     },
     {
       "formula": "CuCl₂",
       "name": "Copper(II) Chloride",
-      "description": "Catalyst, wood preservative"
-    },
-    {
-      "formula": "Cu(OH)₂",
-      "name": "Copper(II) Hydroxide",
-      "description": "Fungicide, blue pigment"
+      "description": "Catalyst, wood preservative, PCB etching"
     },
     {
       "formula": "CuCO₃",
-      "name": "Copper Carbonate",
-      "description": "Green patina, pigment (verdigris)"
+      "name": "Copper(II) Carbonate",
+      "description": "Green patina on copper, pigment"
     },
     {
-      "formula": "CuFeS₂",
-      "name": "Chalcopyrite",
-      "description": "Primary copper ore mineral"
+      "formula": "Cu₂S",
+      "name": "Copper(I) Sulfide",
+      "description": "Chalcocite ore, semiconductor"
+    },
+    {
+      "formula": "Cu(NO₃)₂",
+      "name": "Copper(II) Nitrate",
+      "description": "Catalyst, textile mordant, patination"
     }
   ],
-  "Zn": [],
-  "Ga": [],
-  "Ge": [],
-  "As": [],
-  "Se": [],
-  "Br": [],
-  "Kr": [],
-  "Rb": [],
-  "Sr": [],
-  "Y": [],
-  "Zr": [],
-  "Nb": [],
-  "Mo": [],
-  "Tc": [],
-  "Ru": [],
-  "Rh": [],
-  "Pd": [],
-  "Ag": [
+  "Zn": [
     {
-      "formula": "AgNO₃",
-      "name": "Silver Nitrate",
-      "description": "Photography, mirror making, antiseptic"
+      "formula": "ZnO",
+      "name": "Zinc Oxide",
+      "description": "Sunscreen, rubber additive, white pigment"
     },
     {
-      "formula": "AgCl",
-      "name": "Silver Chloride",
-      "description": "Photography, electrochemistry reference"
+      "formula": "ZnCl₂",
+      "name": "Zinc Chloride",
+      "description": "Soldering flux, wood preservative"
     },
     {
-      "formula": "Ag₂O",
-      "name": "Silver Oxide",
-      "description": "Button cell batteries, catalyst"
+      "formula": "ZnSO₄",
+      "name": "Zinc Sulfate",
+      "description": "Dietary supplement, fertilizer, herbicide"
+    },
+    {
+      "formula": "ZnS",
+      "name": "Zinc Sulfide",
+      "description": "Luminescent paint, infrared optics"
+    },
+    {
+      "formula": "Zn(OH)₂",
+      "name": "Zinc Hydroxide",
+      "description": "Surgical bandage, rubber additive"
+    }
+  ],
+  "Ga": [
+    {
+      "formula": "GaAs",
+      "name": "Gallium Arsenide",
+      "description": "Semiconductor, solar cells, LEDs, lasers"
+    },
+    {
+      "formula": "GaN",
+      "name": "Gallium Nitride",
+      "description": "Blue LEDs, power electronics, RF devices"
+    },
+    {
+      "formula": "Ga₂O₃",
+      "name": "Gallium Oxide",
+      "description": "Wide bandgap semiconductor, UV detectors"
+    },
+    {
+      "formula": "GaCl₃",
+      "name": "Gallium Trichloride",
+      "description": "Friedel-Crafts catalyst, semiconductor precursor"
+    }
+  ],
+  "Ge": [
+    {
+      "formula": "GeO₂",
+      "name": "Germanium Dioxide",
+      "description": "Fiber optic glass, catalyst, infrared optics"
+    },
+    {
+      "formula": "GeCl₄",
+      "name": "Germanium Tetrachloride",
+      "description": "Fiber optic precursor, semiconductor"
+    },
+    {
+      "formula": "GeH₄",
+      "name": "Germane",
+      "description": "Semiconductor manufacturing, thin films"
+    }
+  ],
+  "As": [
+    {
+      "formula": "As₂O₃",
+      "name": "Arsenic Trioxide",
+      "description": "Wood preservative, leukemia treatment, poison"
+    },
+    {
+      "formula": "GaAs",
+      "name": "Gallium Arsenide",
+      "description": "Semiconductor, solar cells, LEDs"
+    },
+    {
+      "formula": "AsH₃",
+      "name": "Arsine",
+      "description": "Semiconductor dopant, extremely toxic gas"
+    },
+    {
+      "formula": "CCA",
+      "name": "Chromated Copper Arsenate",
+      "description": "Wood preservative (now restricted)"
+    }
+  ],
+  "Se": [
+    {
+      "formula": "SeO₂",
+      "name": "Selenium Dioxide",
+      "description": "Oxidizing agent, glass decolorizer"
+    },
+    {
+      "formula": "H₂Se",
+      "name": "Hydrogen Selenide",
+      "description": "Semiconductor manufacturing, toxic gas"
+    },
+    {
+      "formula": "Na₂SeO₃",
+      "name": "Sodium Selenite",
+      "description": "Dietary supplement, glass manufacturing"
+    },
+    {
+      "formula": "CdSe",
+      "name": "Cadmium Selenide",
+      "description": "Quantum dots, photovoltaics, pigment"
+    }
+  ],
+  "Br": [
+    {
+      "formula": "NaBr",
+      "name": "Sodium Bromide",
+      "description": "Photography, veterinary medicine, drilling fluid"
+    },
+    {
+      "formula": "HBr",
+      "name": "Hydrobromic Acid",
+      "description": "Organic synthesis, catalyst"
     },
     {
       "formula": "AgBr",
@@ -627,9 +1029,360 @@
       "description": "Photographic film emulsion"
     },
     {
+      "formula": "CH₃Br",
+      "name": "Methyl Bromide",
+      "description": "Fumigant (now restricted), fire suppressant"
+    },
+    {
+      "formula": "KBr",
+      "name": "Potassium Bromide",
+      "description": "Anti-seizure medication, photography, IR spectroscopy"
+    }
+  ],
+  "Kr": [
+    {
+      "formula": "KrF₂",
+      "name": "Krypton Difluoride",
+      "description": "Powerful oxidizer, only stable Kr compound"
+    }
+  ],
+  "Rb": [
+    {
+      "formula": "RbCl",
+      "name": "Rubidium Chloride",
+      "description": "Biomedical research tracer, electrolyte"
+    },
+    {
+      "formula": "Rb₂CO₃",
+      "name": "Rubidium Carbonate",
+      "description": "Specialty glass, catalyst"
+    },
+    {
+      "formula": "RbOH",
+      "name": "Rubidium Hydroxide",
+      "description": "Strong base, chemical research"
+    }
+  ],
+  "Sr": [
+    {
+      "formula": "SrCO₃",
+      "name": "Strontium Carbonate",
+      "description": "CRT glass, ferrite magnets, fireworks"
+    },
+    {
+      "formula": "SrTiO₃",
+      "name": "Strontium Titanate",
+      "description": "Dielectric ceramic, diamond simulant"
+    },
+    {
+      "formula": "Sr(NO₃)₂",
+      "name": "Strontium Nitrate",
+      "description": "Red fireworks, flares, signal rockets"
+    },
+    {
+      "formula": "SrCl₂",
+      "name": "Strontium Chloride",
+      "description": "Sensitive teeth toothpaste, pyrotechnics"
+    }
+  ],
+  "Y": [
+    {
+      "formula": "Y₂O₃",
+      "name": "Yttrium Oxide",
+      "description": "Phosphor host, ceramics, laser crystals"
+    },
+    {
+      "formula": "YBa₂Cu₃O₇",
+      "name": "YBCO",
+      "description": "High-temperature superconductor"
+    },
+    {
+      "formula": "YAG",
+      "name": "Yttrium Aluminum Garnet",
+      "description": "Laser host crystal, synthetic gemstone"
+    },
+    {
+      "formula": "YF₃",
+      "name": "Yttrium Fluoride",
+      "description": "Optical coatings, ceramics"
+    }
+  ],
+  "Zr": [
+    {
+      "formula": "ZrO₂",
+      "name": "Zirconium Dioxide",
+      "description": "Zirconia, dental crowns, thermal barrier, cubic zirconia"
+    },
+    {
+      "formula": "ZrSiO₄",
+      "name": "Zircon",
+      "description": "Gemstone, refractory, nuclear cladding"
+    },
+    {
+      "formula": "ZrCl₄",
+      "name": "Zirconium Tetrachloride",
+      "description": "Catalyst, water repellent treatment"
+    }
+  ],
+  "Nb": [
+    {
+      "formula": "Nb₂O₅",
+      "name": "Niobium Pentoxide",
+      "description": "Optical glass, capacitors, lithium battery anode"
+    },
+    {
+      "formula": "NbC",
+      "name": "Niobium Carbide",
+      "description": "Cutting tools, grain refiner in steel"
+    },
+    {
+      "formula": "NbN",
+      "name": "Niobium Nitride",
+      "description": "Superconducting thin films, tool coating"
+    }
+  ],
+  "Mo": [
+    {
+      "formula": "MoS₂",
+      "name": "Molybdenum Disulfide",
+      "description": "Solid lubricant, catalyst, 2D material"
+    },
+    {
+      "formula": "MoO₃",
+      "name": "Molybdenum Trioxide",
+      "description": "Catalyst, steel additive, colorant"
+    },
+    {
+      "formula": "Na₂MoO₄",
+      "name": "Sodium Molybdate",
+      "description": "Corrosion inhibitor, fertilizer, catalyst"
+    },
+    {
+      "formula": "MoSi₂",
+      "name": "Molybdenum Disilicide",
+      "description": "Heating elements, oxidation-resistant coating"
+    }
+  ],
+  "Tc": [
+    {
+      "formula": "⁹⁹ᵐTcO₄⁻",
+      "name": "Pertechnetate",
+      "description": "Most used medical radioisotope for imaging"
+    },
+    {
+      "formula": "TcO₂",
+      "name": "Technetium Dioxide",
+      "description": "Nuclear medicine research"
+    }
+  ],
+  "Ru": [
+    {
+      "formula": "RuO₂",
+      "name": "Ruthenium Dioxide",
+      "description": "Thick-film resistors, electrocatalyst"
+    },
+    {
+      "formula": "RuCl₃",
+      "name": "Ruthenium Trichloride",
+      "description": "Catalyst precursor, dye-sensitized solar cells"
+    },
+    {
+      "formula": "Ru(bpy)₃²⁺",
+      "name": "Tris(bipyridine)ruthenium",
+      "description": "Photocatalyst, luminescent probe"
+    }
+  ],
+  "Rh": [
+    {
+      "formula": "Rh₂O₃",
+      "name": "Rhodium(III) Oxide",
+      "description": "Catalyst, optical coating"
+    },
+    {
+      "formula": "RhCl₃",
+      "name": "Rhodium Trichloride",
+      "description": "Catalyst precursor, Wilkinson's catalyst"
+    }
+  ],
+  "Pd": [
+    {
+      "formula": "PdCl₂",
+      "name": "Palladium(II) Chloride",
+      "description": "Catalyst, CO detector, photography"
+    },
+    {
+      "formula": "Pd(OAc)₂",
+      "name": "Palladium(II) Acetate",
+      "description": "Cross-coupling catalyst (Suzuki, Heck)"
+    },
+    {
+      "formula": "PdO",
+      "name": "Palladium Oxide",
+      "description": "Oxidation catalyst, ceramic capacitors"
+    }
+  ],
+  "Ag": [
+    {
+      "formula": "AgNO₃",
+      "name": "Silver Nitrate",
+      "description": "Photography, wound cauterization, mirror making"
+    },
+    {
+      "formula": "AgCl",
+      "name": "Silver Chloride",
+      "description": "Photographic emulsion, reference electrode"
+    },
+    {
+      "formula": "Ag₂O",
+      "name": "Silver Oxide",
+      "description": "Button battery, mild oxidizer"
+    },
+    {
+      "formula": "AgBr",
+      "name": "Silver Bromide",
+      "description": "Photographic film, photochromic glass"
+    },
+    {
       "formula": "Ag₂S",
       "name": "Silver Sulfide",
-      "description": "Tarnish on silver, silver ore"
+      "description": "Tarnish on silver, ore mineral"
+    },
+    {
+      "formula": "AgI",
+      "name": "Silver Iodide",
+      "description": "Cloud seeding, photography, antiseptic"
+    }
+  ],
+  "Cd": [
+    {
+      "formula": "CdS",
+      "name": "Cadmium Sulfide",
+      "description": "Yellow pigment, solar cells, photodetectors"
+    },
+    {
+      "formula": "CdSe",
+      "name": "Cadmium Selenide",
+      "description": "Quantum dots, LEDs, solar cells"
+    },
+    {
+      "formula": "CdTe",
+      "name": "Cadmium Telluride",
+      "description": "Thin-film solar cells, radiation detector"
+    },
+    {
+      "formula": "CdO",
+      "name": "Cadmium Oxide",
+      "description": "Semiconductor, battery electrode, electroplating"
+    }
+  ],
+  "In": [
+    {
+      "formula": "In₂O₃",
+      "name": "Indium(III) Oxide",
+      "description": "Transparent conductor (ITO), gas sensor"
+    },
+    {
+      "formula": "InP",
+      "name": "Indium Phosphide",
+      "description": "Semiconductor, fiber optics, high-speed electronics"
+    },
+    {
+      "formula": "InAs",
+      "name": "Indium Arsenide",
+      "description": "Infrared detector, high-speed transistors"
+    },
+    {
+      "formula": "ITO",
+      "name": "Indium Tin Oxide",
+      "description": "Touchscreen coating, transparent electrode"
+    }
+  ],
+  "Sn": [
+    {
+      "formula": "SnO₂",
+      "name": "Tin Dioxide",
+      "description": "Ceramic glaze, gas sensor, transparent conductor"
+    },
+    {
+      "formula": "SnCl₂",
+      "name": "Tin(II) Chloride",
+      "description": "Reducing agent, tin plating, food preservative"
+    },
+    {
+      "formula": "SnF₂",
+      "name": "Stannous Fluoride",
+      "description": "Toothpaste active ingredient"
+    },
+    {
+      "formula": "SnS",
+      "name": "Tin(II) Sulfide",
+      "description": "Solar cell material, semiconductor"
+    },
+    {
+      "formula": "Sn(CH₃)₄",
+      "name": "Tetramethyltin",
+      "description": "Organometallic reagent, CVD precursor"
+    }
+  ],
+  "Sb": [
+    {
+      "formula": "Sb₂O₃",
+      "name": "Antimony Trioxide",
+      "description": "Flame retardant, catalyst, white pigment"
+    },
+    {
+      "formula": "Sb₂S₃",
+      "name": "Antimony Trisulfide",
+      "description": "Match heads, fireworks, semiconductor"
+    },
+    {
+      "formula": "SbCl₃",
+      "name": "Antimony Trichloride",
+      "description": "Catalyst, fireproofing, analytical reagent"
+    }
+  ],
+  "Te": [
+    {
+      "formula": "CdTe",
+      "name": "Cadmium Telluride",
+      "description": "Thin-film solar cells, radiation detectors"
+    },
+    {
+      "formula": "Bi₂Te₃",
+      "name": "Bismuth Telluride",
+      "description": "Thermoelectric cooling, power generation"
+    },
+    {
+      "formula": "TeO₂",
+      "name": "Tellurium Dioxide",
+      "description": "Acousto-optic devices, glass additive"
+    },
+    {
+      "formula": "H₂Te",
+      "name": "Hydrogen Telluride",
+      "description": "Semiconductor dopant, toxic gas"
+    }
+  ],
+  "I": [
+    {
+      "formula": "KI",
+      "name": "Potassium Iodide",
+      "description": "Thyroid protection, salt iodization, photography"
+    },
+    {
+      "formula": "I₂",
+      "name": "Iodine",
+      "description": "Antiseptic (tincture), disinfectant, nutrition"
+    },
+    {
+      "formula": "NaI",
+      "name": "Sodium Iodide",
+      "description": "Scintillation detector, iodine supplement"
+    },
+    {
+      "formula": "CH₃I",
+      "name": "Methyl Iodide",
+      "description": "Organic synthesis, fumigant"
     },
     {
       "formula": "AgI",
@@ -637,52 +1390,411 @@
       "description": "Cloud seeding, photography"
     }
   ],
-  "Cd": [],
-  "In": [],
-  "Sn": [],
-  "Sb": [],
-  "Te": [],
-  "I": [],
-  "Xe": [],
-  "Cs": [],
-  "Ba": [],
-  "La": [],
-  "Ce": [],
-  "Pr": [],
-  "Nd": [],
-  "Pm": [],
-  "Sm": [],
-  "Eu": [],
-  "Gd": [],
-  "Tb": [],
-  "Dy": [],
-  "Ho": [],
-  "Er": [],
-  "Tm": [],
-  "Yb": [],
-  "Lu": [],
-  "Hf": [],
-  "Ta": [],
-  "W": [],
-  "Re": [],
-  "Os": [],
-  "Ir": [],
-  "Pt": [],
+  "Xe": [
+    {
+      "formula": "XeF₂",
+      "name": "Xenon Difluoride",
+      "description": "Fluorinating agent, semiconductor etching"
+    },
+    {
+      "formula": "XeF₄",
+      "name": "Xenon Tetrafluoride",
+      "description": "First noble gas compound synthesized (1962)"
+    },
+    {
+      "formula": "XeO₃",
+      "name": "Xenon Trioxide",
+      "description": "Powerful oxidizer, explosive when dry"
+    }
+  ],
+  "Cs": [
+    {
+      "formula": "CsCl",
+      "name": "Cesium Chloride",
+      "description": "Density gradient centrifugation, radiation therapy"
+    },
+    {
+      "formula": "CsOH",
+      "name": "Cesium Hydroxide",
+      "description": "Strongest aqueous base, fuel cell electrolyte"
+    },
+    {
+      "formula": "Cs₂CO₃",
+      "name": "Cesium Carbonate",
+      "description": "Organic synthesis catalyst, glass additive"
+    }
+  ],
+  "Ba": [
+    {
+      "formula": "BaSO₄",
+      "name": "Barium Sulfate",
+      "description": "X-ray contrast medium, white pigment, drilling mud"
+    },
+    {
+      "formula": "BaCO₃",
+      "name": "Barium Carbonate",
+      "description": "Rat poison, glass making, ceramic glaze"
+    },
+    {
+      "formula": "BaTiO₃",
+      "name": "Barium Titanate",
+      "description": "Piezoelectric ceramics, capacitors"
+    },
+    {
+      "formula": "BaCl₂",
+      "name": "Barium Chloride",
+      "description": "Metal hardening, pigment manufacturing"
+    },
+    {
+      "formula": "Ba(NO₃)₂",
+      "name": "Barium Nitrate",
+      "description": "Green fireworks, signal flares"
+    }
+  ],
+  "La": [
+    {
+      "formula": "La₂O₃",
+      "name": "Lanthanum Oxide",
+      "description": "Optical glass, catalyst support, ceramics"
+    },
+    {
+      "formula": "LaB₆",
+      "name": "Lanthanum Hexaboride",
+      "description": "Electron emitter, cathode material"
+    },
+    {
+      "formula": "LaCl₃",
+      "name": "Lanthanum Chloride",
+      "description": "Catalyst, water treatment, NMR shift reagent"
+    }
+  ],
+  "Ce": [
+    {
+      "formula": "CeO₂",
+      "name": "Cerium Dioxide",
+      "description": "Catalytic converter, glass polishing, fuel additive"
+    },
+    {
+      "formula": "Ce₂(SO₄)₃",
+      "name": "Cerium(III) Sulfate",
+      "description": "Oxidimetric titrant, analytical chemistry"
+    },
+    {
+      "formula": "CeF₃",
+      "name": "Cerium Fluoride",
+      "description": "Scintillator, UV filter, carbon arc lighting"
+    }
+  ],
+  "Pr": [
+    {
+      "formula": "Pr₆O₁₁",
+      "name": "Praseodymium Oxide",
+      "description": "Yellow ceramic pigment, glass colorant"
+    },
+    {
+      "formula": "PrCl₃",
+      "name": "Praseodymium Chloride",
+      "description": "Metal production, scintillator"
+    }
+  ],
+  "Nd": [
+    {
+      "formula": "Nd₂O₃",
+      "name": "Neodymium Oxide",
+      "description": "Glass colorant (purple), laser dopant"
+    },
+    {
+      "formula": "Nd₂Fe₁₄B",
+      "name": "Neodymium Magnet Alloy",
+      "description": "Strongest permanent magnets, motors, headphones"
+    },
+    {
+      "formula": "NdCl₃",
+      "name": "Neodymium Chloride",
+      "description": "Nd metal production, glass coloring"
+    }
+  ],
+  "Pm": [
+    {
+      "formula": "Pm₂O₃",
+      "name": "Promethium Oxide",
+      "description": "Luminescent paint, nuclear battery research"
+    },
+    {
+      "formula": "PmCl₃",
+      "name": "Promethium Chloride",
+      "description": "Radioactive tracer, atomic battery"
+    }
+  ],
+  "Sm": [
+    {
+      "formula": "SmCo₅",
+      "name": "Samarium Cobalt",
+      "description": "Permanent magnets, motors, headphones"
+    },
+    {
+      "formula": "Sm₂O₃",
+      "name": "Samarium Oxide",
+      "description": "Infrared absorbing glass, nuclear reactor"
+    },
+    {
+      "formula": "SmI₂",
+      "name": "Samarium(II) Iodide",
+      "description": "Powerful reducing agent in organic synthesis"
+    }
+  ],
+  "Eu": [
+    {
+      "formula": "Eu₂O₃",
+      "name": "Europium Oxide",
+      "description": "Red phosphor in TVs and LEDs"
+    },
+    {
+      "formula": "EuCl₃",
+      "name": "Europium Chloride",
+      "description": "Fluorescent probe, nuclear research"
+    }
+  ],
+  "Gd": [
+    {
+      "formula": "Gd₂O₃",
+      "name": "Gadolinium Oxide",
+      "description": "Neutron absorber, MRI contrast additive"
+    },
+    {
+      "formula": "Gd-DTPA",
+      "name": "Gadolinium DTPA",
+      "description": "MRI contrast agent (Magnevist)"
+    },
+    {
+      "formula": "GdCl₃",
+      "name": "Gadolinium Chloride",
+      "description": "NMR shift reagent, magnetocaloric research"
+    }
+  ],
+  "Tb": [
+    {
+      "formula": "Tb₄O₇",
+      "name": "Terbium Oxide",
+      "description": "Green phosphor, laser material"
+    },
+    {
+      "formula": "TbCl₃",
+      "name": "Terbium Chloride",
+      "description": "Fluorescent material, research"
+    }
+  ],
+  "Dy": [
+    {
+      "formula": "Dy₂O₃",
+      "name": "Dysprosium Oxide",
+      "description": "Neutron absorber, glass/ceramic additive"
+    },
+    {
+      "formula": "DyCl₃",
+      "name": "Dysprosium Chloride",
+      "description": "Starting material for Dy metal"
+    }
+  ],
+  "Ho": [
+    {
+      "formula": "Ho₂O₃",
+      "name": "Holmium Oxide",
+      "description": "Glass colorant, calibration standard"
+    },
+    {
+      "formula": "HoCl₃",
+      "name": "Holmium Chloride",
+      "description": "Calibration standard, research"
+    }
+  ],
+  "Er": [
+    {
+      "formula": "Er₂O₃",
+      "name": "Erbium Oxide",
+      "description": "Pink glass colorant, fiber optic amplifier"
+    },
+    {
+      "formula": "ErCl₃",
+      "name": "Erbium Chloride",
+      "description": "Fiber optic doping, laser material"
+    }
+  ],
+  "Tm": [
+    {
+      "formula": "Tm₂O₃",
+      "name": "Thulium Oxide",
+      "description": "Laser material, portable X-ray source"
+    },
+    {
+      "formula": "TmCl₃",
+      "name": "Thulium Chloride",
+      "description": "Research, sputtering target"
+    }
+  ],
+  "Yb": [
+    {
+      "formula": "Yb₂O₃",
+      "name": "Ytterbium Oxide",
+      "description": "Laser material, catalyst, thermal barrier"
+    },
+    {
+      "formula": "YbCl₃",
+      "name": "Ytterbium Chloride",
+      "description": "Catalyst, metallurgy research"
+    }
+  ],
+  "Lu": [
+    {
+      "formula": "Lu₂O₃",
+      "name": "Lutetium Oxide",
+      "description": "Scintillator, catalyst, optical coating"
+    },
+    {
+      "formula": "LuCl₃",
+      "name": "Lutetium Chloride",
+      "description": "PET scan tracer production, research"
+    }
+  ],
+  "Hf": [
+    {
+      "formula": "HfO₂",
+      "name": "Hafnium Dioxide",
+      "description": "High-k dielectric in semiconductors, ceramics"
+    },
+    {
+      "formula": "HfC",
+      "name": "Hafnium Carbide",
+      "description": "Highest melting point binary compound (3890°C)"
+    },
+    {
+      "formula": "HfCl₄",
+      "name": "Hafnium Tetrachloride",
+      "description": "Hafnium metal production, catalyst"
+    }
+  ],
+  "Ta": [
+    {
+      "formula": "Ta₂O₅",
+      "name": "Tantalum Pentoxide",
+      "description": "Capacitors, optical coatings, lithium batteries"
+    },
+    {
+      "formula": "TaC",
+      "name": "Tantalum Carbide",
+      "description": "Cutting tools, one of hardest materials"
+    },
+    {
+      "formula": "TaCl₅",
+      "name": "Tantalum Pentachloride",
+      "description": "Catalyst, semiconductor precursor"
+    }
+  ],
+  "W": [
+    {
+      "formula": "WC",
+      "name": "Tungsten Carbide",
+      "description": "Cutting tools, drill bits, jewelry, armor"
+    },
+    {
+      "formula": "WO₃",
+      "name": "Tungsten Trioxide",
+      "description": "Electrochromic windows, catalyst"
+    },
+    {
+      "formula": "Na₂WO₄",
+      "name": "Sodium Tungstate",
+      "description": "Fireproofing, analytical reagent, catalyst"
+    },
+    {
+      "formula": "WS₂",
+      "name": "Tungsten Disulfide",
+      "description": "Solid lubricant, 2D material, catalyst"
+    }
+  ],
+  "Re": [
+    {
+      "formula": "Re₂O₇",
+      "name": "Rhenium Heptoxide",
+      "description": "Catalyst, highest oxide of any element"
+    },
+    {
+      "formula": "ReO₃",
+      "name": "Rhenium Trioxide",
+      "description": "Metallic conductor, catalyst"
+    },
+    {
+      "formula": "NH₄ReO₄",
+      "name": "Ammonium Perrhenate",
+      "description": "Rhenium metal production, catalyst"
+    }
+  ],
+  "Os": [
+    {
+      "formula": "OsO₄",
+      "name": "Osmium Tetroxide",
+      "description": "Biological stain, dihydroxylation catalyst (toxic)"
+    },
+    {
+      "formula": "OsCl₃",
+      "name": "Osmium Trichloride",
+      "description": "Catalyst precursor, research"
+    }
+  ],
+  "Ir": [
+    {
+      "formula": "IrO₂",
+      "name": "Iridium Dioxide",
+      "description": "Electrocatalyst, dimensionally stable anode"
+    },
+    {
+      "formula": "IrCl₃",
+      "name": "Iridium Trichloride",
+      "description": "Catalyst precursor, OLED phosphor"
+    },
+    {
+      "formula": "Ir(ppy)₃",
+      "name": "Tris(phenylpyridine)iridium",
+      "description": "OLED phosphorescent emitter"
+    }
+  ],
+  "Pt": [
+    {
+      "formula": "PtCl₂",
+      "name": "Platinum(II) Chloride",
+      "description": "Catalyst, Adams' catalyst precursor"
+    },
+    {
+      "formula": "H₂PtCl₆",
+      "name": "Chloroplatinic Acid",
+      "description": "Catalyst preparation, platinum plating"
+    },
+    {
+      "formula": "PtO₂",
+      "name": "Platinum Dioxide",
+      "description": "Adams' catalyst, hydrogenation"
+    },
+    {
+      "formula": "Cisplatin",
+      "name": "Cisplatin",
+      "description": "Chemotherapy drug for cancer treatment"
+    }
+  ],
   "Au": [
     {
       "formula": "AuCl₃",
       "name": "Gold(III) Chloride",
-      "description": "Catalyst, gold plating"
+      "description": "Catalyst, gold plating, photography"
     },
     {
       "formula": "HAuCl₄",
       "name": "Chloroauric Acid",
-      "description": "Gold nanoparticle synthesis, photography"
+      "description": "Gold nanoparticle synthesis, gold plating"
     },
     {
       "formula": "Au₂O₃",
       "name": "Gold(III) Oxide",
-      "description": "Ceramic colorant, catalysis"
+      "description": "Electronics, catalyst"
     },
     {
       "formula": "AuCN",
@@ -690,57 +1802,306 @@
       "description": "Gold electroplating"
     },
     {
-      "formula": "Au(OH)₃",
-      "name": "Gold(III) Hydroxide",
-      "description": "Gold purification intermediate"
+      "formula": "Au NPs",
+      "name": "Gold Nanoparticles",
+      "description": "Medical diagnostics, drug delivery, catalysis"
     }
   ],
-  "Hg": [],
-  "Tl": [],
-  "Pb": [],
-  "Bi": [],
-  "Po": [],
-  "At": [],
-  "Rn": [],
-  "Fr": [],
-  "Ra": [],
-  "Ac": [],
-  "Th": [],
-  "Pa": [],
+  "Hg": [
+    {
+      "formula": "HgCl₂",
+      "name": "Mercury(II) Chloride",
+      "description": "Historical disinfectant, preservative (toxic)"
+    },
+    {
+      "formula": "HgS",
+      "name": "Mercury(II) Sulfide",
+      "description": "Cinnabar ore, vermilion red pigment"
+    },
+    {
+      "formula": "Hg₂Cl₂",
+      "name": "Mercury(I) Chloride",
+      "description": "Calomel electrode, historical medicine"
+    },
+    {
+      "formula": "CH₃Hg⁺",
+      "name": "Methylmercury",
+      "description": "Bioaccumulative neurotoxin in fish"
+    }
+  ],
+  "Tl": [
+    {
+      "formula": "Tl₂SO₄",
+      "name": "Thallium Sulfate",
+      "description": "Former rodenticide (now banned), highly toxic"
+    },
+    {
+      "formula": "TlBr",
+      "name": "Thallium Bromide",
+      "description": "Infrared optics, radiation detectors"
+    },
+    {
+      "formula": "Tl₂O₃",
+      "name": "Thallium(III) Oxide",
+      "description": "High-temperature superconductor component"
+    }
+  ],
+  "Pb": [
+    {
+      "formula": "PbO",
+      "name": "Lead(II) Oxide",
+      "description": "Lead glass (crystal), ceramic glaze, batteries"
+    },
+    {
+      "formula": "PbO₂",
+      "name": "Lead Dioxide",
+      "description": "Lead-acid battery cathode, match heads"
+    },
+    {
+      "formula": "PbS",
+      "name": "Lead Sulfide",
+      "description": "Galena ore, infrared detector, kohl eyeliner"
+    },
+    {
+      "formula": "PbCrO₄",
+      "name": "Lead Chromate",
+      "description": "Chrome yellow pigment (now restricted)"
+    },
+    {
+      "formula": "Pb(C₂H₅)₄",
+      "name": "Tetraethyllead",
+      "description": "Former gasoline additive (now banned)"
+    }
+  ],
+  "Bi": [
+    {
+      "formula": "Bi₂O₃",
+      "name": "Bismuth Oxide",
+      "description": "Varistor, catalyst, yellow pigment"
+    },
+    {
+      "formula": "BiOCl",
+      "name": "Bismuth Oxychloride",
+      "description": "Pearlescent cosmetics pigment"
+    },
+    {
+      "formula": "Bi₂Te₃",
+      "name": "Bismuth Telluride",
+      "description": "Thermoelectric cooling devices"
+    },
+    {
+      "formula": "Bi(OH)₃",
+      "name": "Bismuth Hydroxide",
+      "description": "Bismuth subsalicylate precursor (Pepto-Bismol)"
+    }
+  ],
+  "Po": [
+    {
+      "formula": "PoO₂",
+      "name": "Polonium Dioxide",
+      "description": "Alpha particle source, static eliminator"
+    },
+    {
+      "formula": "PoCl₂",
+      "name": "Polonium Dichloride",
+      "description": "Research, extremely radioactive"
+    }
+  ],
+  "At": [
+    {
+      "formula": "AtI",
+      "name": "Astatine Iodide",
+      "description": "Interhalogen, extremely rare and radioactive"
+    },
+    {
+      "formula": "At⁻",
+      "name": "Astatide Ion",
+      "description": "Halide behavior in solution, research only"
+    }
+  ],
+  "Rn": [
+    {
+      "formula": "RnF₂",
+      "name": "Radon Difluoride",
+      "description": "Only known radon compound, extremely unstable"
+    }
+  ],
+  "Fr": [
+    {
+      "formula": "FrOH",
+      "name": "Francium Hydroxide",
+      "description": "Predicted strongest alkali, too unstable to isolate"
+    }
+  ],
+  "Ra": [
+    {
+      "formula": "RaCl₂",
+      "name": "Radium Chloride",
+      "description": "Historical luminous paint, cancer therapy"
+    },
+    {
+      "formula": "RaSO₄",
+      "name": "Radium Sulfate",
+      "description": "Extremely insoluble, environmental contaminant"
+    },
+    {
+      "formula": "RaBr₂",
+      "name": "Radium Bromide",
+      "description": "Marie Curie's research material"
+    }
+  ],
+  "Ac": [
+    {
+      "formula": "Ac₂O₃",
+      "name": "Actinium Oxide",
+      "description": "Alpha emitter, neutron source research"
+    },
+    {
+      "formula": "AcCl₃",
+      "name": "Actinium Chloride",
+      "description": "Research, targeted cancer therapy"
+    }
+  ],
+  "Th": [
+    {
+      "formula": "ThO₂",
+      "name": "Thorium Dioxide",
+      "description": "Gas mantle, nuclear fuel, highest melting point oxide"
+    },
+    {
+      "formula": "ThF₄",
+      "name": "Thorium Tetrafluoride",
+      "description": "Molten salt reactor fuel, optical coatings"
+    },
+    {
+      "formula": "ThCl₄",
+      "name": "Thorium Tetrachloride",
+      "description": "Thorium metal production"
+    }
+  ],
+  "Pa": [
+    {
+      "formula": "Pa₂O₅",
+      "name": "Protactinium Pentoxide",
+      "description": "Research, highly radioactive"
+    },
+    {
+      "formula": "PaCl₅",
+      "name": "Protactinium Pentachloride",
+      "description": "Research, transuranic chemistry"
+    }
+  ],
   "U": [
     {
       "formula": "UO₂",
       "name": "Uranium Dioxide",
-      "description": "Nuclear fuel pellets"
+      "description": "Nuclear fuel pellets, ceramic"
     },
     {
       "formula": "UF₆",
       "name": "Uranium Hexafluoride",
-      "description": "Uranium enrichment, gaseous diffusion"
+      "description": "Uranium enrichment feedstock (gaseous diffusion)"
     },
     {
       "formula": "U₃O₈",
       "name": "Triuranium Octoxide",
-      "description": "Yellowcake, uranium concentrate"
+      "description": "Yellowcake, most stable uranium oxide"
     },
     {
       "formula": "UO₂(NO₃)₂",
       "name": "Uranyl Nitrate",
-      "description": "Nuclear fuel reprocessing"
+      "description": "Nuclear reprocessing, uranium extraction"
     },
     {
       "formula": "UCl₄",
       "name": "Uranium Tetrachloride",
-      "description": "Uranium metal production"
+      "description": "Uranium metal production, molten salt"
     }
   ],
-  "Np": [],
-  "Pu": [],
-  "Am": [],
-  "Cm": [],
-  "Bk": [],
-  "Cf": [],
-  "Es": [],
+  "Np": [
+    {
+      "formula": "NpO₂",
+      "name": "Neptunium Dioxide",
+      "description": "Most stable neptunium compound, nuclear waste"
+    },
+    {
+      "formula": "NpF₆",
+      "name": "Neptunium Hexafluoride",
+      "description": "Volatile, used in separation studies"
+    }
+  ],
+  "Pu": [
+    {
+      "formula": "PuO₂",
+      "name": "Plutonium Dioxide",
+      "description": "Nuclear fuel, RTG power source (space probes)"
+    },
+    {
+      "formula": "PuF₄",
+      "name": "Plutonium Tetrafluoride",
+      "description": "Plutonium metal production"
+    },
+    {
+      "formula": "PuCl₃",
+      "name": "Plutonium Trichloride",
+      "description": "Molten salt reactor research"
+    }
+  ],
+  "Am": [
+    {
+      "formula": "AmO₂",
+      "name": "Americium Dioxide",
+      "description": "Smoke detector alpha source (Am-241)"
+    },
+    {
+      "formula": "AmCl₃",
+      "name": "Americium Trichloride",
+      "description": "Research, transuranic chemistry"
+    }
+  ],
+  "Cm": [
+    {
+      "formula": "Cm₂O₃",
+      "name": "Curium Oxide",
+      "description": "Alpha particle source, RTG fuel research"
+    },
+    {
+      "formula": "CmCl₃",
+      "name": "Curium Trichloride",
+      "description": "Research, spectroscopy"
+    }
+  ],
+  "Bk": [
+    {
+      "formula": "BkCl₃",
+      "name": "Berkelium Trichloride",
+      "description": "Crystal structure studies, research"
+    },
+    {
+      "formula": "Bk₂O₃",
+      "name": "Berkelium Oxide",
+      "description": "Research, one of rarest compounds"
+    }
+  ],
+  "Cf": [
+    {
+      "formula": "CfCl₃",
+      "name": "Californium Trichloride",
+      "description": "Research, neutron source studies"
+    },
+    {
+      "formula": "Cf₂O₃",
+      "name": "Californium Oxide",
+      "description": "Research, extremely rare"
+    }
+  ],
+  "Es": [
+    {
+      "formula": "EsCl₃",
+      "name": "Einsteinium Trichloride",
+      "description": "Only compound studied in bulk, extremely rare"
+    }
+  ],
   "Fm": [],
   "Md": [],
   "No": [],
