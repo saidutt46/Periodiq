@@ -1,19 +1,20 @@
 "use client";
 
-import { useState, useMemo, Suspense } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import type { Element, Compound } from "@/lib/types";
-import { getCategoryCssVar } from "@/lib/data";
-import { CATEGORY_CSS_VAR } from "@/lib/chemistry/colors";
-import { SHELL_NAMES } from "./AtomVisualization";
+import { CATEGORY_CSS_VAR, getCategoryHex } from "@/lib/chemistry/colors";
+import { useAppStore } from "@/lib/store";
 import styles from "./DetailPage.module.css";
 
-/* Lazy-load the 3D atom to avoid SSR issues */
-const AtomVisualization = dynamic(() => import("./AtomVisualization"), {
+const SHELL_NAMES = ["K", "L", "M", "N", "O", "P", "Q"];
+
+/* Lazy-load the viz panel to avoid SSR issues with Three.js */
+const VizPanel = dynamic(() => import("./viz/VizPanel"), {
   ssr: false,
   loading: () => (
-    <div className={styles.atomCanvas}>
+    <div className={styles.vizContent}>
       <div style={{
         width: "100%",
         height: "100%",
@@ -89,34 +90,14 @@ export default function ElementDetailClient({
   nextElement,
 }: ElementDetailClientProps) {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
+  const theme = useAppStore((s) => s.theme);
 
   const catColor = CATEGORY_CSS_VAR[el.category] || "var(--cat-unknown)";
-  const cssVarName = getCategoryCssVar(el.category);
-
-  // Get the actual hex color for R3F (needs raw hex, not CSS var)
-  const categoryHex = useMemo(() => {
-    const colorMap: Record<string, string> = {
-      "alkali-metal": "#ff4d6a",
-      "alkaline-earth-metal": "#ff9f43",
-      "transition-metal": "#4facfe",
-      "post-transition-metal": "#5ab4ac",
-      "metalloid": "#ffc048",
-      "nonmetal": "#2ed573",
-      "halogen": "#a78bfa",
-      "noble-gas": "#f472b6",
-      "lanthanide": "#22d3ee",
-      "actinide": "#fb923c",
-      "unknown": "#555568",
-    };
-    return colorMap[el.category] || "#555568";
-  }, [el.category]);
+  const categoryHex = getCategoryHex(el.category, theme);
 
   const oxStates = el.oxidation_states?.length
     ? el.oxidation_states.map((s) => (s > 0 ? `+${s}` : `${s}`)).join(", ")
     : null;
-
-  // Shell bar max electron count (for scaling)
-  const maxShellElectrons = Math.max(...(el.electrons_per_shell || [1]));
 
   const tabs: { id: Tab; label: string }[] = [
     { id: "overview", label: "Overview" },
@@ -185,59 +166,8 @@ export default function ElementDetailClient({
         </div>
       </div>
 
-      {/* ─── Left: 3D Visualization ─── */}
-      <div className={styles.vizPanel}>
-        {/* Floating data labels */}
-        <div className={`${styles.vizLabel} ${styles.vizLabelMass}`}>
-          <div className={styles.vizLabelTitle}>Atomic Mass</div>
-          <div className={styles.vizLabelValue}>
-            {el.atomic_mass?.toFixed(3)} <span className={styles.vizLabelUnit}>u</span>
-          </div>
-        </div>
-
-        <div className={`${styles.vizLabel} ${styles.vizLabelConfig}`}>
-          <div className={styles.vizLabelTitle}>Configuration</div>
-          <div className={styles.vizLabelValue} style={{ fontSize: 14 }}>
-            {el.electron_configuration ? formatElectronConfig(el.electron_configuration) : "—"}
-          </div>
-        </div>
-
-        <div className={`${styles.vizLabel} ${styles.vizLabelState}`}>
-          <div className={styles.vizLabelTitle}>State</div>
-          <div className={styles.vizLabelValue} style={{ fontSize: 14 }}>
-            {el.standard_state || "Unknown"}
-          </div>
-        </div>
-
-        {/* 3D Atom Canvas */}
-        <div className={styles.atomCanvas}>
-          <AtomVisualization
-            electronsPerShell={el.electrons_per_shell || []}
-            categoryColor={categoryHex}
-            atomicNumber={el.atomic_number}
-            symbol={el.symbol}
-          />
-        </div>
-
-        {/* Shell electron count bar */}
-        {el.electrons_per_shell && el.electrons_per_shell.length > 0 && (
-          <div className={styles.shellBar}>
-            {el.electrons_per_shell.map((count, i) => (
-              <div key={i} className={styles.shellItem}>
-                <div className={styles.shellCount}>{count}</div>
-                <div
-                  className={styles.shellBarFill}
-                  style={{
-                    height: `${(count / maxShellElectrons) * 80}px`,
-                    background: `linear-gradient(180deg, ${categoryHex}, color-mix(in srgb, ${categoryHex} 40%, transparent))`,
-                  }}
-                />
-                <div className={styles.shellLabel}>{SHELL_NAMES[i] || `${i + 1}`}</div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      {/* ─── Left: Visualization Panel ─── */}
+      <VizPanel element={el} categoryHex={categoryHex} theme={theme} />
 
       {/* ─── Right: Data Panel ─── */}
       <div className={styles.dataPanel}>

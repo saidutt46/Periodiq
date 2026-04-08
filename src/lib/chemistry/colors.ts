@@ -219,3 +219,41 @@ export const CATEGORY_CSS_VAR: Record<ElementCategory, string> = {
   actinide: "var(--cat-actinide)",
   unknown: "var(--cat-unknown)",
 };
+
+/** Raw hex colors for use in Three.js / Canvas (CSS vars don't work there) */
+const CATEGORY_HEX_DARK: Record<ElementCategory, string> = {
+  "alkali-metal": "#ff4d6a",
+  "alkaline-earth-metal": "#ff9f43",
+  "transition-metal": "#4facfe",
+  "post-transition-metal": "#5ab4ac",
+  metalloid: "#ffc048",
+  nonmetal: "#2ed573",
+  halogen: "#a78bfa",
+  "noble-gas": "#f472b6",
+  lanthanide: "#22d3ee",
+  actinide: "#fb923c",
+  unknown: "#555568",
+};
+
+const CATEGORY_HEX_LIGHT: Record<ElementCategory, string> = {
+  "alkali-metal": "#dc2626",
+  "alkaline-earth-metal": "#ea580c",
+  "transition-metal": "#2563eb",
+  "post-transition-metal": "#0d9488",
+  metalloid: "#ca8a04",
+  nonmetal: "#16a34a",
+  halogen: "#7c3aed",
+  "noble-gas": "#db2777",
+  lanthanide: "#0891b2",
+  actinide: "#c2410c",
+  unknown: "#9ca3af",
+};
+
+/** Get raw hex color for a category, respecting current theme */
+export function getCategoryHex(
+  category: ElementCategory,
+  theme: "dark" | "light" = "dark"
+): string {
+  const map = theme === "light" ? CATEGORY_HEX_LIGHT : CATEGORY_HEX_DARK;
+  return map[category] ?? "#555568";
+}
