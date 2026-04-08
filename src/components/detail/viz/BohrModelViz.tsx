@@ -73,11 +73,13 @@ function OrbitalRingAnimated({
   electronCount,
   totalShells,
   color,
+  theme,
 }: {
   shellIndex: number;
   electronCount: number;
   totalShells: number;
   color: string;
+  theme: "dark" | "light";
 }) {
   // Cap rendered electrons: 8 dots on a spinning ring looks the same as 32
   const renderedCount = Math.min(electronCount, 8);
@@ -89,7 +91,11 @@ function OrbitalRingAnimated({
   const tilts = SHELL_TILTS[shellIndex % SHELL_TILTS.length];
   const speed = 0.4 / (1 + shellIndex * 0.35);
   const timeOffset = shellIndex * 1.1;
-  const ringOpacity = 0.12 + (1 - shellIndex / Math.max(totalShells, 1)) * 0.08;
+  // Light theme needs stronger opacities to be visible against white
+  const isLight = theme === "light";
+  const ringOpacity = isLight
+    ? 0.35 + (1 - shellIndex / Math.max(totalShells, 1)) * 0.15
+    : 0.12 + (1 - shellIndex / Math.max(totalShells, 1)) * 0.08;
 
   const tiltMatrix = useMemo(
     () => new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(tilts.x, 0, tilts.z)),
@@ -123,15 +129,15 @@ function OrbitalRingAnimated({
     <group>
       {/* Orbital ring */}
       <mesh rotation={[tilts.x, 0, tilts.z]}>
-        <torusGeometry args={[baseRadius, 0.008, 12, 96]} />
+        <torusGeometry args={[baseRadius, isLight ? 0.012 : 0.008, 12, 96]} />
         <meshBasicMaterial color={color} transparent opacity={ringOpacity} toneMapped={false} />
       </mesh>
       {/* Glow ring */}
       <mesh rotation={[tilts.x, 0, tilts.z]}>
         <torusGeometry args={[baseRadius, 0.05, 12, 96]} />
-        <meshBasicMaterial color={color} transparent opacity={0.03} toneMapped={false} />
+        <meshBasicMaterial color={color} transparent opacity={isLight ? 0.08 : 0.03} toneMapped={false} />
       </mesh>
-      {/* Electrons — 2 meshes each: core + glow (dropped the faint halo) */}
+      {/* Electrons — 2 meshes each: core + glow */}
       {Array.from({ length: renderedCount }).map((_, i) => (
         <group key={i} ref={setElectronRef(i)}>
           <mesh>
@@ -140,7 +146,7 @@ function OrbitalRingAnimated({
           </mesh>
           <mesh>
             <sphereGeometry args={[electronSize * 3, 8, 8]} />
-            <meshBasicMaterial color={color} transparent opacity={0.18} toneMapped={false} />
+            <meshBasicMaterial color={color} transparent opacity={isLight ? 0.3 : 0.18} toneMapped={false} />
           </mesh>
         </group>
       ))}
@@ -180,6 +186,7 @@ function BohrScene({
               electronCount={count}
               totalShells={electronsPerShell.length}
               color={categoryColor}
+              theme={theme}
             />
           ))}
         </group>

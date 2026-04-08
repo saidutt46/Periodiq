@@ -253,7 +253,7 @@ function OrbitalSelector({
                 transition-all duration-150 cursor-pointer
                 ${isActive
                   ? "text-[var(--accent-primary)] bg-[rgba(212,168,67,0.1)] font-semibold"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }
               `}
             >
@@ -275,7 +275,7 @@ function OrbitalSelector({
               transition-all duration-150 cursor-pointer border
               ${selectedOrbitalIdx === -1
                 ? "font-semibold bg-[rgba(255,255,255,0.05)]"
-                : "text-[var(--text-dim)] hover:text-[var(--text-muted)] border-transparent"
+                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-transparent"
               }
             `}
             style={selectedOrbitalIdx === -1 ? { borderColor: categoryColor, color: categoryColor } : undefined}
@@ -295,7 +295,7 @@ function OrbitalSelector({
                   transition-all duration-150 cursor-pointer border
                   ${isActive
                     ? "font-semibold bg-[rgba(255,255,255,0.05)]"
-                    : "text-[var(--text-dim)] hover:text-[var(--text-muted)] border-transparent"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-transparent"
                   }
                 `}
                 style={isActive ? { borderColor: categoryColor, color: categoryColor } : undefined}

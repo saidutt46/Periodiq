@@ -56,10 +56,11 @@ function RadiiScene({
 
   const bloomIntensity = theme === "light" ? 0.25 : 0.5;
 
-  // Fixed color palette — warm core to cool outer, always readable
-  const innerHex = "#f59e0b"; // amber — covalent (bonding, compact)
-  const midHex = "#3b82f6";   // blue — atomic (empirical boundary)
-  const outerHex = "#8b5cf6"; // purple — van der Waals (influence zone)
+  // Fixed color palette — deeper/saturated tones that work on both dark and light
+  const isLight = theme === "light";
+  const innerHex = isLight ? "#d97706" : "#f59e0b"; // amber — covalent
+  const midHex = isLight ? "#1d4ed8" : "#3b82f6";   // blue — atomic
+  const outerHex = isLight ? "#6d28d9" : "#8b5cf6"; // purple — van der Waals
 
   return (
     <>
@@ -77,7 +78,7 @@ function RadiiScene({
               <meshBasicMaterial
                 color={outerHex}
                 transparent
-                opacity={0.04}
+                opacity={isLight ? 0.08 : 0.04}
                 side={THREE.DoubleSide}
                 depthWrite={false}
                 wireframe
@@ -88,12 +89,12 @@ function RadiiScene({
               <meshBasicMaterial
                 color={outerHex}
                 transparent
-                opacity={0.03}
+                opacity={isLight ? 0.06 : 0.03}
                 side={THREE.DoubleSide}
                 depthWrite={false}
               />
             </mesh>
-            <EquatorRing radius={vdw} color={outerHex} opacity={0.25} />
+            <EquatorRing radius={vdw} color={outerHex} opacity={isLight ? 0.5 : 0.25} />
             {/* Label */}
             <Html position={[vdw + 0.12, 0, 0]} center>
               <span style={{
@@ -117,12 +118,12 @@ function RadiiScene({
               <meshBasicMaterial
                 color={midHex}
                 transparent
-                opacity={0.1}
+                opacity={isLight ? 0.18 : 0.1}
                 side={THREE.DoubleSide}
                 depthWrite={false}
               />
             </mesh>
-            <EquatorRing radius={atom} color={midHex} opacity={0.4} />
+            <EquatorRing radius={atom} color={midHex} opacity={isLight ? 0.7 : 0.4} />
             <Html position={[atom + 0.12, 0, 0]} center>
               <span style={{
                 color: "var(--text-muted)",
@@ -145,14 +146,14 @@ function RadiiScene({
               <meshStandardMaterial
                 color={innerHex}
                 emissive={innerHex}
-                emissiveIntensity={0.2}
+                emissiveIntensity={isLight ? 0.05 : 0.2}
                 transparent
-                opacity={0.35}
+                opacity={isLight ? 0.5 : 0.35}
                 roughness={1}
                 metalness={0}
               />
             </mesh>
-            <EquatorRing radius={cov} color={innerHex} opacity={0.6} />
+            <EquatorRing radius={cov} color={innerHex} opacity={isLight ? 0.8 : 0.6} />
             <Html position={[cov + 0.12, 0, 0]} center>
               <span style={{
                 color: "var(--text-secondary)",
@@ -226,13 +227,13 @@ export default function RadiiViz(props: RadiiVizProps) {
       <div className={styles.radiiLegend}>
         {props.covalentRadius && (
           <div className={styles.radiiLegendItem}>
-            <div className={styles.radiiLegendDot} style={{ background: "#f59e0b" }} />
+            <div className={styles.radiiLegendDot} style={{ background: props.theme === "light" ? "#d97706" : "#f59e0b" }} />
             Covalent {props.covalentRadius} pm
           </div>
         )}
         {props.atomicRadius && (
           <div className={styles.radiiLegendItem}>
-            <div className={styles.radiiLegendDot} style={{ background: "#3b82f6", opacity: 0.6 }} />
+            <div className={styles.radiiLegendDot} style={{ background: props.theme === "light" ? "#1d4ed8" : "#3b82f6", opacity: 0.7 }} />
             Atomic {props.atomicRadius} pm
           </div>
         )}
@@ -240,7 +241,7 @@ export default function RadiiViz(props: RadiiVizProps) {
           <div className={styles.radiiLegendItem}>
             <div className={styles.radiiLegendDot} style={{
               background: "transparent",
-              border: "1.5px solid #8b5cf6",
+              border: `1.5px solid ${props.theme === "light" ? "#6d28d9" : "#8b5cf6"}`,
             }} />
             vdW {props.vanDerWaalsRadius} pm
           </div>
