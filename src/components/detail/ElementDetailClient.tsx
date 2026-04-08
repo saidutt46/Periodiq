@@ -271,13 +271,45 @@ export default function ElementDetailClient({
 
 /* ─── Overview Tab ─── */
 function OverviewTab({ element: el }: { element: Element }) {
+  const [showFullSummary, setShowFullSummary] = useState(false);
+
+  // Split summary into first paragraph and rest
+  const summaryParagraphs = (el.summary || "").split("\n").filter(Boolean);
+  const firstParagraph = summaryParagraphs[0] || "";
+  const hasMore = summaryParagraphs.length > 1;
+
   return (
     <>
-      {el.summary && (
+      {firstParagraph && (
         <div className={styles.overviewDescription}>
-          <span className={styles.firstLetter}>{el.summary.charAt(0)}</span>
-          {el.summary.slice(1).split("\n")[0]}
+          <span className={styles.firstLetter}>{firstParagraph.charAt(0)}</span>
+          {firstParagraph.slice(1)}
+          {hasMore && !showFullSummary && (
+            <button
+              className={styles.showMoreBtn}
+              onClick={() => setShowFullSummary(true)}
+            >
+              Read more
+            </button>
+          )}
         </div>
+      )}
+
+      {/* Expanded summary */}
+      {showFullSummary && summaryParagraphs.slice(1).map((para, i) => (
+        <div key={i} className={styles.overviewDescription} style={{ marginTop: 0 }}>
+          {para}
+        </div>
+      ))}
+
+      {showFullSummary && (
+        <button
+          className={styles.showMoreBtn}
+          onClick={() => setShowFullSummary(false)}
+          style={{ marginBottom: 16 }}
+        >
+          Show less
+        </button>
       )}
 
       <div className={styles.propSection}>
@@ -286,22 +318,29 @@ function OverviewTab({ element: el }: { element: Element }) {
           <PropRow label="Appearance" value={el.appearance} />
           <PropRow label="State at STP" value={el.standard_state || null} />
           <PropRow label="Crystal Structure" value={el.crystal_structure} />
-          <PropRow label="Magnetic Ordering" value={el.magnetic_ordering} />
-          <PropRow label="Metallicity" value={el.metallicity} />
           {el.is_radioactive && <PropRow label="Radioactive" value="Yes" />}
         </div>
       </div>
 
+      {/* Abundance — shown when any data exists */}
+      {(el.abundance_crust || el.abundance_ocean || el.abundance_universe || el.abundance_human_body) && (
+        <div className={styles.propSection}>
+          <div className={styles.propSectionTitle}>Abundance</div>
+          <div className={styles.propGrid}>
+            <PropRow label="Earth's Crust" value={el.abundance_crust} />
+            <PropRow label="Ocean" value={el.abundance_ocean} />
+            <PropRow label="Universe" value={el.abundance_universe} />
+            <PropRow label="Human Body" value={el.abundance_human_body} />
+          </div>
+        </div>
+      )}
+
+      {/* Identifiers — moved from History since it's reference info */}
       <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Key Properties</div>
+        <div className={styles.propSectionTitle}>Identifiers</div>
         <div className={styles.propGrid}>
-          <PropRow label="Electronegativity" value={el.electronegativity_pauling} unit="Pauling" />
-          <PropRow label="Electron Affinity" value={el.electron_affinity} unit={el.electron_affinity_unit || "kJ/mol"} />
-          <PropRow
-            label="Oxidation States"
-            value={el.oxidation_states?.length ? el.oxidation_states.map((s) => (s > 0 ? `+${s}` : `${s}`)).join(", ") : null}
-          />
-          <PropRow label="Ionization Energy" value={el.ionization_energy} unit={el.ionization_energy_unit || "eV"} />
+          <PropRow label="CAS Number" value={el.cas_number} />
+          <PropRow label="Named By" value={el.named_by} />
         </div>
       </div>
     </>
@@ -525,15 +564,6 @@ function HistoryTab({ element: el, catColor }: { element: Element; catColor: str
       {!hasDiscovery && !el.name_origin && (
         <div className={styles.emptyState}>No historical data available for this element.</div>
       )}
-
-      {/* Additional info */}
-      <div className={styles.propSection} style={{ marginTop: 24 }}>
-        <div className={styles.propSectionTitle}>Identifiers</div>
-        <div className={styles.propGrid}>
-          <PropRow label="CAS Number" value={el.cas_number} />
-          <PropRow label="Named By" value={el.named_by} />
-        </div>
-      </div>
     </>
   );
 }

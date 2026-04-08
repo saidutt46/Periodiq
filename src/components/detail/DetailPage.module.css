@@ -491,6 +491,25 @@
   color: var(--text-primary);
 }
 
+/* ─── Show more/less button ─── */
+.showMoreBtn {
+  display: inline;
+  background: none;
+  border: none;
+  color: var(--accent-primary);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 6px;
+  transition: opacity 0.15s var(--ease-out);
+}
+
+.showMoreBtn:hover {
+  opacity: 0.7;
+}
+
 /* ─── Property sections ─── */
 .propSection {
   margin-bottom: 20px;
