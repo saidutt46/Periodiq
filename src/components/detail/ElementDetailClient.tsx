@@ -322,19 +322,6 @@ function OverviewTab({ element: el }: { element: Element }) {
         </div>
       </div>
 
-      {/* Abundance — shown when any data exists */}
-      {(el.abundance_crust || el.abundance_ocean || el.abundance_universe || el.abundance_human_body) && (
-        <div className={styles.propSection}>
-          <div className={styles.propSectionTitle}>Abundance</div>
-          <div className={styles.propGrid}>
-            <PropRow label="Earth's Crust" value={el.abundance_crust} />
-            <PropRow label="Ocean" value={el.abundance_ocean} />
-            <PropRow label="Universe" value={el.abundance_universe} />
-            <PropRow label="Human Body" value={el.abundance_human_body} />
-          </div>
-        </div>
-      )}
-
       {/* Identifiers — moved from History since it's reference info */}
       <div className={styles.propSection}>
         <div className={styles.propSectionTitle}>Identifiers</div>
@@ -347,71 +334,72 @@ function OverviewTab({ element: el }: { element: Element }) {
   );
 }
 
+/* ─── Helper: only render a prop section if at least one value is non-null ─── */
+function PropSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className={styles.propSection}>
+      <div className={styles.propSectionTitle}>{title}</div>
+      <div className={styles.propGrid}>{children}</div>
+    </div>
+  );
+}
+
+function hasAny(...values: (string | number | null | undefined)[]): boolean {
+  return values.some((v) => v != null && v !== "" && v !== "—");
+}
+
 /* ─── Properties Tab ─── */
 function PropertiesTab({ element: el }: { element: Element }) {
   return (
     <>
-      <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Physical Properties</div>
-        <div className={styles.propGrid}>
-          <PropRow label="Density" value={el.density} unit={el.density_unit || "g/cm³"} />
-          <PropRow label="Melting Point" value={el.melting_point} unit="K" />
-          <PropRow label="Boiling Point" value={el.boiling_point} unit="K" />
-          <PropRow label="Speed of Sound" value={el.speed_of_sound} unit="m/s" />
-        </div>
-      </div>
+      <PropSection title="Physical Properties">
+        <PropRow label="Density" value={el.density} unit={el.density_unit || "g/cm³"} />
+        <PropRow label="Melting Point" value={el.melting_point} unit="K" />
+        <PropRow label="Boiling Point" value={el.boiling_point} unit="K" />
+        <PropRow label="Speed of Sound" value={el.speed_of_sound} unit="m/s" />
+      </PropSection>
 
-      <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Chemical Properties</div>
-        <div className={styles.propGrid}>
-          <PropRow label="Electronegativity" value={el.electronegativity_pauling} unit="Pauling" />
-          <PropRow label="Electron Affinity" value={el.electron_affinity} unit={el.electron_affinity_unit || "kJ/mol"} />
-          <PropRow
-            label="Oxidation States"
-            value={el.oxidation_states?.length ? el.oxidation_states.map((s) => (s > 0 ? `+${s}` : `${s}`)).join(", ") : null}
-          />
-          <PropRow label="Ionization Energy" value={el.ionization_energy} unit={el.ionization_energy_unit || "eV"} />
-        </div>
-      </div>
+      <PropSection title="Chemical Properties">
+        <PropRow label="Electronegativity" value={el.electronegativity_pauling} unit="Pauling" />
+        <PropRow label="Electron Affinity" value={el.electron_affinity} unit={el.electron_affinity_unit || "kJ/mol"} />
+        <PropRow
+          label="Oxidation States"
+          value={el.oxidation_states?.length ? el.oxidation_states.map((s) => (s > 0 ? `+${s}` : `${s}`)).join(", ") : null}
+        />
+        <PropRow label="Ionization Energy" value={el.ionization_energy} unit={el.ionization_energy_unit || "eV"} />
+      </PropSection>
 
-      <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Thermodynamic</div>
-        <div className={styles.propGrid}>
-          <PropRow label="Heat of Fusion" value={el.heat_of_fusion} unit="kJ/mol" />
-          <PropRow label="Heat of Vaporization" value={el.heat_of_vaporization} unit="kJ/mol" />
-          <PropRow label="Specific Heat" value={el.specific_heat_capacity} unit="J/(mol·K)" />
-          <PropRow label="Thermal Conductivity" value={el.thermal_conductivity} unit="W/(m·K)" />
-        </div>
-      </div>
+      <PropSection title="Thermodynamic">
+        <PropRow label="Heat of Fusion" value={el.heat_of_fusion} unit="kJ/mol" />
+        <PropRow label="Heat of Vaporization" value={el.heat_of_vaporization} unit="kJ/mol" />
+        <PropRow label="Specific Heat" value={el.specific_heat_capacity} unit="J/(mol·K)" />
+        <PropRow label="Thermal Conductivity" value={el.thermal_conductivity} unit="W/(m·K)" />
+      </PropSection>
 
-      <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Mechanical</div>
-        <div className={styles.propGrid}>
+      {hasAny(el.youngs_modulus, el.shear_modulus, el.bulk_modulus, el.poisson_ratio, el.mohs_hardness, el.vickers_hardness, el.brinell_hardness) && (
+        <PropSection title="Mechanical">
           <PropRow label="Young's Modulus" value={el.youngs_modulus} unit="GPa" />
           <PropRow label="Shear Modulus" value={el.shear_modulus} unit="GPa" />
           <PropRow label="Bulk Modulus" value={el.bulk_modulus} unit="GPa" />
           <PropRow label="Poisson Ratio" value={el.poisson_ratio} />
           <PropRow label="Mohs Hardness" value={el.mohs_hardness} />
+          <PropRow label="Brinell Hardness" value={el.brinell_hardness} unit="MPa" />
           <PropRow label="Vickers Hardness" value={el.vickers_hardness} unit="MPa" />
-        </div>
-      </div>
+        </PropSection>
+      )}
 
-      <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Atomic Radii</div>
-        <div className={styles.propGrid}>
-          <PropRow label="Atomic (empirical)" value={el.atomic_radius} unit={el.atomic_radius_unit || "pm"} />
-          <PropRow label="Covalent" value={el.covalent_radius} unit="pm" />
-          <PropRow label="Van der Waals" value={el.van_der_waals_radius} unit="pm" />
-        </div>
-      </div>
+      <PropSection title="Atomic Radii">
+        <PropRow label="Atomic (empirical)" value={el.atomic_radius} unit={el.atomic_radius_unit || "pm"} />
+        <PropRow label="Covalent" value={el.covalent_radius} unit="pm" />
+        <PropRow label="Van der Waals" value={el.van_der_waals_radius} unit="pm" />
+      </PropSection>
 
-      <div className={styles.propSection}>
-        <div className={styles.propSectionTitle}>Electromagnetic</div>
-        <div className={styles.propGrid}>
+      {hasAny(el.magnetic_ordering, el.electrical_resistivity) && (
+        <PropSection title="Electromagnetic">
           <PropRow label="Magnetic Ordering" value={el.magnetic_ordering} />
           <PropRow label="Electrical Resistivity" value={el.electrical_resistivity} unit="Ω·m" />
-        </div>
-      </div>
+        </PropSection>
+      )}
     </>
   );
 }

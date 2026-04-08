@@ -294,6 +294,11 @@ function main() {
         wiki.ionization_energy_1st,
         wiki.ionization_energy_2nd,
         wiki.ionization_energy_3rd,
+        wiki.ionization_energy_4th,
+        wiki.ionization_energy_5th,
+        wiki.ionization_energy_6th,
+        wiki.ionization_energy_7th,
+        wiki.ionization_energy_8th,
       ].filter(Boolean),
 
       // === Thermodynamic Properties ===
@@ -326,7 +331,7 @@ function main() {
       year_discovered: pc.year_discovered,
       discovered_by: wiki.discovered_by || null,
       named_by: wiki.named_by || null,
-      name_origin: wiki.name_origin || null,
+      name_origin: wiki.named_after || wiki.name_origin || null,
       cas_number: wiki.cas_number || null,
 
       // === Description ===

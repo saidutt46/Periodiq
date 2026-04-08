@@ -132,10 +132,16 @@ function cleanWikitext(text) {
 }
 
 function normalizeElement(raw, atomicNumber) {
-  const get = (key) => raw[key] || null;
+  // Build a case-insensitive lookup from the raw keys
+  const ciMap = {};
+  for (const key of Object.keys(raw)) {
+    ciMap[key.toLowerCase()] = raw[key];
+  }
+
+  const get = (key) => ciMap[key.toLowerCase()] || raw[key] || null;
   const getFloat = (...keys) => {
     for (const key of keys) {
-      const v = raw[key];
+      const v = ciMap[key.toLowerCase()] || raw[key];
       if (!v) continue;
       // Extract first number from the value, handling negatives and decimals
       const match = v.match(/([-−]?\d+\.?\d*)/);
@@ -201,10 +207,15 @@ function normalizeElement(raw, atomicNumber) {
     covalent_radius: getFloat("covalent radius"),
     van_der_waals_radius: getFloat("Van der Waals radius"),
 
-    // Ionization energies
-    ionization_energy_1st: getFloat("1st ionization energy"),
-    ionization_energy_2nd: getFloat("2nd ionization energy"),
-    ionization_energy_3rd: getFloat("3rd ionization energy"),
+    // Ionization energies (raw keys are "ionization energy 1", "ionization energy 2", etc.)
+    ionization_energy_1st: getFloat("ionization energy 1", "1st ionization energy"),
+    ionization_energy_2nd: getFloat("ionization energy 2", "2nd ionization energy"),
+    ionization_energy_3rd: getFloat("ionization energy 3", "3rd ionization energy"),
+    ionization_energy_4th: getFloat("ionization energy 4"),
+    ionization_energy_5th: getFloat("ionization energy 5"),
+    ionization_energy_6th: getFloat("ionization energy 6"),
+    ionization_energy_7th: getFloat("ionization energy 7"),
+    ionization_energy_8th: getFloat("ionization energy 8"),
 
     // Crystal
     lattice_constants: get("lattice constants"),
@@ -216,7 +227,7 @@ function normalizeElement(raw, atomicNumber) {
     discovered_by: get("discovered by"),
     first_isolation_by: get("first isolation by"),
     first_isolation_date: get("first isolation date"),
-    named_after: get("named after"),
+    named_after: get("named after") || get("named_after"),
 
     // Identifiers
     cas_number: get("CAS number"),
