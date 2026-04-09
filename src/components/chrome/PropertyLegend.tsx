@@ -23,10 +23,10 @@ export function PropertyLegend({ mode }: Props) {
       </span>
 
       {/* Low label */}
-      <span className="text-[9px] text-[var(--text-muted)] font-mono whitespace-nowrap">
+      <span className="text-[9px] text-[var(--text-secondary)] font-mono whitespace-nowrap">
         {config.lowLabel}
         {config.unit && (
-          <span className="ml-0.5 text-[var(--text-dim)]">
+          <span className="ml-0.5 text-[var(--text-muted)]">
             ({config.range[0]}{config.unit})
           </span>
         )}
@@ -39,10 +39,10 @@ export function PropertyLegend({ mode }: Props) {
       />
 
       {/* High label */}
-      <span className="text-[9px] text-[var(--text-muted)] font-mono whitespace-nowrap">
+      <span className="text-[9px] text-[var(--text-secondary)] font-mono whitespace-nowrap">
         {config.highLabel}
         {config.unit && (
-          <span className="ml-0.5 text-[var(--text-dim)]">
+          <span className="ml-0.5 text-[var(--text-muted)]">
             ({config.range[1]}{config.unit})
           </span>
         )}
@@ -50,8 +50,8 @@ export function PropertyLegend({ mode }: Props) {
 
       {/* No data indicator */}
       <div className="flex items-center gap-1.5 ml-1 pl-2 border-l border-[var(--border-subtle)]">
-        <div className="w-2 h-2 rounded-sm bg-[var(--bg-tile)] border border-[var(--border-subtle)] opacity-40" />
-        <span className="text-[9px] text-[var(--text-dim)]">No data</span>
+        <div className="w-2 h-2 rounded-sm bg-[var(--bg-tile)] border border-[var(--border-subtle)] opacity-50" />
+        <span className="text-[9px] text-[var(--text-muted)]">No data</span>
       </div>
     </div>
   );

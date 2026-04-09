@@ -49,9 +49,9 @@
   --bg-glass-border: rgba(255, 255, 255, 0.06);
 
   --text-primary: #e8e8f2;
-  --text-secondary: #9494b0;
-  --text-muted: #6a6a85;
-  --text-dim: #50506a;
+  --text-secondary: #a0a0ba;
+  --text-muted: #7a7a96;
+  --text-dim: #5e5e7a;
 
   --accent-primary: #d4a843;
   --accent-warm: #e8943a;
@@ -77,6 +77,11 @@
   --cat-lanthanide: #22d3ee;
   --cat-actinide: #fb923c;
   --cat-unknown: #555568;
+
+  /* State indicator colors */
+  --state-solid: #64748b;
+  --state-liquid: #f472b6;
+  --state-gas: #22d3ee;
 }
 
 /* ============================================
@@ -87,42 +92,47 @@
 
   --bg-primary: #f2f2f6;
   --bg-secondary: #ffffff;
-  --bg-surface: #e8e8ee;
+  --bg-surface: #e4e4ec;
   --bg-card: #ffffff;
   --bg-tile: #ffffff;
-  --bg-tile-hover: #f5f5fa;
-  --bg-glass: rgba(255, 255, 255, 0.88);
-  --bg-glass-border: rgba(0, 0, 0, 0.08);
+  --bg-tile-hover: #ededf4;
+  --bg-glass: rgba(255, 255, 255, 0.9);
+  --bg-glass-border: rgba(0, 0, 0, 0.12);
 
-  --text-primary: #14142b;
-  --text-secondary: #5a5a72;
-  --text-muted: #8888a0;
-  --text-dim: #b0b0c0;
+  --text-primary: #111128;
+  --text-secondary: #44445e;
+  --text-muted: #66667e;
+  --text-dim: #8888a0;
 
   --accent-primary: #b8860b;
   --accent-warm: #d4760a;
   --accent-glow: #daa520;
-  --accent-cool: #0d9488;
+  --accent-cool: #0a7d72;
 
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --border-hover: rgba(0, 0, 0, 0.12);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.16);
 
-  --shadow-tile: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-tile-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
-  --shadow-float: 0 8px 32px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-tile: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-tile-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-float: 0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
 
-  --cat-alkali-metal: #dc2626;
-  --cat-alkaline-earth-metal: #ea580c;
-  --cat-transition-metal: #2563eb;
-  --cat-post-transition-metal: #0d9488;
-  --cat-metalloid: #ca8a04;
-  --cat-nonmetal: #16a34a;
-  --cat-halogen: #7c3aed;
-  --cat-noble-gas: #db2777;
-  --cat-lanthanide: #0891b2;
-  --cat-actinide: #c2410c;
-  --cat-unknown: #9ca3af;
+  --cat-alkali-metal: #c81e1e;
+  --cat-alkaline-earth-metal: #d4500a;
+  --cat-transition-metal: #1d4ed8;
+  --cat-post-transition-metal: #0a7d72;
+  --cat-metalloid: #a87304;
+  --cat-nonmetal: #128a3a;
+  --cat-halogen: #6b21d8;
+  --cat-noble-gas: #be1d6a;
+  --cat-lanthanide: #0774a0;
+  --cat-actinide: #a83508;
+  --cat-unknown: #6b7280;
+
+  /* State indicator colors (darker for light bg) */
+  --state-solid: #475569;
+  --state-liquid: #be185d;
+  --state-gas: #0891b2;
 }
 
 /* ============================================
@@ -178,6 +188,19 @@ body::before {
 *::-webkit-scrollbar-thumb {
   background: var(--border-hover);
   border-radius: 2px;
+}
+
+/* Global focus-visible ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
 /* Animate-in utility for elements that appear/disappear */

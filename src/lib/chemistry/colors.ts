@@ -236,17 +236,17 @@ const CATEGORY_HEX_DARK: Record<ElementCategory, string> = {
 };
 
 const CATEGORY_HEX_LIGHT: Record<ElementCategory, string> = {
-  "alkali-metal": "#dc2626",
-  "alkaline-earth-metal": "#ea580c",
-  "transition-metal": "#2563eb",
-  "post-transition-metal": "#0d9488",
-  metalloid: "#ca8a04",
-  nonmetal: "#16a34a",
-  halogen: "#7c3aed",
-  "noble-gas": "#db2777",
-  lanthanide: "#0891b2",
-  actinide: "#c2410c",
-  unknown: "#9ca3af",
+  "alkali-metal": "#c81e1e",
+  "alkaline-earth-metal": "#d4500a",
+  "transition-metal": "#1d4ed8",
+  "post-transition-metal": "#0a7d72",
+  metalloid: "#a87304",
+  nonmetal: "#128a3a",
+  halogen: "#6b21d8",
+  "noble-gas": "#be1d6a",
+  lanthanide: "#0774a0",
+  actinide: "#a83508",
+  unknown: "#6b7280",
 };
 
 /** Get raw hex color for a category, respecting current theme */

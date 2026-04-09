@@ -37,9 +37,9 @@
 
 /* Group headers (Metals, Nonmetals, State) */
 .groupHeader {
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 600;
-  color: var(--text-dim);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 3px 0 1px;

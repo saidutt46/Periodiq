@@ -114,15 +114,15 @@ export function TemperatureSlider() {
       {/* Phase legend — state mode only */}
       {isStateMode && (
         <div className={styles.phases}>
-          <span className={styles.phase} style={{ "--pc": "#64748b" } as React.CSSProperties}>
+          <span className={styles.phase} style={{ "--pc": "var(--state-solid)" } as React.CSSProperties}>
             <span className={styles.phaseDot} />
             Solid
           </span>
-          <span className={styles.phase} style={{ "--pc": "#f472b6" } as React.CSSProperties}>
+          <span className={styles.phase} style={{ "--pc": "var(--state-liquid)" } as React.CSSProperties}>
             <span className={styles.phaseDot} />
             Liquid
           </span>
-          <span className={styles.phase} style={{ "--pc": "#22d3ee" } as React.CSSProperties}>
+          <span className={styles.phase} style={{ "--pc": "var(--state-gas)" } as React.CSSProperties}>
             <span className={styles.phaseDot} />
             Gas
           </span>

@@ -216,42 +216,19 @@ export function Sidebar() {
             </div>
           )}
 
-          {/* Quick stats */}
+          {/* Key stats — compact 2x3 grid */}
           <div className={styles.statsGrid}>
-            <StatCard label="Atomic Mass" value={el.atomic_mass?.toFixed(4)} unit="u" />
+            <StatCard label="Mass" value={el.atomic_mass?.toFixed(3)} unit="u" />
             <StatCard label="Density" value={el.density != null ? (el.density < 0.01 ? el.density.toExponential(2) : el.density.toString()) : null} unit="g/cm³" />
-            <StatCard label="Melting Point" value={el.melting_point?.toString()} unit="K" />
-            <StatCard label="Boiling Point" value={el.boiling_point?.toString()} unit="K" />
-            <StatCard label="Electronegativity" value={el.electronegativity_pauling?.toString()} unit="Pauling" />
-            <StatCard label="State at STP" value={el.standard_state || null} />
+            <StatCard label="M.P." value={el.melting_point?.toString()} unit="K" />
+            <StatCard label="B.P." value={el.boiling_point?.toString()} unit="K" />
+            <StatCard label="EN" value={el.electronegativity_pauling?.toString()} unit="Pauling" />
+            <StatCard label="State" value={el.standard_state || null} />
           </div>
 
-          {/* Additional info row */}
-          <div className={styles.infoRow}>
-            {el.year_discovered && (
-              <div className={styles.infoChip}>
-                <span className={styles.infoChipLabel}>Discovered</span>
-                <span className={styles.infoChipValue}>{el.year_discovered}</span>
-              </div>
-            )}
-            {oxStates && (
-              <div className={styles.infoChip}>
-                <span className={styles.infoChipLabel}>Oxidation</span>
-                <span className={styles.infoChipValue}>{oxStates}</span>
-              </div>
-            )}
-            {el.crystal_structure && (
-              <div className={styles.infoChip}>
-                <span className={styles.infoChipLabel}>Crystal</span>
-                <span className={styles.infoChipValue}>{el.crystal_structure}</span>
-              </div>
-            )}
-          </div>
-
-          {/* Electron configuration */}
+          {/* Electron configuration — clean inline */}
           {el.electron_configuration && (
             <div className={styles.electronConfig}>
-              <div className={styles.electronLabel}>Electron Configuration</div>
               <div className={styles.electronValue}>
                 {formatElectronConfig(el.electron_configuration)}
               </div>
@@ -267,10 +244,10 @@ export function Sidebar() {
             </div>
           )}
 
-          {/* Summary */}
+          {/* Summary — first sentence only for sidebar */}
           {el.summary && (
             <p className={styles.summary}>
-              {truncateAtSentence(el.summary, 320)}
+              {truncateAtSentence(el.summary, 200)}
             </p>
           )}
 
