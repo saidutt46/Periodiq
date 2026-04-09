@@ -130,13 +130,13 @@
 }
 
 .solid {
-  background: var(--text-dim);
+  background: var(--state-solid);
 }
 .liquid {
-  background: #4dabf7;
+  background: var(--state-liquid);
 }
 .gas {
-  background: #69db7c;
+  background: var(--state-gas);
 }
 
 /* ============================================
@@ -145,20 +145,24 @@
    ============================================ */
 .colored .atomicNumber {
   color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s var(--ease-out);
 }
 
 .colored .symbol {
   color: rgba(255, 255, 255, 0.95);
+  transition: color 0.3s var(--ease-out);
 }
 
 .colored .name {
   color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s var(--ease-out);
 }
 
 .colored .mass {
   color: rgba(255, 255, 255, 0.85);
   font-weight: 600;
-  font-size: 8px;
+  font-size: 9px;
+  transition: color 0.3s var(--ease-out);
 }
 
 .colored:hover .symbol {

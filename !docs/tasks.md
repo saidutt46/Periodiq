@@ -132,3 +132,4 @@
 - [ ] Additional views (spiral, 3D table, timeline)
 - [ ] NMR properties
 - [ ] Supply risk / economics data
+- [ ] Rewrite element summaries in original Periodiq voice (currently verbatim Wikipedia — plagiarism risk, no differentiation). Rephrase into concise, engaging descriptions focusing on what makes each element fascinating. 118 elements.

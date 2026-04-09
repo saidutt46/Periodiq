@@ -109,7 +109,7 @@ export default function ElementDetailClient({
   ];
 
   return (
-    <div
+    <main
       className={styles.detailPage}
       style={{ "--cat-color": catColor, "--viz-glow": categoryHex } as React.CSSProperties}
     >
@@ -126,7 +126,6 @@ export default function ElementDetailClient({
 
         <div className={styles.topBarCenter}>
           <span className={styles.topBarNumber}>#{el.atomic_number}</span>
-          <span className={styles.topBarElement}>{el.name}</span>
         </div>
 
         <div className={styles.topBarRight}>
@@ -267,7 +266,7 @@ export default function ElementDetailClient({
           {activeTab === "history" && <HistoryTab element={el} catColor={categoryHex} />}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -568,7 +567,6 @@ function CompoundsTab({ compounds, catColor, elementName }: { compounds: Compoun
             <div className={styles.compoundName}>{c.name}</div>
             <div className={styles.compoundDesc}>{c.description}</div>
           </div>
-          <span className={styles.compoundArrow}>&rsaquo;</span>
         </div>
       ))}
 

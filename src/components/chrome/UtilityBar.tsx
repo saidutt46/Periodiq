@@ -10,7 +10,7 @@ export function UtilityBar() {
       <button
         onClick={toggleTheme}
         className="w-[30px] h-[30px] rounded-lg flex items-center justify-center text-[var(--text-muted)]
-                   transition-all duration-150 hover:text-[var(--text-primary)] hover:bg-white/[0.06]"
+                   transition-all duration-150 hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
         title="Toggle theme"
       >
         <svg
@@ -35,7 +35,7 @@ export function UtilityBar() {
       </button>
       <button
         className="w-[30px] h-[30px] rounded-lg flex items-center justify-center text-[var(--text-muted)]
-                   transition-all duration-150 hover:text-[var(--text-primary)] hover:bg-white/[0.06]"
+                   transition-all duration-150 hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
         title="Settings"
       >
         <svg
