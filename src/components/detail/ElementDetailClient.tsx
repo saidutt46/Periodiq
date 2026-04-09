@@ -109,7 +109,7 @@ export default function ElementDetailClient({
   ];
 
   return (
-    <div
+    <main
       className={styles.detailPage}
       style={{ "--cat-color": catColor, "--viz-glow": categoryHex } as React.CSSProperties}
     >
@@ -266,7 +266,7 @@ export default function ElementDetailClient({
           {activeTab === "history" && <HistoryTab element={el} catColor={categoryHex} />}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

@@ -22,7 +22,7 @@ export function CommandBar() {
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
         Search elements
-        <kbd className="text-[10px] px-1.5 py-px rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-muted)] font-sans">
+        <kbd className="text-[10px] px-1.5 py-px rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-sans">
           ⌘K
         </kbd>
       </button>

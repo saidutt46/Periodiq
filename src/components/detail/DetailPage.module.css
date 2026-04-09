@@ -387,7 +387,7 @@
 
 .statLabel {
   font-size: 9px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 6px;
@@ -403,7 +403,7 @@
 
 .statUnit {
   font-size: 10px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-weight: 400;
   margin-left: 2px;
 }
