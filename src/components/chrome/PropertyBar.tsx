@@ -32,7 +32,7 @@ export function PropertyBar() {
               onClick={() => setColoringMode(mode)}
               className={`
                 px-3 py-1.5 rounded-[10px] text-[11px] font-medium whitespace-nowrap
-                transition-all duration-150
+                transition-all duration-150 cursor-pointer
                 ${
                   coloringMode === mode
                     ? "text-[var(--accent-primary)] bg-[rgba(212,168,67,0.1)] font-semibold"

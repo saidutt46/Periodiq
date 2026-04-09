@@ -149,6 +149,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* All interactive elements get pointer cursor */
+button,
+[role="button"],
+a,
+summary,
+select {
+  cursor: pointer;
+}
+
 /* Noise texture overlay for depth */
 body::before {
   content: "";
