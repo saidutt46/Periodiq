@@ -18,13 +18,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { symbol } = await params;
   const el = getElementBySymbol(symbol);
-  if (!el) return { title: "Element Not Found — Periodiq" };
+  if (!el) return { title: "Element Not Found" };
+
+  const desc = el.summary
+    ? el.summary.split(";")[0].trim() + ". " + (el.summary.split(".").slice(1, 3).join(".").trim() || "")
+    : `Explore ${el.name}, element ${el.atomic_number}. Interactive 3D atom visualization, properties, electron configuration, and more.`;
 
   return {
-    title: `${el.name} (${el.symbol}) — Periodiq`,
-    description: el.summary
-      ? el.summary.slice(0, 160)
-      : `Explore ${el.name}, element ${el.atomic_number} on the periodic table. Interactive 3D atom visualization, properties, electron configuration, and more.`,
+    title: `${el.name} (${el.symbol})`,
+    description: desc.slice(0, 160),
+    openGraph: {
+      title: `${el.name} (${el.symbol}) | Periodiq`,
+      description: desc.slice(0, 160),
+    },
   };
 }
 
