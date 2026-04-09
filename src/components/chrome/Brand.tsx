@@ -17,8 +17,6 @@ export function Brand() {
       </div>
       <span className="font-mono font-bold text-[15px] tracking-tight text-[var(--text-primary)]">
         Periodiq
-        <span className="text-[var(--accent-primary)]">.</span>
-        <span className="font-normal text-[var(--text-muted)]">dev</span>
       </span>
     </Link>
   );

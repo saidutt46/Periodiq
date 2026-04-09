@@ -169,6 +169,11 @@
   position: relative;
   width: 100%;
   height: 100%;
+  cursor: grab;
+}
+
+.atomCanvas:active {
+  cursor: grabbing;
 }
 
 /* ─── Bottom info area (inline stats + shell bar) ─── */

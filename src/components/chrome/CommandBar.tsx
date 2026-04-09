@@ -5,7 +5,7 @@ export function CommandBar() {
     <nav className="glass fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center rounded-[14px] p-1">
       <button
         className="flex items-center gap-2 px-4 py-[7px] rounded-[10px] text-[var(--text-muted)] text-xs
-                   transition-all duration-150 hover:text-[var(--text-secondary)] hover:bg-[var(--bg-surface)]"
+                   transition-all duration-150 hover:text-[var(--text-secondary)] hover:bg-[var(--bg-surface)] cursor-pointer"
         title="Search elements (⌘K)"
         onClick={() => { const fn = (window as unknown as Record<string, () => void>).__openSearch; if (fn) fn(); }}
       >
