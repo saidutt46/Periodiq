@@ -5,9 +5,7 @@ import { usePathname } from "next/navigation";
 
 const TABS = [
   { label: "Table", href: "/" },
-  { label: "List", href: "/list" },
   { label: "Compounds", href: "/compounds" },
-  { label: "Compare", href: "/compare" },
 ] as const;
 
 export function CommandBar() {

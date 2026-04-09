@@ -87,24 +87,21 @@
 - [ ] Build PubChem API proxy routes (`api/compounds/search`, `api/compounds/[cid]`)
 - [ ] Cache compound results in localStorage/IndexedDB
 
-## Phase 5: List View
-- [ ] Build element card component (~600px, rich data display)
-- [ ] Build list page layout (grid of cards)
-- [ ] Search and filter within list view
-- [ ] Match sci-fi theme styling
+## ~~Phase 5: List View~~ — Deferred
+> **Decision:** Deferred indefinitely. The periodic table grid is the natural layout for elements; a flat card list loses group/period relationships and duplicates what the detail page already shows. Cmd+K search covers the "find an element quickly" use case. May revisit if property-based sorting/filtering becomes a priority.
 
-## Phase 6: Compare Feature
-- [ ] Build element selector (pick 2-4 elements)
-- [ ] Build side-by-side property cards view
-- [ ] Build overlay charts view (property trends)
-- [ ] Tab switching between cards and charts modes
+## ~~Phase 6: Compare Feature~~ — Deferred
+> **Decision:** Deferred indefinitely. Low value without the List View. May revisit as a standalone feature if user research shows demand for side-by-side element comparison.
 
 ## Phase 7: Search (Cmd+K)
-- [ ] Build command palette with cmdk
-- [ ] Fuzzy search by name, symbol, atomic number
-- [ ] Quick category filters
-- [ ] Navigate to element detail from search results
-- [ ] Keyboard shortcut (Cmd+K / Ctrl+K)
+- [x] Build command palette with cmdk
+- [x] Fuzzy search by name, symbol, atomic number
+- [x] Quick category filters
+- [x] Navigate to element detail from search results
+- [x] Keyboard shortcut (Cmd+K / Ctrl+K)
+- [x] Backspace to clear category filter
+- [x] Actions: Toggle Theme, Back to Table
+- [x] 17 unit tests (Vitest)
 
 ## Phase 8: Theming & Polish
 - [ ] Finalize dark theme (sci-fi, amber/gold accents)
