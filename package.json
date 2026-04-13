@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "description": "The most beautiful and useful periodic table on the web",
+  "homepage": "https://periodiq-three.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saidutt46/Periodiq"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -27,6 +35,7 @@
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "@react-three/postprocessing": "^3.0.4",
+    "@vercel/analytics": "^2.0.1",
     "cmdk": "^1.1.1",
     "framer-motion": "^12.38.0",
     "next": "^16.2.2",

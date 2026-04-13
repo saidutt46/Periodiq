@@ -42,7 +42,7 @@ Every element has a dedicated detail page with four 3D visualization modes and f
 <p align="center">
   <img src="public/screenshots/detail-bohr.jpg" alt="Silicon Bohr model" width="90%" />
 </p>
-<p align="center"><sub>Silicon: Bohr model with animated electron shells, bloom glow, and sparkle particles</sub></p>
+<p align="center"><em><sub>Silicon — Bohr model with animated electron shells, bloom glow, and sparkle particles</sub></em></p>
 
 <br />
 
@@ -60,7 +60,7 @@ Every element has a dedicated detail page with four 3D visualization modes and f
 <p align="center">
   <img src="public/screenshots/detail-orbitals.jpg" alt="Electron orbital visualization" width="90%" />
 </p>
-<p align="center"><sub>Silicon: 3d orbital shapes from real spherical harmonics, with the Properties tab showing mechanical and thermodynamic data</sub></p>
+<p align="center"><em><sub>Silicon — 3p² orbital isosurfaces from spherical harmonics, with the Properties tab showing physical and thermodynamic data</sub></em></p>
 
 <br />
 
@@ -87,7 +87,7 @@ Press `⌘K` from anywhere in the app to open the command palette. Search by nam
 <p align="center">
   <img src="public/screenshots/search.jpg" alt="Search palette" width="90%" />
 </p>
-<p align="center"><sub>Searching "Ca" returns Calcium, Carbon, Cadmium, Californium, and Scandium, ranked by relevance</sub></p>
+<p align="center"><em><sub>Searching "Ca" returns Calcium, Carbon, Cadmium, Californium, and Scandium, ranked by relevance</sub></em></p>
 
 <br />
 
@@ -123,6 +123,12 @@ Two additional datasets were hand-curated:
 
 <br />
 
+## Built With
+
+Next.js 16 · React 19 · TypeScript · Tailwind v4 · Zustand · React Three Fiber · Vitest
+
+<br />
+
 ## Running Locally
 
 ```bash
@@ -132,11 +138,13 @@ npm install
 npm run dev        # starts at http://localhost:3000
 ```
 
+Requires Node.js 20+.
+
 Production build generates 118 static element pages via SSG:
 
 ```bash
 npm run build
-npm run test       # 17 unit tests for search logic
+npm run test       # unit tests (vitest)
 ```
 
 <br />
