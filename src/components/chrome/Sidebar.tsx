@@ -64,27 +64,45 @@ export function Sidebar() {
   const [displayElement, setDisplayElement] = useState<Element | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+  const displayElementRef = useRef<Element | null>(null);
+
+  useEffect(() => {
+    displayElementRef.current = displayElement;
+  }, [displayElement]);
 
   // Handle open/close animation
   useEffect(() => {
+    let frameId: number | null = null;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
     if (element) {
-      if (displayElement && displayElement.atomic_number !== element.atomic_number) {
+      if (displayElementRef.current && displayElementRef.current.atomic_number !== element.atomic_number) {
         // Switching elements — crossfade
-        setIsTransitioning(true);
-        const timeout = setTimeout(() => {
+        frameId = requestAnimationFrame(() => setIsTransitioning(true));
+        timeoutId = setTimeout(() => {
           setDisplayElement(element);
           setIsTransitioning(false);
         }, 150);
-        return () => clearTimeout(timeout);
       } else {
-        setDisplayElement(element);
+        frameId = requestAnimationFrame(() => setDisplayElement(element));
       }
       // Delay to trigger CSS transition
       requestAnimationFrame(() => setIsVisible(true));
     } else {
-      setIsVisible(false);
-      const timeout = setTimeout(() => setDisplayElement(null), 300);
-      return () => clearTimeout(timeout);
+      frameId = requestAnimationFrame(() => setIsVisible(false));
+      timeoutId = setTimeout(() => setDisplayElement(null), 300);
+    }
+
+    return () => {
+      if (frameId !== null) cancelAnimationFrame(frameId);
+      if (timeoutId !== null) clearTimeout(timeoutId);
+    };
+  }, [element]);
+
+  useEffect(() => {
+    if (!element) {
+      const frameId = requestAnimationFrame(() => setIsTransitioning(false));
+      return () => cancelAnimationFrame(frameId);
     }
   }, [element]);
 

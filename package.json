@@ -15,7 +15,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "scrape:pubchem": "node scripts/scrape-pubchem.mjs",
     "scrape:wikipedia": "node scripts/scrape-wikipedia.mjs",
     "scrape:merge": "node scripts/merge-data.mjs",

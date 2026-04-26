@@ -30,13 +30,13 @@ export function SearchPalette() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // Reset state when closing
-  useEffect(() => {
-    if (!open) {
+  const handleOpenChange = useCallback((nextOpen: boolean) => {
+    setOpen(nextOpen);
+    if (!nextOpen) {
       setQuery("");
       setActiveCategory(null);
     }
-  }, [open]);
+  }, []);
 
   // Handle backspace on empty input to clear category
   const handleInputKeyDown = useCallback(
@@ -86,7 +86,7 @@ export function SearchPalette() {
       {/* Trigger — called from CommandBar */}
       <Command.Dialog
         open={open}
-        onOpenChange={setOpen}
+        onOpenChange={handleOpenChange}
         label="Search elements"
         className={styles.dialog}
         shouldFilter={false}
