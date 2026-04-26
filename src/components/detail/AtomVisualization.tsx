@@ -137,7 +137,8 @@ function OrbitalRing({
   // Each shell gets progressively larger radius
   const baseRadius = 1.2 + shellIndex * 0.85;
   const radiusX = baseRadius;
-  const radiusY = baseRadius * (0.85 + Math.random() * 0.1); // slight elliptical
+  const ellipseScale = 0.85 + (shellIndex % 3) * 0.04; // slight deterministic ellipse variation
+  const radiusY = baseRadius * ellipseScale;
 
   // Unique tilts per shell for 3D feel
   const tilts = useMemo(() => {
